@@ -1,5 +1,386 @@
 [
 {
+"id": "Server412Patch",
+"workshop": "3821533933",
+"title": "412's server 패치",
+"name": "412's server 패치",
+"category": "서버·운영 도구",
+"summary": "이 서버에서 발견한 오류를 고치고 한국어 번역을 보충하는 서버 전용 패치 모드입니다.",
+"features": [
+"떨어진 아이템 때문에 가구·좀비가 안 보이던 그래픽 오류 방지",
+"차 문 잠그기 실패, 사망·리스폰 직후 모드 오류 등 여러 오류 방지",
+"미번역 문구 약 4,800개 한국어 번역, 표기 통일(레시피 모드 태그 제거, 색상·브랜드 표기)",
+"Lifestyle \"야망\"을 \"업적\"으로, 숨겨진 업적은 \"히든 업적 해금/달성\"으로 표시",
+"탄창 장탄수 바, 제작 화면 레시피 출처 모드 표시",
+"스폰 선택 화면 지도 표시 수정, 맵 이름 한국어",
+"클라이언트 Lua 오류를 서버에 자동 기록(오류 문구와 모드 이름만)"
+],
+"how": [
+"따로 조작할 것 없음. 모든 모드 중 가장 마지막에 불러옴"
+],
+"settings": [],
+"notes": [
+"변경 내역은 위키 업데이트 내역 참고"
+],
+"order": 999
+},
+{
+"id": "AbsWeight",
+"workshop": "3780301677",
+"title": "AbsWeight - Item Weight Control",
+"name": "AbsWeight - 아이템 무게 조절",
+"category": "서버·운영 도구",
+"summary": "샌드박스 설정으로 아이템 무게를 카테고리별·개별로 조정합니다.",
+"features": [
+"전체 배수 + 11개 카테고리(무기, 음식, 의류, 탄약, 가방, 책, 재료, 의료, 도구, 차량 부품, 기타) 배수",
+"목재·금속·대장장이 재료·콘크리트/석고·무전기 전용 배수",
+"열쇠·열쇠고리·자동차 키 무게 0 옵션",
+"동물 운반 무게, 트레일러 공간, 들어올리기 한도 조절 및 '모든 동물 들기' 옵션",
+"아이템 개별 지정(Overrides), 최소·최대 무게 제한",
+"연료 연소 시간은 바닐라 유지, 기존 세이브에도 적용"
+],
+"how": [
+"플레이어가 따로 할 일 없음 (서버 설정으로 자동 적용)"
+],
+"settings": [
+"전체 배수 1.0",
+"음식 0.5 / 탄약 0.5 / 차량 부품 0.5 / 기타(가구·생활용품 등) 0.25",
+"무기·의류·가방·책·재료·의료·도구 1.0",
+"목재·금속·대장장이·콘크리트/석고·무전기 각 0.5",
+"열쇠 무게 0: 켜짐",
+"모든 동물 들어올리기 가능: 켜짐",
+"최소 0 / 최대 100"
+],
+"notes": [
+"무게가 줄면 같은 가방에 더 많이 들어감 (용량도 무게 단위)",
+"서버에 MetalWoodHalfWeight(목재·금속 50%)도 켜져 있음. 그 모드가 OnGameBoot에서 먼저 무게를 절반으로 만든 뒤 AbsWeight가 그 값을 기준으로 다시 0.5를 곱하므로 겹치는 목재·금속 아이템은 바닐라의 약 25%가 될 수 있음",
+"ZeroWeightKeys_B42와 열쇠 무게 0 기능이 중복됨 (결과는 동일)"
+],
+"order": 47
+},
+{
+"id": "SanboidRandomSpawnB42",
+"workshop": "3805565148",
+"title": "Sanboid Random Spawn B42 - Indoor Only",
+"name": "Sanboid 랜덤 스폰 B42 (실내 전용)",
+"category": "서버·운영 도구",
+"summary": "켜진 지역 중 하나를 균등하게 골라 건물 1층 실내에 무작위로 스폰시키는 모드입니다.",
+"features": [
+"활성화된 지역들 중 동일 확률로 마을을 고른 뒤 그 지역의 1층 건물 실내로 스폰",
+"서버가 마을 목록·건물 선정을 직접 관리(멀티플레이 대응)",
+"선택 지역에 쓸 수 있는 실내가 없으면 멀드로 실내로 대체",
+"바닐라 지역과 모드 맵(그린리프, 클로버 레이크, 아이리스 에이트, 레이븐 크릭 등) 지역 개별 on/off"
+],
+"how": [
+"스폰 선택 화면에서 랜덤 스폰을 고르면 자동으로 실내 위치를 확인 후 스폰",
+"'서버에서 마을별 스폰 목록을 받지 못했습니다' 메시지가 나오면 모드 버전 불일치 — 운영자에게 알림"
+],
+"settings": [
+"랜덤 스폰: 켜짐",
+"켜진 지역: 리버사이드, 멀드로, 웨스트 포인트, 루이빌, 로즈우드, 로즈우드 교도소, 에코 크릭, 에크론, 폴스 레이크, 어빙턴, 마치 리지, 브랜던버그, 밸리 스테이션, 그린리프, 클로버 레이크, 아이리스 에이트, 포트 워터프런트, 레이븐 크릭, 멀드로 군사기지(포트 프레스턴), 메이플우드, 웨스트 포인트 확장, 헤이븐 폴",
+"꺼진 지역: 티키타운, 넬리스 공군기지"
+],
+"notes": [
+"설정 변경 후 서버 재시작 필요(툴팁 안내)"
+],
+"order": 21
+},
+{
+"id": "ArmystorageSpawnTableFix",
+"workshop": "3786236842",
+"title": "[42.20] Vanilla Spawn Table Fix",
+"name": "[42.20] 군 창고 스폰 테이블 수정 (Armystorage Spawn Table Fix)",
+"category": "서버·운영 도구",
+"summary": "군부대 창고(armystorage)의 선반·군용 상자에서 총과 탄약만 나오도록 스폰 테이블을 바꿉니다.",
+"features": [
+"금속 선반·군용 상자·군용 사물함: 군용 총기·탄약만 생성(기타 군용품 제거)",
+"그 외 용기: 탄약·의약품·군복·전자기기 구성",
+"카운터는 관제실 카운터 구성"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42.20 이상 전용"
+],
+"order": 256
+},
+{
+"id": "ArmorySpawnTableFix",
+"workshop": "3786236842",
+"title": "[42.20] Vanilla Spawn Table Fix",
+"name": "[42.20] 무기고 스폰 테이블 수정 (Armory Spawn Table Fix)",
+"category": "서버·운영 도구",
+"summary": "armory(무기고) 방의 아이템 스폰 테이블을 경찰서 무기고와 같게 다시 정의합니다.",
+"features": [
+"armory 방의 서류 캐비닛·사물함·금속 선반·군용 사물함 등을 경찰 무기고 구성(경찰 총기·방탄 장비·증거물·서류함)으로 설정",
+"사물함 타일 종류에 따라 총기/방탄 장비가 나오도록 지정",
+"리버사이드 경찰서 외 다른 armory 방에도 같은 구성이 적용됨"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42.20 이상 전용(versionMin=42.20)",
+"같은 작성자의 Armystorage/Vanilla Spawn Table Fix와 분리된 선택형 모드"
+],
+"order": 255
+},
+{
+"id": "VanillaSpawnTableFix",
+"workshop": "3786236842",
+"title": "[42.20] Vanilla Spawn Table Fix",
+"name": "[42.20] 바닐라 스폰 테이블 수정 (Vanilla Spawn Table Fix)",
+"category": "서버·운영 도구",
+"summary": "B42.20에서 바뀐 바닐라 루팅 테이블 일부를 정상화하거나 42.19 방식으로 되돌립니다.",
+"features": [
+"창고(warehouse): 잘못된 smallbox 항목을 other로 바로잡아 공구·목공·금속 등 상자 구성 정상화",
+"초·중등 교실 책상 스폰 정리, 교실 간 밸런스 조정",
+"거실·옷장·다락·차고 창고·창고 유닛: 스킬북 스폰을 42.19 방식으로 되돌림(거실은 종이/나무 상자에서만)",
+"복도(hall)에 생긴 스킬북 스폰 제거",
+"서점 창고·책 보관실·총포상 창고 구성 재정의"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42.20 이상 전용",
+"루팅 테이블을 통째로 덮어써서 같은 방 테이블을 바꾸는 다른 루팅 모드와 겹칠 수 있음"
+],
+"order": 257
+},
+{
+"id": "ModManager",
+"workshop": "3567084868",
+"title": "[B42] Mod Manager",
+"name": "[B42] 모드 매니저 (Mod Manager)",
+"category": "서버·운영 도구",
+"summary": "게임 내 모드 창을 정렬·필터·숨기기·프리셋 기능이 있는 관리자 화면으로 개편하는 모드입니다.",
+"features": [
+"모드 목록 정렬·필터링·검색(의존성 포함 검색)·숨기기",
+"모드 정보 패널: 카테고리, 변경 내역(ChangeLog), 비호환 모드, 지원 링크 표시",
+"모드 프리셋 저장·공유 창",
+"모드 옵션(설정) 메뉴 재디자인",
+"서버 설정 화면 개선: 빠른 편집(핵심 설정만)과 전체 편집 모드 분리"
+],
+"how": [
+"메인 메뉴의 모드 화면/모드 옵션/서버 설정 화면에서 바로 사용"
+],
+"settings": [],
+"notes": [
+"Mod Load Order Sorter 필요(정렬 규칙은 그쪽 기능 사용)",
+"변경 내역상 서버 모드 목록에 넣지 않아도 클라이언트에서 항상 동작하도록 바뀜",
+"인게임 플레이에는 영향 없음"
+],
+"order": 1
+},
+{
+"id": "deathcount",
+"workshop": "3799032902",
+"title": "deathcounts system 42",
+"name": "공용 목숨 시스템 (deathcount system)",
+"category": "서버·운영 도구",
+"summary": "서버 전체가 목숨을 공유하고, 다 쓰면 서버가 초기화(리셋)됩니다.",
+"features": [
+"어떤 플레이어든 죽으면 서버 공용 사망 수 +1 (동물 사망 제외)",
+"게임 내 매일 자정에 화면 중앙에 'Lives: 남은 목숨' 표시 + 천둥 소리",
+"남은 목숨이 0이 되면 '!!! SERVER RESET !!! (Deaths: 사망자 순서)' 공지 후 5초 뒤 리셋 신호를 쓰고 서버 종료",
+"최대 목숨 수는 서버 Lua 폴더의 DeathCount.txt로 관리 (없으면 3으로 생성)"
+],
+"how": [
+"플레이어가 따로 할 일 없음 — 자정 공지로 남은 목숨 확인"
+],
+"settings": [],
+"notes": [
+"이 서버의 DeathCount.txt 값은 5 (샌드박스 설정이 아닌 별도 파일)",
+"목숨이 바닥나면 월드가 하드리셋되므로 모두의 생존이 중요"
+],
+"order": 68
+},
+{
+"id": "ModLoadOrderSorter_b42",
+"workshop": "3423660713",
+"title": "Mod Load Order Sorter [b42]",
+"name": "모드 로드 순서 정렬기 (Mod Load Order Sorter)",
+"category": "서버·운영 도구",
+"summary": "모드 자동 정렬 로직을 정렬 규칙 기반으로 바꾸고, 수동 정렬을 돕는 도구를 추가하는 모드입니다.",
+"features": [
+"모드 목록 화면에 '정렬' 버튼 추가, 정렬 규칙(먼저/나중에 로드, 가장 먼저/가장 나중에 로드, 카테고리 내 순서, 호환되지 않음)에 따라 자동 정렬",
+"필수 모드 누락·로드 순서 오류, 호환되지 않는 모드 발견 시 경고 표시",
+"정렬 규칙 편집 모드: 모드별 규칙을 직접 지정하고 저장",
+"모드·워크숍 아이템 목록을 클립보드로 복사하거나 Lua 폴더의 파일로 저장"
+],
+"how": [
+"메인 메뉴 > 모드 화면에서 '정렬' 버튼으로 자동 정렬",
+"규칙 영역을 클릭해 편집 모드로 들어가 규칙 지정 후 '저장'"
+],
+"settings": [],
+"notes": [
+"게임 플레이에는 영향 없는 메인 메뉴용 도구",
+"[B42] Mod Manager가 이 모드를 필수로 요구함"
+],
+"order": 0
+},
+{
+"id": "errorMagnifier",
+"workshop": "2896041179",
+"title": "errorMagnifier",
+"name": "오류 확대경 (errorMagnifier)",
+"category": "서버·운영 도구",
+"summary": "Lua 오류가 나면 게임 안에 팝업으로 띄워 오류 보고를 쉽게 해 주는 디버깅용 모드입니다.",
+"features": [
+"모드 오류 발생 시 인게임 팝업으로 오류 내용 표시",
+"오류 내용을 확인·전달하기 쉽게 정리"
+],
+"how": [
+"오류 팝업이 뜨면 내용을 캡처해 서버 운영자에게 전달"
+],
+"settings": [],
+"notes": [
+"Mod Update and Alert System(ChuckleberryFinnAlertSystem) 필요",
+"게임 플레이에는 영향 없음, 순수 디버깅 용도"
+],
+"order": 3
+},
+{
+"id": "MoodleFramework",
+"workshop": "3396446795",
+"title": "Moodle Framework",
+"name": "Moodle Framework (무들 프레임워크)",
+"category": "라이브러리·의존성",
+"summary": "다른 모드가 화면 오른쪽 무들(상태 아이콘)을 새로 추가할 수 있게 해 주는 기반 모드입니다.",
+"features": [
+"모드가 만든 무들(상태 아이콘)을 바닐라 무들과 같은 방식으로 표시함",
+"이 서버에서는 영성(DWTB Spirituality) 모드의 무들 3종을 보여 주기 위해 추가함"
+],
+"how": [
+"따로 조작할 것 없음. 해당 모드의 무들이 화면 오른쪽에 자동으로 표시됨"
+],
+"settings": [],
+"notes": [
+"2026-10-18 추가"
+],
+"order": 6
+},
+{
+"id": "NeatUI_Framework",
+"workshop": "3508537032",
+"title": "NeatUI Framework [B42]",
+"name": "NeatUI 프레임워크",
+"category": "라이브러리·의존성",
+"summary": "Neat 계열 UI 모드들이 공통으로 쓰는 UI 부품·스타일 라이브러리입니다.",
+"features": [
+"재사용 가능한 UI 컴포넌트·스타일·공용 UI 에셋 제공",
+"B42.0.2 ~ B42.20.4+ 빌드 호환 처리"
+],
+"how": [],
+"settings": [],
+"notes": [
+"단독으로는 눈에 띄는 기능 없음, Neat 계열 모드(예: Neat Lockpicking 등)의 의존성"
+],
+"order": 6
+},
+{
+"id": "YAPZLib",
+"workshop": "3624971238",
+"title": "Yet Another PZ LIbrary",
+"name": "Yet Another PZ Library",
+"category": "라이브러리·의존성",
+"summary": "다른 모드가 사용하는 공용 Lua 라이브러리 모드입니다.",
+"features": [
+"다른 모드용 공용 함수 제공(자체 기능 없음)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"의존성으로 추가된 모드, 끄면 이를 요구하는 모드가 작동하지 않음"
+],
+"order": 10
+},
+{
+"id": "SWMG",
+"workshop": "3722064198",
+"title": "[42.20.4MP] Gunworks Framework",
+"name": "건웍스 프레임워크 (Gunworks Framework)",
+"category": "라이브러리·의존성",
+"summary": "Guns of Marz 등 총기 팩이 쓰는 사격 모드·탄약 장전·부착물 기능 프레임워크입니다.",
+"features": [
+"사격 모드 전환: 단발/점사/연사",
+"탄약 장전기 UI: 총기나 탄창을 드래그해 탄약 종류·수량 선택 후 장전, 재장전 우선순위 지정",
+"총검 장착/제거, 양각대 거치/접기, 개머리판 접기/펼치기, 하부 부착물 전환",
+"다양한 구경·탄종 정의(철갑탄, 할로우 포인트, +P 고압탄, 아음속탄 등)"
+],
+"how": [
+"기본 키: T = 사격 모드 변경, O = 무기 장전 UI 열기, U = 하부 부착물 전환 (옵션 > 키 설정에서 변경 가능)",
+"총 우클릭 메뉴에서 총검/양각대/개머리판 조작"
+],
+"settings": [],
+"notes": [
+"Guns of Marz(GunsOfMarz)의 필수 의존성"
+],
+"order": 5
+},
+{
+"id": "damnlib",
+"workshop": "3171167894",
+"title": "that DAMN Library",
+"name": "댐 라이브러리 (that DAMN Library)",
+"category": "라이브러리·의존성",
+"summary": "모든 KI5 차량 모드가 필요로 하는 공용 에셋·제작 라이브러리입니다.",
+"features": [
+"KI5 차량 부품 제작 레시피 공통 처리([KI5] ... 후드/문/유리/장갑/불바/루프랙 만들기)",
+"타이어 제작 재료(림, 타이어 고무), 군용 타이어(절대 펑크 안 나지만 상태가 낮으면 접지력 저하)",
+"차량 부품 제작 재료: 유리판(스칼펠과 함께 사용), 손잡이, 경첩, 고무 스트립, 좌석 천·폼·프레임",
+"타이어 수리 키트(수리 도구 + 고무 용액 + 수리 스트립), 플라스틱 용접 키트(배터리식 용접총 + 스테이플)",
+"석고 몰드 + 스티로폼 페이스트(아세톤 + 스티로폼)로 플라스틱 부품 복제",
+"고정 위치 보장 스폰(Guaranteed spawns) 기능"
+],
+"how": [
+"제작 메뉴에서 [KI5] 레시피로 차량 부품 제작"
+],
+"settings": [
+"KI5 보장 스폰(DAMN 섹션): '49 Dodge Power Wagon 프리셋 켜짐, '97 ADI Bushmaster 프리셋 켜짐, '80 MAN KAT1 프리셋 켜짐"
+],
+"notes": [
+"KI5 차량 모드 전부의 필수 의존성 — 빼면 KI5 차량이 모두 사라짐"
+],
+"order": 7
+},
+{
+"id": "ChuckleberryFinnAlertSystem",
+"workshop": "3077900375",
+"title": "Mod Update and Alert System",
+"name": "모드 업데이트·알림 시스템 (Chuckleberry Finn)",
+"category": "라이브러리·의존성",
+"summary": "Chuckleberry Finn 모드들이 사용하는 공지·업데이트 알림용 유틸리티 모드입니다.",
+"features": [
+"모드 제작자의 소식·업데이트 알림 창 표시",
+"알림 창 클릭 시 접기/열기, 우클릭 시 이번 세션 동안 완전히 숨김"
+],
+"how": [
+"알림이 거슬리면 알림 창을 우클릭해 이번 세션 동안 숨김"
+],
+"settings": [],
+"notes": [
+"errorMagnifier 등의 의존성으로 들어간 모드, 게임 플레이 변화 없음"
+],
+"order": 2
+},
+{
+"id": "ATakeABathAndShowerDepthMap",
+"workshop": "3592172476",
+"title": "[B42:SP/MP] Take A Bath And Shower",
+"name": "목욕과 샤워: 깊이맵 수정",
+"category": "라이브러리·의존성",
+"summary": "Take A Bath And Shower 모드의 욕조·샤워 깊이맵(그래픽 겹침) 리소스를 담은 보조 모드입니다.",
+"features": [
+"욕조·샤워 사용 시 캐릭터와 오브젝트가 올바르게 겹쳐 보이도록 깊이맵 제공"
+],
+"how": [],
+"settings": [],
+"notes": [
+"Take A Bath And Shower의 필수 의존성, 로드 순서를 위쪽에 두라고 안내됨"
+],
+"order": 37
+},
+{
 "id": "P4AddictedToWeight",
 "workshop": "2604943386",
 "title": "Addicted To Weight",
@@ -695,1815 +1076,6 @@
 "order": 105
 },
 {
-"id": "KAMER_RepairWall",
-"workshop": "3006882690",
-"title": "[B41&B42] Repair Wall",
-"name": "[K] 벽 수리 (Repair Wall)",
-"category": "건축·가구",
-"summary": "손상된 벽·구조물을 우클릭으로 수리할 수 있게 하는 모드입니다.",
-"features": [
-"손상된 오브젝트 우클릭 시 '수리' 메뉴 추가",
-"마우스를 올리면 필요한 재료·도구와 예상 회복량(%) 툴팁 표시",
-"나무 구조물은 목공, 금속 구조물은 금속 용접 레벨에 따라 회복량 증가",
-"망치 자동 장착, 금속 수리 시 용접 마스크 자동 착용"
-],
-"how": [
-"손상된 벽/문/바리케이드 등 우클릭 > 수리 > 수리할 대상 선택"
-],
-"settings": [],
-"notes": [],
-"order": 26
-},
-{
-"id": "Disassemble Container With Items",
-"workshop": "2835852387",
-"title": "Disassemble Container With Items",
-"name": "내용물 든 가구 분해",
-"category": "건축·가구",
-"summary": "안에 물건이 들어 있는 가구(컨테이너)도 분해할 수 있게 하고, 내용물은 바닥에 떨어뜨립니다.",
-"features": [
-"바닐라 가구 분해 로직(ISMoveableSpriteProps)을 교체",
-"분해 시 컨테이너 안의 아이템을 그 칸 바닥에 내려놓음",
-"내용물을 미리 비우는 수고를 덜어 줌 (나머지 분해 동작·재료 반환은 바닐라 방식)"
-],
-"how": [
-"바닐라와 같이 가구 우클릭 → 분해"
-],
-"settings": [],
-"notes": [
-"바닐라 이동·분해 파일을 통째로 덮어쓰는 방식이라, 같은 파일을 고치는 다른 모드와 충돌 가능"
-],
-"order": 70
-},
-{
-"id": "Neat_Building",
-"workshop": "3536052310",
-"title": "Neat Building [B42]",
-"name": "니트 빌딩 (Neat Building)",
-"category": "건축·가구",
-"summary": "건설 메뉴를 Neat UI 방식으로 바꾸고 다양한 문·문틀 등 추가 건축물을 넣어 줍니다.",
-"features": [
-"바닐라 건설 UI를 대체하는 Neat Building 건설 메뉴(검색, 아이템 유형/이름 필터)",
-"[NB] 표시가 붙은 추가 건축물: 헛간 나무 문, 철도/패널/타일 문틀, 실내 나무 문, 색상 금속 문 등",
-"문틀 기본/고급/장인 단계",
-"요구 조건 부족으로 건축이 취소되면 짧은 알림 표시(옵션)"
-],
-"how": [
-"건설 메뉴를 열면 Neat Building UI로 표시됨",
-"모드 옵션 'Neat Building UI 사용'을 끄면 바닐라 건설 UI로 복귀"
-],
-"settings": [],
-"notes": [
-"NeatUI Framework 필요",
-"Stairs East & South 모드나 모듈형 Neat Building 변형과 함께 쓰지 말 것(모드 설명)",
-"기존 세이브에서 바로 빼면 안 되며, 제거 시 Safe Uninstall Support 모드를 쓰라고 안내됨"
-],
-"order": 96
-},
-{
-"id": "MoreBuilds",
-"workshop": "515555911",
-"title": "More Builds",
-"name": "모어 빌드 (More Builds B42)",
-"category": "건축·가구",
-"summary": "가구, 구조물, 수납함, 설비, 조명, 장식 등 대량의 건설 항목과 전용 건축 카탈로그 창을 추가합니다.",
-"features": [
-"벽·기둥·문틀·창틀·울타리를 여러 색/재질(회색·흰색 회반죽, 붉은 헛간 나무, 회색 나무 등)로 추가",
-"가구·수납·설비·야외·장식 등 카테고리별 건축 카탈로그(검색, 즐겨찾기, 상세 정보 포함)",
-"우물·물 펌프 등 물 공급원 건설 가능(자동으로 물이 다시 차오름)",
-"멀티플레이에서 많이 지어진 건물을 모아 보여 주는 '인기 건물' 카테고리",
-"서랍, 전자 마이크, 페인트 벽지 등 일부 제작 레시피 추가"
-],
-"how": [
-"기본 단축키 Ctrl+B로 More Builds 창 열기(키 설정에서 변경 가능)",
-"또는 바닥/오브젝트 우클릭 메뉴에서 More Builds 창 열기",
-"카테고리 선택 또는 검색 → 항목 선택 → Build로 배치"
-],
-"settings": [
-"우물 최대 저수량 1200, 물 펌프 최대 100 (기본값)",
-"건설 직후 물 25% 채워진 상태, 자동 보충 배율 1.0",
-"건설 가능 최소 권한: user (일반 플레이어 모두 건설 가능)",
-"인기 건물: 켜짐 (최소 점수 5, 최대 24개 표시, 7일마다 점수 절반 감소)"
-],
-"notes": [
-"문자열 샘플 기준 이 모드의 한국어 번역이 없어 메뉴가 영어로 표시될 수 있음"
-],
-"order": 92
-},
-{
-"id": "SM4BootsExpandedFlatshoes",
-"workshop": "2850935956",
-"title": "Boots Expanded 11 for B41 and B42 (42.15 quickfix)",
-"name": "Boots Expanded - 평면 신발 애드온",
-"category": "그래픽·사운드",
-"summary": "Boots Expanded의 운동화·구두를 바닐라 평면 모델로 되돌려 성능 부담을 줄입니다.",
-"features": [
-"운동화·일반 신발 모델만 바닐라 평면형으로 복귀",
-"능력치 변경은 본체 그대로",
-"본체 사용 중 성능 문제가 있을 때 쓰는 선택(OPTIONAL) 애드온"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Boots Expanded(SM4BootsExpandedB42)의 선택 애드온"
-],
-"order": 60
-},
-{
-"id": "MysticLongHairB42",
-"workshop": "3775339561",
-"title": "Mystic's Long Hair",
-"name": "미스틱 롱 헤어 (Mystic Long Hair)",
-"category": "그래픽·사운드",
-"summary": "데드 라이징 2의 레베카 장에서 영감을 받은 여성용 긴 머리를 추가합니다.",
-"features": [
-"여성 헤어 2종 추가: 미스틱(Mystic Long), 미스틱 윈터(Mystic Long Winter)",
-"머리 길이 단계별 모델(G1·G2·G4) 포함",
-"좀비에게는 생성되지 않는 플레이어 전용 헤어"
-],
-"how": [
-"캐릭터 생성 또는 머리 손질 메뉴에서 '미스틱' 선택"
-],
-"settings": [],
-"notes": [],
-"order": 248
-},
-{
-"id": "MysticFaceAllRacesB42",
-"workshop": "2862505798",
-"title": "Mystic's Face Retexture",
-"name": "미스틱 얼굴 리텍스처 - 전 피부색 (Mystic's Face Retexture - All Skin Tones [B42])",
-"category": "그래픽·사운드",
-"summary": "여성 캐릭터 얼굴 텍스처를 커스텀 얼굴로 교체합니다(모든 피부색).",
-"features": [
-"바닐라 여성 몸 텍스처 FemaleBody01~05(피부색 5종)를 커스텀 얼굴 텍스처로 교체",
-"원본 512px 텍스처를 1024px로 업스케일한 B42 변환판",
-"텍스처만 교체, lua·셰이더 변경 없음"
-],
-"how": [],
-"settings": [],
-"notes": [
-"단일 피부색 버전(Mystic's Face Retexture B42)과 같이 켜면 안 됨",
-"FemaleBody 텍스처를 바꾸는 다른 모드와는 겹침"
-],
-"order": 247
-},
-{
-"id": "AatheomEMVFSM",
-"workshop": "3322066592",
-"title": "Every Missing Vanilla Food Static Model",
-"name": "바닐라 음식 3D 모델 보강 (Every Missing Vanilla Food Static Model)",
-"category": "그래픽·사운드",
-"summary": "3D 모델이 없던 바닐라 음식·식기 아이템에 모델을 붙여 손에 들거나 바닥에 놓았을 때 보이게 합니다.",
-"features": [
-"사과파이·바나나·버거·브로콜리·육포 등 약 250종 바닐라 음식/항생제 등에 손에 드는 3D 모델 추가",
-"머그컵·금속/구리/은/금 컵·텀블러 모델(머그는 색상별)",
-"일부 음식의 먹는 동작(EatType) 조정",
-"Vanilla Foods Expanded가 켜져 있으면 시리얼 모델은 건너뛰어 충돌 방지"
-],
-"how": [],
-"settings": [],
-"notes": [],
-"order": 242
-},
-{
-"id": "SpnHair",
-"workshop": "2463184726",
-"title": "Spongie's Hair",
-"name": "스폰지 헤어 (Spongie's Hair)",
-"category": "그래픽·사운드",
-"summary": "남녀 공용 새 헤어스타일 80종을 추가합니다.",
-"features": [
-"헤어 80종 추가(남녀 각각 사용 가능): 바보(Fool), 아이기스, 발렌타인, 레드필드 꼬리, 케네디, 미카사, 단테, 버질 등",
-"일부 스타일은 '평평한 머리(Flat)'·짧은 머리 등 변형 제공",
-"게임 내 이름 앞에 [Spongie's] 표시"
-],
-"how": [
-"캐릭터 생성 또는 머리 손질 메뉴에서 [Spongie's] 항목 선택"
-],
-"settings": [],
-"notes": [
-"Fluffy Hair(FH) 필수",
-"헤어젤로 세우는 스타일 기능은 SpnHairAPI 모드가 있어야 작동하는데, 이 서버 목록에는 없음"
-],
-"order": 250
-},
-{
-"id": "NewFrontierHairSalon",
-"workshop": "3387569160",
-"title": "[A&M] New Frontier: Hair Salon",
-"name": "애쉬 & 메이 헤어 살롱 V9 - 뉴 프런티어 (Ash and Mae's Hair Salon ~ New Frontier B42)",
-"category": "그래픽·사운드",
-"summary": "여성 캐릭터용 헤어스타일을 대량으로 추가하는 헤어 팩입니다.",
-"features": [
-"여성 전용 헤어스타일 약 60종(길이 변형 포함 85개 항목) 추가: Princess Peach, Maemento, Vixen, Riven, Mango 등",
-"모델·텍스처 직접 제작한 커스텀 헤어",
-"캐릭터 생성·미용(이발) 시 선택 가능"
-],
-"how": [
-"캐릭터 생성 화면 또는 거울/가위를 이용한 머리 손질 메뉴에서 선택"
-],
-"settings": [],
-"notes": [
-"V9부터 바닐라 여성 체형 지원 종료: 제작자는 Project AVA 체형 모드를 권장하며, 이 서버 목록에는 해당 체형 모드가 보이지 않아 일부 머리가 몸/옷과 겹쳐 보일 수 있음"
-],
-"order": 240
-},
-{
-"id": "YakiHSBasegameTexture",
-"workshop": "2761200458",
-"title": "Yaki's Hair Salon",
-"name": "야키 헤어 살롱 (Yaki's Hair Salon)",
-"category": "그래픽·사운드",
-"summary": "바닐라 분위기에 맞춘 남녀 헤어스타일을 추가합니다(기본 텍스처 버전).",
-"features": [
-"남녀 공용 헤어 추가: 크로프트, 제시카, 캣니스, 올림머리(앞머리 유/무), 아프로, 땋은 포니테일, 치어리더, 반묶음, 드레드락, 언더컷, 양갈래, 셰리, 야키 스타일 등",
-"바닐라 게임 텍스처를 사용하는 기본판"
-],
-"how": [
-"캐릭터 생성 또는 머리 손질 메뉴에서 선택"
-],
-"settings": [],
-"notes": [
-"Fluffy Hair(FH) 필수",
-"새 텍스처 애드온(YakiHS)과 함께 켜져 있음",
-"Yaki's Hair Retexture와 함께 쓰지 말라는 제작자 경고 있음(이 서버엔 둘 다 켜져 있음)",
-"버전 전환 후 텍스처가 안 바뀌면 게임 재시작"
-],
-"order": 253
-},
-{
-"id": "YakiHS",
-"workshop": "2761200458",
-"title": "Yaki's Hair Salon",
-"name": "야키 헤어 살롱 새 텍스처 애드온 (Yaki's Hair Salon New Texture - ADDON - B42)",
-"category": "그래픽·사운드",
-"summary": "Yaki's Hair Salon 헤어에 새 텍스처를 입히고 바닐라 머리 텍스처도 교체하는 애드온입니다.",
-"features": [
-"Yaki's Hair Salon 헤어(아프로 올림머리·드레드락·언더컷 등)에 새 텍스처 적용",
-"바닐라 머리 텍스처(긴 곱슬·짧은 곱슬·땋은 머리·흰색 계열 등)도 새 텍스처로 교체"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Yaki's Hair Salon 본체와 함께 사용",
-"Yaki's Hair Retexture와 같은 텍스처 파일(F_HairCurly_Long, F_Hair_Braids, F_Hair_White)을 교체해 충돌 — 이 서버에서는 이 애드온이 뒤에 로드되어 우선 적용됨"
-],
-"order": 252
-},
-{
-"id": "FoggyBreath",
-"workshop": "3799314878",
-"title": "Foggy Breath And Gun Smoke",
-"name": "입김 (Foggy Breath)",
-"category": "그래픽·사운드",
-"summary": "추운 날 캐릭터가 하얀 입김을 내뿜는 시각 효과를 추가합니다.",
-"features": [
-"기온이 일정 이하(기본 15°C 미만)일 때 숨 쉴 때마다 입김 표시",
-"달리기·피로·공포 상태에서 호흡이 빨라지고 입김이 강해짐",
-"총을 쏠 때 총구 연기(빈 총·걸린 총은 제외)",
-"흡연 시 회색 담배 연기(본인 캐릭터만)",
-"클라이언트 전용 시각 효과, 게임 수치에는 영향 없음"
-],
-"how": [
-"설정 > 모드 옵션 'Foggy Breath'에서 입김 기준 온도·크기·투명도·실내 표시, 총구 연기, 담배 연기 각각 켜기/끄기와 세부 조절"
-],
-"settings": [],
-"notes": [
-"Cigarette Smoke 모드와 담배 연기가 중복될 수 있음 — 한쪽의 담배 연기 옵션을 끄면 됨"
-],
-"order": 244
-},
-{
-"id": "CarWeaponFix",
-"workshop": "3783874874",
-"title": "[B42.20+] Vehicle Weapon Clipping Fix",
-"name": "차량 무기 관통 수정 (Vehicle Weapon Clipping Fix)",
-"category": "그래픽·사운드",
-"summary": "차 안에 있을 때 손에 든 양손 무기를 숨겨 창문·지붕을 뚫고 보이는 현상을 고치는 모드입니다.",
-"features": [
-"차량 탑승 중 장착한 양손 무기 모델 숨김",
-"하차하면 다시 표시(장착 상태는 유지)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"외형만 바뀌는 클라이언트 수정"
-],
-"order": 28
-},
-{
-"id": "Project_Cook_Pixel_Icon_Pack",
-"workshop": "3490188370",
-"title": "Project Cook [B42]",
-"name": "프로젝트 쿡 픽셀 아이콘 팩",
-"category": "그래픽·사운드",
-"summary": "Project Cook UI에 쓰이는 아이콘을 픽셀 스타일로 바꿔 주는 아이콘 팩입니다.",
-"features": [
-"Project Cook 요리 패널 아이콘을 픽셀 아트 스타일로 교체",
-"기능 변화 없음(외형만)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"NeatUI Framework와 Project Cook 필요"
-],
-"order": 101
-},
-{
-"id": "FH",
-"workshop": "2447729538",
-"title": "Fluffy Hair [B41/B42]",
-"name": "플러피 헤어 (Fluffy Hair)",
-"category": "그래픽·사운드",
-"summary": "바닐라 헤어스타일 모델을 더 풍성한 모델로 교체하고, 모자를 써도 머리가 포니테일로 바뀌지 않게 합니다.",
-"features": [
-"바닐라 남녀 헤어 모델(단발·장발·곱슬·모히칸 등)을 풍성한 버전으로 교체",
-"모자 착용 시 헤어별 전용 '모자용' 변형으로 표시(포니테일 강제 변환 없음)",
-"머리 길이 단계(G1~G4)별 모델 포함"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Spongie's Hair, Yaki's Hair Salon의 필수 모드",
-"'zDoNotPickMe'라는 항목은 모자용 내부 변형이므로 선택하지 말 것"
-],
-"order": 243
-},
-{
-"id": "Improved_Fire_And_Smoke_Ffects",
-"workshop": "2645975408",
-"title": "Improved Fire & Smoke Effects",
-"name": "향상된 불·연기 효과 (Improved Fire & Smoke Effects)",
-"category": "그래픽·사운드",
-"summary": "화재의 불꽃과 연기 그래픽을 고해상도 텍스처로 바꿉니다.",
-"features": [
-"불꽃(Fire2x) 텍스처 팩 교체",
-"연기(Smoke2x) 텍스처 팩 교체",
-"그래픽만 바뀌며 화재 확산 등 수치에는 영향 없음"
-],
-"how": [],
-"settings": [],
-"notes": [
-"모드 설명이 비어 있어 파일 구성(텍스처 팩 2개)으로만 확인함"
-],
-"order": 246
-},
-{
-"id": "Improved_Blood_Ffects",
-"workshop": "2648152698",
-"title": "Improved Blood Effects",
-"name": "향상된 피 효과 (Improved Blood Effects)",
-"category": "그래픽·사운드",
-"summary": "캐릭터·무기·차량에 묻는 피 텍스처를 더 사실적으로 바꿉니다.",
-"features": [
-"신체 부위별(머리·목·가슴·팔·다리·손발 등) 피 마스크 텍스처 교체",
-"무기에 묻는 피 오버레이 교체",
-"차량에 묻는 피(많이 묻음) 텍스처 교체",
-"텍스처 팩 교체만 하며 게임 수치에는 영향 없음"
-],
-"how": [],
-"settings": [],
-"notes": [],
-"order": 245
-},
-{
-"id": "MoodleFramework",
-"workshop": "3396446795",
-"title": "Moodle Framework",
-"name": "Moodle Framework (무들 프레임워크)",
-"category": "라이브러리·의존성",
-"summary": "다른 모드가 화면 오른쪽 무들(상태 아이콘)을 새로 추가할 수 있게 해 주는 기반 모드입니다.",
-"features": [
-"모드가 만든 무들(상태 아이콘)을 바닐라 무들과 같은 방식으로 표시함",
-"이 서버에서는 영성(DWTB Spirituality) 모드의 무들 3종을 보여 주기 위해 추가함"
-],
-"how": [
-"따로 조작할 것 없음. 해당 모드의 무들이 화면 오른쪽에 자동으로 표시됨"
-],
-"settings": [],
-"notes": [
-"2026-10-18 추가"
-],
-"order": 6
-},
-{
-"id": "NeatUI_Framework",
-"workshop": "3508537032",
-"title": "NeatUI Framework [B42]",
-"name": "NeatUI 프레임워크",
-"category": "라이브러리·의존성",
-"summary": "Neat 계열 UI 모드들이 공통으로 쓰는 UI 부품·스타일 라이브러리입니다.",
-"features": [
-"재사용 가능한 UI 컴포넌트·스타일·공용 UI 에셋 제공",
-"B42.0.2 ~ B42.20.4+ 빌드 호환 처리"
-],
-"how": [],
-"settings": [],
-"notes": [
-"단독으로는 눈에 띄는 기능 없음, Neat 계열 모드(예: Neat Lockpicking 등)의 의존성"
-],
-"order": 6
-},
-{
-"id": "YAPZLib",
-"workshop": "3624971238",
-"title": "Yet Another PZ LIbrary",
-"name": "Yet Another PZ Library",
-"category": "라이브러리·의존성",
-"summary": "다른 모드가 사용하는 공용 Lua 라이브러리 모드입니다.",
-"features": [
-"다른 모드용 공용 함수 제공(자체 기능 없음)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"의존성으로 추가된 모드, 끄면 이를 요구하는 모드가 작동하지 않음"
-],
-"order": 10
-},
-{
-"id": "SWMG",
-"workshop": "3722064198",
-"title": "[42.20.4MP] Gunworks Framework",
-"name": "건웍스 프레임워크 (Gunworks Framework)",
-"category": "라이브러리·의존성",
-"summary": "Guns of Marz 등 총기 팩이 쓰는 사격 모드·탄약 장전·부착물 기능 프레임워크입니다.",
-"features": [
-"사격 모드 전환: 단발/점사/연사",
-"탄약 장전기 UI: 총기나 탄창을 드래그해 탄약 종류·수량 선택 후 장전, 재장전 우선순위 지정",
-"총검 장착/제거, 양각대 거치/접기, 개머리판 접기/펼치기, 하부 부착물 전환",
-"다양한 구경·탄종 정의(철갑탄, 할로우 포인트, +P 고압탄, 아음속탄 등)"
-],
-"how": [
-"기본 키: T = 사격 모드 변경, O = 무기 장전 UI 열기, U = 하부 부착물 전환 (옵션 > 키 설정에서 변경 가능)",
-"총 우클릭 메뉴에서 총검/양각대/개머리판 조작"
-],
-"settings": [],
-"notes": [
-"Guns of Marz(GunsOfMarz)의 필수 의존성"
-],
-"order": 5
-},
-{
-"id": "damnlib",
-"workshop": "3171167894",
-"title": "that DAMN Library",
-"name": "댐 라이브러리 (that DAMN Library)",
-"category": "라이브러리·의존성",
-"summary": "모든 KI5 차량 모드가 필요로 하는 공용 에셋·제작 라이브러리입니다.",
-"features": [
-"KI5 차량 부품 제작 레시피 공통 처리([KI5] ... 후드/문/유리/장갑/불바/루프랙 만들기)",
-"타이어 제작 재료(림, 타이어 고무), 군용 타이어(절대 펑크 안 나지만 상태가 낮으면 접지력 저하)",
-"차량 부품 제작 재료: 유리판(스칼펠과 함께 사용), 손잡이, 경첩, 고무 스트립, 좌석 천·폼·프레임",
-"타이어 수리 키트(수리 도구 + 고무 용액 + 수리 스트립), 플라스틱 용접 키트(배터리식 용접총 + 스테이플)",
-"석고 몰드 + 스티로폼 페이스트(아세톤 + 스티로폼)로 플라스틱 부품 복제",
-"고정 위치 보장 스폰(Guaranteed spawns) 기능"
-],
-"how": [
-"제작 메뉴에서 [KI5] 레시피로 차량 부품 제작"
-],
-"settings": [
-"KI5 보장 스폰(DAMN 섹션): '49 Dodge Power Wagon 프리셋 켜짐, '97 ADI Bushmaster 프리셋 켜짐, '80 MAN KAT1 프리셋 켜짐"
-],
-"notes": [
-"KI5 차량 모드 전부의 필수 의존성 — 빼면 KI5 차량이 모두 사라짐"
-],
-"order": 7
-},
-{
-"id": "ChuckleberryFinnAlertSystem",
-"workshop": "3077900375",
-"title": "Mod Update and Alert System",
-"name": "모드 업데이트·알림 시스템 (Chuckleberry Finn)",
-"category": "라이브러리·의존성",
-"summary": "Chuckleberry Finn 모드들이 사용하는 공지·업데이트 알림용 유틸리티 모드입니다.",
-"features": [
-"모드 제작자의 소식·업데이트 알림 창 표시",
-"알림 창 클릭 시 접기/열기, 우클릭 시 이번 세션 동안 완전히 숨김"
-],
-"how": [
-"알림이 거슬리면 알림 창을 우클릭해 이번 세션 동안 숨김"
-],
-"settings": [],
-"notes": [
-"errorMagnifier 등의 의존성으로 들어간 모드, 게임 플레이 변화 없음"
-],
-"order": 2
-},
-{
-"id": "ATakeABathAndShowerDepthMap",
-"workshop": "3592172476",
-"title": "[B42:SP/MP] Take A Bath And Shower",
-"name": "목욕과 샤워: 깊이맵 수정",
-"category": "라이브러리·의존성",
-"summary": "Take A Bath And Shower 모드의 욕조·샤워 깊이맵(그래픽 겹침) 리소스를 담은 보조 모드입니다.",
-"features": [
-"욕조·샤워 사용 시 캐릭터와 오브젝트가 올바르게 겹쳐 보이도록 깊이맵 제공"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Take A Bath And Shower의 필수 의존성, 로드 순서를 위쪽에 두라고 안내됨"
-],
-"order": 37
-},
-{
-"id": "Greenleaf B42 version",
-"workshop": "3602388131",
-"title": "Greenleaf B42 version",
-"name": "그린리프 (Greenleaf)",
-"category": "맵",
-"summary": "로즈우드 북서쪽에 평화로운 마을 그린리프를 추가하는 맵입니다.",
-"features": [
-"위치: 로즈우드 북서쪽(좌표 약 X 6140~6770, Y 10210~10760)",
-"병원, 경찰서, 소방서, 학교, 교회, 호텔·모텔, 총포상 2곳, 군장점, 마트·식료품점, 변전소",
-"대저택, 안전가옥, 요새화된 나이트클럽, 냉동창고·식량창고",
-"전용 아이템: 다미아오 배낭, 일부 오브젝트 우클릭 '음악 재생'",
-"지하실(basements) 및 맵 자체 스폰 지점 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Greenleaf): 켜짐"
-],
-"notes": [
-"일부 문자열(음악 재생 등)은 한국어 번역이 비어 있음"
-],
-"order": 16
-},
-{
-"id": "RavenCreekB42",
-"workshop": "3484263516",
-"title": "Raven Creek B42",
-"name": "레이븐 크릭 (Raven Creek)",
-"category": "맵",
-"summary": "맵 남서쪽 끝에 인구 3만 7천 명 규모의 항구 도시를 추가하는 대형 맵입니다.",
-"features": [
-"위치: 맵 남서쪽 끝(좌표 약 X 4200~6550, Y 15300~17670)",
-"대도시급 시설: 대형병원·병원 다수, 대학교, 고등학교, 법원, 쇼핑몰·백화점, 기가마트, 영화관, 자동차극장",
-"군사 시설: 막사, 의무막사, 벙커, 헬기장, 검문소, 안테나",
-"교도소, 정신병원, 연구실, 건전지 공장 등 공장·대형창고",
-"항구: 화물선, 컨테이너, 저유탱크, 기차역, 톨게이트, 터널",
-"맵 자체 스폰 지점 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Raven Creek): 켜짐"
-],
-"notes": [
-"기본 녹스 카운티와 거리가 멀어 차량 이동이 필요"
-],
-"order": 20
-},
-{
-"id": "Maplewood",
-"workshop": "3644794945",
-"title": "Maplewood [B42]",
-"name": "메이플우드 (Maplewood)",
-"category": "맵",
-"summary": "멀드로 서쪽, 폴스 레이크 옆에 19세기풍 시골 마을을 추가하는 맵입니다.",
-"features": [
-"위치: 멀드로 서쪽, 폴스 레이크 인근(좌표 약 X 8120~8370, Y 8440~8740)",
-"19세기 미국풍 건축, 주변은 농지",
-"경찰서, 소방서, 은행, 교회·공동묘지, 약국, 헬스장, 서점, 악기점, 철물점, 주유소",
-"지하 탄약·지하실 무기고(지도 메모 기준)",
-"전용 지도 아이템 '메이플우드 지도'(Map of Maplewood), 맵 자체 스폰 지점 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Maplewood): 켜짐"
-],
-"notes": [],
-"order": 19
-},
-{
-"id": "IrisEyot",
-"workshop": "3545473388",
-"title": "Iris Eyot [B42]",
-"name": "아이리스 에이트 (Iris Eyot)",
-"category": "맵",
-"summary": "물로 둘러싸인 피난처 섬 아이리스 에이트를 추가하는 맵입니다.",
-"features": [
-"위치: 로즈우드 서쪽 먼 곳의 섬(좌표 약 X 4480~4740, Y 11170~11460)",
-"경찰서, 소방서, 도서관, 우체국, 약국, 군장점, 정육점, 카센터, 폐차장, 주유소",
-"대저택(주변 수확 가능한 꽃), 농장(소·돼지·닭), 도축장, 캠핑장",
-"지하 벙커, 비밀 연구소, 각종 작업대가 모인 시설(지도 메모 기준)",
-"전용 아이템: 아이리스 에이트 배낭(실·가죽/데님 끈으로 T1~T3 업그레이드), 와인 통",
-"맵 자체 스폰 지점 포함"
-],
-"how": [
-"배낭 업그레이드: 배낭 + 실 3 + 가죽/데님 끈 3, 가위·바늘 필요"
-],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Iris Eyot): 켜짐"
-],
-"notes": [
-"섬이라 차량 진입 경로를 미리 확인할 것"
-],
-"order": 18
-},
-{
-"id": "AnruisiTown",
-"workshop": "3659676359",
-"title": "AnruisiTown (Military Bastion)",
-"name": "안루이시 타운 (군사 요새 마을)",
-"category": "맵",
-"summary": "멀드로 남동쪽에 군사화된 작은 마을을 추가하는 맵입니다.",
-"features": [
-"위치: 멀드로 남동쪽(좌표 약 X 11750~12600, Y 11400~11950)",
-"병원, 경찰서, 소방서, 총포상, 군장점, 기가마트, 약국, 제재소, 주유소 등",
-"군사 구역: 무기고, 생활관, 의무실, 벙커, 지하실, 다량의 탄약·무기·식량 보관 건물",
-"지하수 펌프와 우물",
-"전용 아이템: 군용 마체테, 군용 수납 배낭, 못 박힌 금속 야구방망이, SWAT 진압봉, 나무 전기톱"
-],
-"how": [
-"월드맵의 '안루이시 타운' 표시 확인"
-],
-"settings": [],
-"notes": [
-"맵 자체 spawnpoints 파일이 있으나 Sanboid 랜덤 스폰 지역 목록에는 없음"
-],
-"order": 12
-},
-{
-"id": "WestPointExpansionB42",
-"workshop": "3475754603",
-"title": "West Point Expansion B42",
-"name": "웨스트 포인트 확장 (West Point Expansion)",
-"category": "맵",
-"summary": "웨스트 포인트에 병원과 철길 동쪽 신시가지 샌디 리지를 추가하는 맵입니다.",
-"features": [
-"위치: 웨스트 포인트 동쪽, 철길 건너편(좌표 약 X 12050~12700, Y 6710~7400)",
-"병원 2곳, 기차역, 법원, 도서관, 우체국, 소방서, 커뮤니티 센터",
-"대형마트·대형창고, 공장, 중고차 매장, 무기 컨테이너, 총포상, 전당포",
-"주거·상업·산업 구역 다수, 맵 자체 스폰 지점 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(West Point Expansion): 켜짐"
-],
-"notes": [],
-"order": 22
-},
-{
-"id": "Clover Lake",
-"workshop": "3759558202",
-"title": "Clover Lake (Homestead & Cottage)",
-"name": "클로버 레이크 (농가 & 별장)",
-"category": "맵",
-"summary": "물과 목초지가 풍부해 목축·농사와 거점 짓기에 좋은 호숫가 지역을 추가하는 맵입니다.",
-"features": [
-"위치: 멀드로 서쪽(좌표 약 X 9470~9980, Y 8960~9980)",
-"인구가 적은 호숫가, 넓은 목초지 — 가축·농사용",
-"지역을 관통하는 도로, 양 끝에 거점 짓기 좋은 장소",
-"맵 자체 스폰 지점 2곳(무직 기준) 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Clover Lake): 켜짐"
-],
-"notes": [
-"같은 워크숍 아이템의 Clover Lake Highway KY-316과 함께 쓰면 북쪽 도로와 연결됨"
-],
-"order": 13
-},
-{
-"id": "Clover Lake Highway KY-316",
-"workshop": "3759558202",
-"title": "Clover Lake (Homestead & Cottage)",
-"name": "클로버 레이크 고속도로 KY-316",
-"category": "맵",
-"summary": "클로버 레이크와 리버사이드 방면 도로를 잇는 고속도로 KY-316을 추가하는 맵입니다.",
-"features": [
-"위치: 클로버 레이크 북쪽(좌표 약 X 9470~9730, Y 7940~9220)",
-"클로버 레이크와 Riverside Road를 연결하는 도로"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Clover Lake와 세트, 스폰 지점 없음"
-],
-"order": 14
-},
-{
-"id": "Fort Waterfront B42",
-"workshop": "3486814612",
-"title": "Fort Waterfront B42",
-"name": "포트 워터프런트 (Fort Waterfront)",
-"category": "맵",
-"summary": "시설을 갖춘 소규모 군사기지를 추가하는 맵입니다.",
-"features": [
-"위치: 멀드로 남서쪽(좌표 약 X 10220~10380, Y 10920~11100)",
-"군 병원, 여러 창고, 탄약, 주유기, 온실",
-"입구를 막기 좋은 구조(지도 메모 기준)",
-"맵 자체 스폰 지점 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Fort Waterfront): 켜짐"
-],
-"notes": [],
-"order": 15
-},
-{
-"id": "muldraughmilitarybaseas24",
-"workshop": "3496507146",
-"title": "[B42&MP]Fort Preston",
-"name": "포트 프레스턴 (Fort Preston)",
-"category": "맵",
-"summary": "멀드로와 로즈우드 사이 도로변에 군사기지를 추가하는 맵입니다.",
-"features": [
-"위치: 멀드로와 로즈우드 사이 도로(좌표 약 X 8800~9150, Y 10800~11100)",
-"사령부, 관사, 무기고(1층 무기고 포함), 탄약, 군용품·의약품 창고",
-"지하 벙커와 벙커 입구, 병원, 차량 정비소, 주유기"
-],
-"how": [
-"월드맵에서 '포트프레스턴' 표시 확인(WorldMap Name Symbols)"
-],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(Muldraugh Military Base): 켜짐"
-],
-"notes": [
-"맵 자체 spawnpoints 파일은 없음 — 이 서버에서는 Sanboid 랜덤 스폰으로 이 일대 실내에 스폰될 수 있음"
-],
-"order": 11
-},
-{
-"id": "HavenFall",
-"workshop": "3728357493",
-"title": "Haven Fall [B42]",
-"name": "헤이븐 폴 (Haven Fall)",
-"category": "맵",
-"summary": "맵 서쪽에 상가·농장·탄약 보관 건물이 많은 마을 헤이븐 폴을 추가하는 맵입니다.",
-"features": [
-"위치: 폴스 레이크보다 훨씬 서쪽(좌표 약 X 4230~4630, Y 8900~9330)",
-"경찰서, 소방서, 학교, 약국, 쇼핑몰, 호텔, 총포상, 군장점, 전당포, 낚시용품점 등",
-"여러 건물 층·지하에 탄약 보관(지도 메모 기준), 지하 창고 다수",
-"농장 구역: 수확 가능한 작물, 작물 창고, 소·양, 우물",
-"전용 배낭(EsBackpack, SeanBackpack, ZhiziBackpack 등)과 배낭 업그레이드 레시피(T1~T3)",
-"맵 자체 스폰 지점 포함"
-],
-"how": [],
-"settings": [
-"Sanboid 랜덤 스폰 후보 지역(HavenFall): 켜짐"
-],
-"notes": [],
-"order": 17
-},
-{
-"id": "LifestyleHobbies_KR_Wigfri",
-"workshop": "3698278327",
-"title": "Lifestyle: Hobbies 한글번역",
-"name": "Lifestyle: Hobbies 한글 번역",
-"category": "번역",
-"summary": "Lifestyle: Hobbies 모드의 한국어 번역입니다.",
-"features": [
-"Lifestyle: Hobbies(취미·생활 활동 모드)의 텍스트 한국어화"
-],
-"how": [],
-"settings": [],
-"notes": [
-"원본 Lifestyle: Hobbies 필요(이 서버에 있음)"
-],
-"order": 268
-},
-{
-"id": "VOEKoreanTranslation",
-"workshop": "3789736250",
-"title": "V.O.E 한국어 번역",
-"name": "[Hagaren] V.O.E 한국어 번역",
-"category": "번역",
-"summary": "Vanilla Outfits Expanded의 한국어 번역 모드입니다.",
-"features": [
-"Vanilla Outfits Expanded(의상 확장 모드) 아이템 이름 등 한국어화"
-],
-"how": [],
-"settings": [],
-"notes": [
-"원본 Vanilla Outfits Expanded 필요(이 서버에 있음)"
-],
-"order": 269
-},
-{
-"id": "Hx_KR_VanillaOverride",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - (선택형) 바닐라 문구 변경 모드용",
-"category": "번역",
-"summary": "일부 모드가 바닐라 문구(무들·특성 설명·로딩 팁·바닐라 아이템 이름 등)를 바꿀 때 쓰는 한국어 번역입니다.",
-"features": [
-"모드가 변경한 바닐라 컨텍스트 메뉴·무선 방송·UI·아이템 이름 문구 번역"
-],
-"how": [],
-"settings": [],
-"notes": [
-"해당 모드를 쓸 때만 켜고, 통합 번역보다 아래에 배치"
-],
-"order": 267
-},
-{
-"id": "Hx_KR_GoM",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - GoM(Guns of Marz) 총기 모드 번역",
-"category": "번역",
-"summary": "Guns of Marz 총기 모드의 아이템 이름·툴팁을 한국어로 번역합니다.",
-"features": [
-"Guns of Marz 총기 관련 아이템 이름·툴팁 번역, 통합 번역과 겹치는 바닐라 아이템 이름 덮어쓰기"
-],
-"how": [],
-"settings": [],
-"notes": [
-"통합 번역보다 아래에 배치",
-"Guns of Marz 본체 필요(이 서버에 있음)"
-],
-"order": 262
-},
-{
-"id": "Hx_KR_VanillaFoodsExpanded",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - Vanilla Foods Expanded 번역",
-"category": "번역",
-"summary": "Vanilla Foods Expanded가 바꾸는 바닐라 음식 이름을 한국어로 번역합니다.",
-"features": [
-"Vanilla Foods Expanded용 아이템 이름·컨텍스트 메뉴 번역"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Vanilla Foods Expanded 사용 시에만, 통합 번역보다 아래에 배치(이 서버에 본체 있음)"
-],
-"order": 266
-},
-{
-"id": "Hx_KR_Map",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - 맵 선택 번역",
-"category": "번역",
-"summary": "월드 생성 화면의 모드 맵 이름을 한국어로 번역합니다.",
-"features": [
-"모드 맵 이름 번역(월드 생성 시 맵 선택 화면용)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"서버 접속 플레이어에게는 체감이 거의 없음(월드 생성 화면용)"
-],
-"order": 263
-},
-{
-"id": "Hx_KR_Mod",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - 통합 번역",
-"category": "번역",
-"summary": "여러 인기 모드를 한꺼번에 한국어로 번역하는 통합 번역팩입니다.",
-"features": [
-"다수 모드의 아이템·레시피·UI·컨텍스트 메뉴 등을 한국어로 번역(대상 목록은 창작마당 설명 참고)",
-"바닐라 문구는 덮어쓰지 않음"
-],
-"how": [],
-"settings": [],
-"notes": [
-"모드 목록 가장 아래쪽에 배치해야 적용",
-"바닐라 문구를 바꾸는 모드용 번역은 '(선택형) 바닐라 문구 변경 모드용'을 함께 켜야 함"
-],
-"order": 264
-},
-{
-"id": "Hx_KR_Vanilla",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 바닐라 한글화",
-"category": "번역",
-"summary": "B42 바닐라 게임 전체를 자체 번역한 한국어 패치입니다.",
-"features": [
-"바닐라 텍스트 전체 한국어 번역, B42 미지원 폰트 수정",
-"도로명·월드맵 지역명·디버그 메뉴 번역 포함"
-],
-"how": [],
-"settings": [],
-"notes": [
-"바닐라 번역 모드는 하나만 쓰라고 권장",
-"Darker Map 모드 사용 시 도로명 번역 미적용(이 서버 목록에는 없음)"
-],
-"order": 265
-},
-{
-"id": "DynamicHordeEventsB42_KO",
-"workshop": "3809079119",
-"title": "Dynamic Horde Events B42 - 한국어 + 관리자 패치",
-"name": "다이내믹 호드 이벤트 한국어 패치 (Dynamic Horde Events B42 - 한국어 패치)",
-"category": "번역",
-"summary": "Dynamic Horde Events를 한국어로 번역하고 관리자용 호드 제어 패널을 추가하는 패치입니다.",
-"features": [
-"호드 경고 대사·알림·샌드박스 옵션 한국어화(예: '젠장... 근처에 호드가 있어. 이쪽으로 오는 것 같은데.')",
-"관리자 전용 'DHE 호드 관리자 패널': 일반/배회/대재앙 호드를 실제로 발생시키기(접속 중인 일반 생존자 1명 무작위 대상, 관리자·운영자 제외)",
-"강제 발생 시 해당 호드의 다음 대기시간 갱신",
-"디버그 메시지는 관리자에게만 표시, 일반 플레이어는 실제 경고만 봄",
-"일반·배회·대재앙 호드의 일정(무작위 간격/고정 일수·시각)을 세이브에 저장해 재시작 후에도 유지"
-],
-"how": [
-"관리자: 월드 우클릭 > 'DHE: 호드 관리자 패널 (실제 발생)' / 'DHE: 내 위치 테스트 (관리자 전용)' — 샌드박스 EnableDebugContextMenu가 켜져 있어야 보임",
-"관리자 단축키 F6(근처 스폰 테스트)·F7(UI·소리 테스트)·F8(표시 지우기)는 EnableDebugHotkey가 켜져 있어야 작동"
-],
-"settings": [
-"일반 호드: 무작위 간격 12~48시간, 좀비 5~30마리, 생존 일수에 따라 7일마다 +10%(최대 150%)",
-"배회 호드: 무작위 간격 48~120시간, 좀비 40~120마리",
-"대재앙 호드: 무작위 간격 90~120일, 좀비 200~500마리, 4시간 직접 추적, 8시간 폭풍 날씨",
-"알림·방향 표시·경고음·대사 켜짐",
-"EnableDebugContextMenu = false, EnableDebugHotkey = false → 관리자 패널·단축키 현재 비활성"
-],
-"notes": [
-"원본 Dynamic Horde Events B42 필요(원본 0.10.1, B42.20 기준)"
-],
-"order": 260
-},
-{
-"id": "Authentic Z - 42.15 FIX",
-"workshop": "3689659469",
-"title": "[42.15+FIX] Authentic Z",
-"name": "오센틱 Z 42.15+ 텍스트 수정 ([42.15+FIX] Authentic Z)",
-"category": "번역",
-"summary": "B42.15부터 바뀐 JSON 번역 형식 때문에 깨진 Authentic Z의 텍스트·번역을 고칩니다.",
-"features": [
-"Authentic Z(좀비 의상 140종 이상 추가 모드)의 아이템 이름·툴팁·레시피·UI 문자열을 JSON 형식으로 제공",
-"영어 및 중국어·독일어·스페인어·프랑스어·러시아어 등 다국어 포함(한국어 파일은 없음)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"반드시 Authentic Z 본체보다 뒤에 로드(이 서버는 본체 53번, 수정본 254번으로 순서 맞음)",
-"Authentic Z Lite나 Backpacks+와 같이 쓰면 중복",
-"한국어 표시는 별도 한글화(Hx 통합 번역 등)에 의존"
-],
-"order": 254
-},
-{
-"id": "PZGKO_KI5_B42",
-"workshop": "2900444089",
-"title": "프로젝트 좀보이드 갤러리 모드 번역 [PZGKO]",
-"name": "프로젝트 좀보이드 갤러리 모드 번역 B42 [PZGKO_KI5]",
-"category": "번역",
-"summary": "KI5 차량 모음의 차량·부품 이름 등을 한국어로 번역합니다.",
-"features": [
-"KI5 차량 약 300종의 차량명·부품·레시피·툴팁·샌드박스 문구 번역(프로젝트 좀보이드 갤러리 번역 지원)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"이 묶음의 '96 랜서 에보, 새턴, 부시마스터, 스테이지아, CVPI, 캠퍼, M540, M577, ISO 컨테이너 등 최신 KI5 차량 이름은 이 번역에 포함되지 않음(트레일러 일부만 포함)"
-],
-"order": 270
-},
-{
-"id": "PZGKO_Main_B42",
-"workshop": "2900444089",
-"title": "프로젝트 좀보이드 갤러리 모드 번역 [PZGKO]",
-"name": "프로젝트 좀보이드 갤러리 모드 번역 B42 [PZGKO_Main]",
-"category": "번역",
-"summary": "여러 모드의 한국어 번역을 묶어 제공하는 갤러리 번역팩 본편입니다.",
-"features": [
-"다양한 모드의 아이템·레시피·UI·무들·가구·맵 이름 등 번역(대상 목록은 창작마당 페이지 참고)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42 전용"
-],
-"order": 271
-},
-{
-"id": "BetterFireExtinguishers",
-"workshop": "3795847162",
-"title": "Better Fire Extinguishers [B42] [SP & MP]",
-"name": "Better Fire Extinguishers (소화기 분사)",
-"category": "생활·위생·취미",
-"summary": "바닐라 소화기를 조준해서 연속 분사하며 불을 끌 수 있게 합니다.",
-"features": [
-"소화기를 겨누고 공격 버튼을 누르는 동안 분사 (가벼운 분말 효과)",
-"불 끄기 판정은 서버에서 처리 (멀티 동기화)",
-"소화기 재충전 레시피 추가"
-],
-"how": [
-"소화기를 양손 장착 → 조준(우클릭 유지) + 공격(좌클릭 유지)으로 분사",
-"제작: [BFE] 소화기 다시 채우기 — 베이킹 소다 3, 깔때기, 타이어 펌프, 렌치(또는 파이프 렌치) 필요"
-],
-"settings": [
-"분사 지속 시간 배수 2 (기본값)"
-],
-"notes": [],
-"order": 55
-},
-{
-"id": "BetterSoapB42",
-"workshop": "1902468232",
-"title": "Better Soap B42",
-"name": "Better Soap (비누 개선)",
-"category": "생활·위생·취미",
-"summary": "비누가 더 오래 가고 월드에서 더 자주 나오도록 합니다.",
-"features": [
-"비누(Base.Soap2) 사용량(UseDelta)을 0.02로 낮춰 훨씬 오래 사용",
-"욕실 카운터·선반, 탈의실 카운터, 약국 화장품 코너에 비누 스폰 추가",
-"교실·어린이집·교도소 감방의 잡동사니 목록에도 비누 추가"
-],
-"how": [],
-"settings": [],
-"notes": [],
-"order": 57
-},
-{
-"id": "DWTB_Spirituality",
-"workshop": "3781127365",
-"title": "DWTB Spirituality v3.45.0 (B42.20.2)",
-"name": "DWTB 신앙 (Spirituality)",
-"category": "생활·위생·취미",
-"summary": "성경·십자가로 기도하거나 교회·성소에 머물러 공황·스트레스·공포·불행을 줄입니다.",
-"features": [
-"기도: 공황 40, 스트레스 30, 불행 20, 지루함 15, 공포 30 즉시 감소 + 약 12시간(게임) 동안 공황을 25 이하로 억제",
-"신앙 상태: 기도 후 7일(게임) 유지. 신앙 중에는 교회·예배당, 십자가·제단·신도석 근처, 성경+십자가 목걸이 소지만으로도 서서히 안정",
-"설교자(Preacher) 직업/특성: 주변 12칸의 신앙 있는 생존자 전원에게 '축복' 부여 (기적 확률 1%)",
-"기도 25회 하면 설교자 특성 획득",
-"월드의 십자가를 집어 들어 다른 곳에 설치 가능 (벽/바닥, 방향 선택)",
-"음성 기도·설교 오디오 (남성 음성)"
-],
-"how": [
-"인벤토리에서 성경·십자가·묵주 우클릭 → '기도하기' (쿨타임 60분)",
-"설교: 성경을 손에 들고 십자가 목걸이 착용 → 월드 우클릭 '설교하기' (쿨타임 180분, 피로·갈증 증가)",
-"십자가 근처 우클릭 → '조심스럽게 십자가 집어 들기' / '여기에 십자가 설치하기'"
-],
-"settings": [
-"모든 수치 기본값: 기도 시간 1000틱(약 20초), 기도 후 안정 720분, 신앙 유지 7일, 쿨타임 60분",
-"안정 구역(교회·성소·소지품) 켜짐, 강도 100",
-"설교 켜짐: 범위 12칸, 축복 1440분, 쿨타임 180분, 청중 재축복 1440분",
-"기도 음성 켜짐(남성 캐릭터만 음성), 무음 시 텍스트 표시",
-"평온·독실함·신성함 무들 옵션 켜짐"
-],
-"notes": [
-"무들 3종은 MoodleFramework 모드가 필요한데 이 서버 모드 목록에서 확인되지 않음 → 무들은 안 보이고 효과만 적용될 가능성"
-],
-"order": 73
-},
-{
-"id": "LifestyleHobbies",
-"workshop": "3403870858",
-"title": "Lifestyle: Hobbies",
-"name": "Lifestyle: Hobbies (생활·취미)",
-"category": "생활·위생·취미",
-"summary": "음악·춤·명상·요가·위생·청소·미술·발명 등 취미와 생활 활동을 대거 추가합니다.",
-"features": [
-"음악: 악기 연주, 노래 수백 곡 습득(음악 2레벨부터), 스탠딩 마이크로 노래, 밴드 연주",
-"파티: 작동하는 주크박스, 디제잉 부스, 디스코 볼·디스코 바닥, 수백 가지 춤 동작의 춤 취미",
-"명상·요가: 마음챙김 상태(스트레스·통증·공황 완화, 치유), 요가 매트·향",
-"위생·청소: 위생·화장실(방광)·편안함 욕구, 샤워·욕조·칫솔·빗·거울·향수 등, 빗자루·대걸레·표백제로 청소",
-"미술: 이젤 그림, 조각 작업대, 작품으로 아름다움 욕구 충족",
-"발명: 발명 작업대에서 기기·장난감·진기한 물건 연구·생산, 업그레이드 부품",
-"야망(Ambitions) 목표 시스템, 활동 숙련에 따른 특성 획득"
-],
-"how": [
-"악기·가구·위생 시설·청소 도구 등 대상에 우클릭해 활동 시작 ('청소하기', '발명 준비하기' 등)",
-"제작: [Lifestyle] 디스코 볼/디스코 바닥/스탠딩 마이크/악보 책 만들기, 디제잉 부스·조각 작업대 조립, 발명 작업대 건설 등"
-],
-"settings": [
-"음악·춤·명상·위생·미술 기능 모두 켜짐, 야망 켜짐 (쿨다운 12, 기본 36 / 동시 1개, 총 3개)",
-"음악 연주·감상 효과 '높음', 곡 습득 확률 '쉬움', 연주 시 피로 발생",
-"춤 효과 '높음', 명상 효과 보통·치유 2.0, 명상·요가 중 가방 착용 유지 켜짐",
-"요가 매트 필수 아님, 보조 도구 효과 켜짐, 요가 낙상 확률 '드물게'(기본 '자주')",
-"위생 욕구 1.0, 방광 욕구 0.66배, 위생 신경 쓰기 시작 1~3일차(기본 4~12일), 주변 청결 신경 1~3일차(기본 4~12일)",
-"막힌 변기 등도 청소 가능, 미숙련 활동 시 쓰레기 발생 '낮음', 감기 확률 0",
-"아름다움 배수 1.0, 편안함 욕구 1.0"
-],
-"notes": [
-"행동 시간을 줄이는 모드와는 호환되지 않는다고 원작자가 안내",
-"기능이 매우 방대하여 일부 세부 조작은 모드 내 툴팁 참고"
-],
-"order": 84
-},
-{
-"id": "TakeABathAndShowerNew",
-"workshop": "3592172476",
-"title": "[B42:SP/MP] Take A Bath And Shower",
-"name": "목욕과 샤워 (Take A Bath And Shower)",
-"category": "생활·위생·취미",
-"summary": "욕조 목욕과 샤워, 수온·입욕제·몸때 시스템을 추가하는 위생 모드입니다.",
-"features": [
-"욕조 목욕·샤워(온수/냉수): 배관 연결 필요, 온수는 전기 필요, 비누·수건 사용",
-"수온 개념: 따뜻한 물로 체온 상승·스트레스 해소, 전기가 있으면 목욕물 재가열",
-"입욕제 6종(라벤더·시트러스·플로럴·포레스트·허브·로즈): 숙면, 마음 안정, 통증·근육통 완화, 감기 예방, 상처·골절·화상 케어 등",
-"바디 샴푸(샤워 시 비누 대용), 포장된 샤워기 부품으로 벽걸이 샤워기 설치",
-"욕조 물 저장(빗물 수집, 씻으면 물이 더러워짐), 단수 후에도 수도에 남는 물",
-"몸때(Grime) 시스템: 피·흙이 쌓이면 몸때 증가 → 불쾌감·악취, 씻으면 제거"
-],
-"how": [
-"욕조 우클릭 > 목욕하기 / 욕조 메뉴(UI), 샤워기 우클릭 > 샤워하기: 온수/냉수",
-"남은 물이 꼬였을 때 욕조 우클릭 '남은 목욕물 제거하기'",
-"모드 옵션: 욕조 메뉴 표시 방식, 목욕 후 자동 몸 닦기, 화장 지우기, 목욕을 봐도 괜찮은 사용자 지정"
-],
-"settings": [
-"수온 개념: 켜짐, 목욕물 재가열: 켜짐",
-"단수 후 남는 물: 욕조 수도 100, 샤워 수도 20(무작위 감소 최대 25%)",
-"욕조 용량 200, 빗물 수집 켜짐, 목욕물 오염 켜짐",
-"샤워 1회 물 소모 80, 욕조에서 씻기 물 소모 배율 0.8",
-"입욕 효과 일일 한도: 30분",
-"목욕 부정 효과·남의 시선 스트레스: 켜져 있음(비활성화 안 함)",
-"몸때 시스템·무들·불쾌감·악취: 켜짐, 몸 씻기로 몸때 제거 켜짐(비누 불필요)"
-],
-"notes": [
-"DepthMap 수정 모드(ATakeABathAndShowerDepthMap) 필요",
-"멀티에서는 다른 플레이어가 목욕하는 모습을 보면 스트레스 — 모드 옵션에서 괜찮은 사용자 이름 등록 가능"
-],
-"order": 38
-},
-{
-"id": "RainCleansBlood",
-"workshop": "2956146279",
-"title": "Rain Cleans Blood [B42.20 + MP]",
-"name": "비가 피를 씻어냄 (Rain Cleans Blood)",
-"category": "생활·위생·취미",
-"summary": "비나 눈이 오면 바닥의 피 자국과 오물이 서서히 지워지게 합니다.",
-"features": [
-"비·눈이 일정 강도 이상이면 플레이어 주변 무작위 타일의 피 자국을 점차 제거",
-"옵션에 따라 시체 태운 재, 동물 배설물도 제거",
-"차량에 묻은 피, 착용 중인 옷의 피·때도 서서히 씻김",
-"실내 바닥 청소 여부, 날씨 무관 상시 청소 옵션 있음"
-],
-"how": [
-"별도 조작 없음: 비/눈이 오는 날 밖에 있으면 자동 적용"
-],
-"settings": [
-"분당 처리 타일 수 300 (기본값)",
-"날씨 강도 기준 0.25 (기본값)",
-"재 청소 켜짐, 동물 배설물 청소 켜짐",
-"실내 청소 꺼짐 (건물 안 피는 지워지지 않음)",
-"차량 청소 켜짐 (속도 0.1), 옷 청소 켜짐 (속도 1.0)",
-"날씨 무관 상시 청소 꺼짐"
-],
-"notes": [],
-"order": 249
-},
-{
-"id": "UsefulBarrelsMP",
-"workshop": "3436537035",
-"title": "Useful Barrels",
-"name": "쓸모 있는 배럴 (Useful Barrels)",
-"category": "생활·위생·취미",
-"summary": "맵에 있는 드럼통(배럴)을 열어 연료·물 등 액체를 저장하고 꺼내 쓰는 용기로 만들어 줍니다.",
-"features": [
-"배럴 마개를 열어 액체 저장소로 사용, 일부 배럴에는 처음부터 액체가 들어 있음",
-"들고 있는 용기·바닥의 용기·주변 오브젝트·차량 연료 탱크에서 배럴로 액체 옮기기",
-"배럴에서 발전기·차량에 직접 주유",
-"배럴 뚜껑을 잘라내기(용접 마스크·토치 필요)",
-"깔때기가 근처에 있으면 채우는 속도 증가"
-],
-"how": [
-"배럴 우클릭 → '열기'(파이프 렌치 필요) → 유체 전달/연료 추가 등 메뉴 사용",
-"발전기·차량 근처에서 배럴 우클릭 → 연료 보급(고무 호스 필요)"
-],
-"settings": [
-"배럴 용량 400",
-"개봉에 파이프 렌치 필요, 꺼낼 때 고무 호스 필요, 채울 때 깔때기 불필요(깔때기 있으면 1.25배 빠름)",
-"저장 가능: 산업용·연료·위험물·물 / 불가: 술·음료·의료·염료·페인트·독",
-"발전기·차량 주유 및 차량에서 배럴 채우기 허용(모두 고무 호스 필요)",
-"초기 액체 25% 확률, 최대 54 (산·물·오염된 물·휘발유·표백제·강력 독극물 중)",
-"뚜껑 절단에 용접 마스크와 토치 필요"
-],
-"notes": [
-"초기 액체가 오염된 물·산·독일 수 있으니 마시기 전에 확인"
-],
-"order": 117
-},
-{
-"id": "SleepWithFriends",
-"workshop": "2686624983",
-"title": "Sleep with Friends v2.1",
-"name": "친구와 함께 잠자기 (Sleep With Friends)",
-"category": "생활·위생·취미",
-"summary": "멀티플레이에서 혼자 자도 실제 시간 몇 분 안에 피로가 회복되도록 수면을 빠르게 해 줍니다.",
-"features": [
-"잠든 동안 서버가 피로와 지구력을 빠르게 회복시킴(모두가 잘 필요 없음)",
-"침대 품질(좋음/보통/나쁨/바닥)과 베개 유무에 따라 회복 배율 차등",
-"피로가 0이 되면 자동 기상"
-],
-"how": [
-"평소처럼 침대나 바닥에서 잠자기"
-],
-"settings": [
-"수면 시간 기준: 실제 시간(분)",
-"피로 최대 상태에서 약 1분(실제 시간) 만에 회복 (보통 침대 기준, 기본 2분)",
-"지구력 회복 배율 2",
-"자동 기상: 켜짐",
-"침대 배율: 좋음 1.1(베개 1.15), 보통 1.0(1.05), 나쁨 0.9(0.95), 바닥 0.6(0.75)"
-],
-"notes": [],
-"order": 110
-},
-{
-"id": "Server412Patch",
-"workshop": "3821533933",
-"title": "412's server 패치",
-"name": "412's server 패치",
-"category": "서버·운영 도구",
-"summary": "이 서버에서 발견한 오류를 고치고 한국어 번역을 보충하는 서버 전용 패치 모드입니다.",
-"features": [
-"떨어진 아이템 때문에 가구·좀비가 안 보이던 그래픽 오류 방지",
-"차 문 잠그기 실패, 사망·리스폰 직후 모드 오류 등 여러 오류 방지",
-"미번역 문구 약 4,800개 한국어 번역, 표기 통일(레시피 모드 태그 제거, 색상·브랜드 표기)",
-"Lifestyle \"야망\"을 \"업적\"으로, 숨겨진 업적은 \"히든 업적 해금/달성\"으로 표시",
-"탄창 장탄수 바, 제작 화면 레시피 출처 모드 표시",
-"스폰 선택 화면 지도 표시 수정, 맵 이름 한국어",
-"클라이언트 Lua 오류를 서버에 자동 기록(오류 문구와 모드 이름만)"
-],
-"how": [
-"따로 조작할 것 없음. 모든 모드 중 가장 마지막에 불러옴"
-],
-"settings": [],
-"notes": [
-"변경 내역은 위키 업데이트 내역 참고"
-],
-"order": 999
-},
-{
-"id": "AbsWeight",
-"workshop": "3780301677",
-"title": "AbsWeight - Item Weight Control",
-"name": "AbsWeight - 아이템 무게 조절",
-"category": "서버·운영 도구",
-"summary": "샌드박스 설정으로 아이템 무게를 카테고리별·개별로 조정합니다.",
-"features": [
-"전체 배수 + 11개 카테고리(무기, 음식, 의류, 탄약, 가방, 책, 재료, 의료, 도구, 차량 부품, 기타) 배수",
-"목재·금속·대장장이 재료·콘크리트/석고·무전기 전용 배수",
-"열쇠·열쇠고리·자동차 키 무게 0 옵션",
-"동물 운반 무게, 트레일러 공간, 들어올리기 한도 조절 및 '모든 동물 들기' 옵션",
-"아이템 개별 지정(Overrides), 최소·최대 무게 제한",
-"연료 연소 시간은 바닐라 유지, 기존 세이브에도 적용"
-],
-"how": [
-"플레이어가 따로 할 일 없음 (서버 설정으로 자동 적용)"
-],
-"settings": [
-"전체 배수 1.0",
-"음식 0.5 / 탄약 0.5 / 차량 부품 0.5 / 기타(가구·생활용품 등) 0.25",
-"무기·의류·가방·책·재료·의료·도구 1.0",
-"목재·금속·대장장이·콘크리트/석고·무전기 각 0.5",
-"열쇠 무게 0: 켜짐",
-"모든 동물 들어올리기 가능: 켜짐",
-"최소 0 / 최대 100"
-],
-"notes": [
-"무게가 줄면 같은 가방에 더 많이 들어감 (용량도 무게 단위)",
-"서버에 MetalWoodHalfWeight(목재·금속 50%)도 켜져 있음. 그 모드가 OnGameBoot에서 먼저 무게를 절반으로 만든 뒤 AbsWeight가 그 값을 기준으로 다시 0.5를 곱하므로 겹치는 목재·금속 아이템은 바닐라의 약 25%가 될 수 있음",
-"ZeroWeightKeys_B42와 열쇠 무게 0 기능이 중복됨 (결과는 동일)"
-],
-"order": 47
-},
-{
-"id": "SanboidRandomSpawnB42",
-"workshop": "3805565148",
-"title": "Sanboid Random Spawn B42 - Indoor Only",
-"name": "Sanboid 랜덤 스폰 B42 (실내 전용)",
-"category": "서버·운영 도구",
-"summary": "켜진 지역 중 하나를 균등하게 골라 건물 1층 실내에 무작위로 스폰시키는 모드입니다.",
-"features": [
-"활성화된 지역들 중 동일 확률로 마을을 고른 뒤 그 지역의 1층 건물 실내로 스폰",
-"서버가 마을 목록·건물 선정을 직접 관리(멀티플레이 대응)",
-"선택 지역에 쓸 수 있는 실내가 없으면 멀드로 실내로 대체",
-"바닐라 지역과 모드 맵(그린리프, 클로버 레이크, 아이리스 에이트, 레이븐 크릭 등) 지역 개별 on/off"
-],
-"how": [
-"스폰 선택 화면에서 랜덤 스폰을 고르면 자동으로 실내 위치를 확인 후 스폰",
-"'서버에서 마을별 스폰 목록을 받지 못했습니다' 메시지가 나오면 모드 버전 불일치 — 운영자에게 알림"
-],
-"settings": [
-"랜덤 스폰: 켜짐",
-"켜진 지역: 리버사이드, 멀드로, 웨스트 포인트, 루이빌, 로즈우드, 로즈우드 교도소, 에코 크릭, 에크론, 폴스 레이크, 어빙턴, 마치 리지, 브랜던버그, 밸리 스테이션, 그린리프, 클로버 레이크, 아이리스 에이트, 포트 워터프런트, 레이븐 크릭, 멀드로 군사기지(포트 프레스턴), 메이플우드, 웨스트 포인트 확장, 헤이븐 폴",
-"꺼진 지역: 티키타운, 넬리스 공군기지"
-],
-"notes": [
-"설정 변경 후 서버 재시작 필요(툴팁 안내)"
-],
-"order": 21
-},
-{
-"id": "ArmystorageSpawnTableFix",
-"workshop": "3786236842",
-"title": "[42.20] Vanilla Spawn Table Fix",
-"name": "[42.20] 군 창고 스폰 테이블 수정 (Armystorage Spawn Table Fix)",
-"category": "서버·운영 도구",
-"summary": "군부대 창고(armystorage)의 선반·군용 상자에서 총과 탄약만 나오도록 스폰 테이블을 바꿉니다.",
-"features": [
-"금속 선반·군용 상자·군용 사물함: 군용 총기·탄약만 생성(기타 군용품 제거)",
-"그 외 용기: 탄약·의약품·군복·전자기기 구성",
-"카운터는 관제실 카운터 구성"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42.20 이상 전용"
-],
-"order": 256
-},
-{
-"id": "ArmorySpawnTableFix",
-"workshop": "3786236842",
-"title": "[42.20] Vanilla Spawn Table Fix",
-"name": "[42.20] 무기고 스폰 테이블 수정 (Armory Spawn Table Fix)",
-"category": "서버·운영 도구",
-"summary": "armory(무기고) 방의 아이템 스폰 테이블을 경찰서 무기고와 같게 다시 정의합니다.",
-"features": [
-"armory 방의 서류 캐비닛·사물함·금속 선반·군용 사물함 등을 경찰 무기고 구성(경찰 총기·방탄 장비·증거물·서류함)으로 설정",
-"사물함 타일 종류에 따라 총기/방탄 장비가 나오도록 지정",
-"리버사이드 경찰서 외 다른 armory 방에도 같은 구성이 적용됨"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42.20 이상 전용(versionMin=42.20)",
-"같은 작성자의 Armystorage/Vanilla Spawn Table Fix와 분리된 선택형 모드"
-],
-"order": 255
-},
-{
-"id": "VanillaSpawnTableFix",
-"workshop": "3786236842",
-"title": "[42.20] Vanilla Spawn Table Fix",
-"name": "[42.20] 바닐라 스폰 테이블 수정 (Vanilla Spawn Table Fix)",
-"category": "서버·운영 도구",
-"summary": "B42.20에서 바뀐 바닐라 루팅 테이블 일부를 정상화하거나 42.19 방식으로 되돌립니다.",
-"features": [
-"창고(warehouse): 잘못된 smallbox 항목을 other로 바로잡아 공구·목공·금속 등 상자 구성 정상화",
-"초·중등 교실 책상 스폰 정리, 교실 간 밸런스 조정",
-"거실·옷장·다락·차고 창고·창고 유닛: 스킬북 스폰을 42.19 방식으로 되돌림(거실은 종이/나무 상자에서만)",
-"복도(hall)에 생긴 스킬북 스폰 제거",
-"서점 창고·책 보관실·총포상 창고 구성 재정의"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42.20 이상 전용",
-"루팅 테이블을 통째로 덮어써서 같은 방 테이블을 바꾸는 다른 루팅 모드와 겹칠 수 있음"
-],
-"order": 257
-},
-{
-"id": "ModManager",
-"workshop": "3567084868",
-"title": "[B42] Mod Manager",
-"name": "[B42] 모드 매니저 (Mod Manager)",
-"category": "서버·운영 도구",
-"summary": "게임 내 모드 창을 정렬·필터·숨기기·프리셋 기능이 있는 관리자 화면으로 개편하는 모드입니다.",
-"features": [
-"모드 목록 정렬·필터링·검색(의존성 포함 검색)·숨기기",
-"모드 정보 패널: 카테고리, 변경 내역(ChangeLog), 비호환 모드, 지원 링크 표시",
-"모드 프리셋 저장·공유 창",
-"모드 옵션(설정) 메뉴 재디자인",
-"서버 설정 화면 개선: 빠른 편집(핵심 설정만)과 전체 편집 모드 분리"
-],
-"how": [
-"메인 메뉴의 모드 화면/모드 옵션/서버 설정 화면에서 바로 사용"
-],
-"settings": [],
-"notes": [
-"Mod Load Order Sorter 필요(정렬 규칙은 그쪽 기능 사용)",
-"변경 내역상 서버 모드 목록에 넣지 않아도 클라이언트에서 항상 동작하도록 바뀜",
-"인게임 플레이에는 영향 없음"
-],
-"order": 1
-},
-{
-"id": "deathcount",
-"workshop": "3799032902",
-"title": "deathcounts system 42",
-"name": "공용 목숨 시스템 (deathcount system)",
-"category": "서버·운영 도구",
-"summary": "서버 전체가 목숨을 공유하고, 다 쓰면 서버가 초기화(리셋)됩니다.",
-"features": [
-"어떤 플레이어든 죽으면 서버 공용 사망 수 +1 (동물 사망 제외)",
-"게임 내 매일 자정에 화면 중앙에 'Lives: 남은 목숨' 표시 + 천둥 소리",
-"남은 목숨이 0이 되면 '!!! SERVER RESET !!! (Deaths: 사망자 순서)' 공지 후 5초 뒤 리셋 신호를 쓰고 서버 종료",
-"최대 목숨 수는 서버 Lua 폴더의 DeathCount.txt로 관리 (없으면 3으로 생성)"
-],
-"how": [
-"플레이어가 따로 할 일 없음 — 자정 공지로 남은 목숨 확인"
-],
-"settings": [],
-"notes": [
-"이 서버의 DeathCount.txt 값은 5 (샌드박스 설정이 아닌 별도 파일)",
-"목숨이 바닥나면 월드가 하드리셋되므로 모두의 생존이 중요"
-],
-"order": 68
-},
-{
-"id": "ModLoadOrderSorter_b42",
-"workshop": "3423660713",
-"title": "Mod Load Order Sorter [b42]",
-"name": "모드 로드 순서 정렬기 (Mod Load Order Sorter)",
-"category": "서버·운영 도구",
-"summary": "모드 자동 정렬 로직을 정렬 규칙 기반으로 바꾸고, 수동 정렬을 돕는 도구를 추가하는 모드입니다.",
-"features": [
-"모드 목록 화면에 '정렬' 버튼 추가, 정렬 규칙(먼저/나중에 로드, 가장 먼저/가장 나중에 로드, 카테고리 내 순서, 호환되지 않음)에 따라 자동 정렬",
-"필수 모드 누락·로드 순서 오류, 호환되지 않는 모드 발견 시 경고 표시",
-"정렬 규칙 편집 모드: 모드별 규칙을 직접 지정하고 저장",
-"모드·워크숍 아이템 목록을 클립보드로 복사하거나 Lua 폴더의 파일로 저장"
-],
-"how": [
-"메인 메뉴 > 모드 화면에서 '정렬' 버튼으로 자동 정렬",
-"규칙 영역을 클릭해 편집 모드로 들어가 규칙 지정 후 '저장'"
-],
-"settings": [],
-"notes": [
-"게임 플레이에는 영향 없는 메인 메뉴용 도구",
-"[B42] Mod Manager가 이 모드를 필수로 요구함"
-],
-"order": 0
-},
-{
-"id": "errorMagnifier",
-"workshop": "2896041179",
-"title": "errorMagnifier",
-"name": "오류 확대경 (errorMagnifier)",
-"category": "서버·운영 도구",
-"summary": "Lua 오류가 나면 게임 안에 팝업으로 띄워 오류 보고를 쉽게 해 주는 디버깅용 모드입니다.",
-"features": [
-"모드 오류 발생 시 인게임 팝업으로 오류 내용 표시",
-"오류 내용을 확인·전달하기 쉽게 정리"
-],
-"how": [
-"오류 팝업이 뜨면 내용을 캡처해 서버 운영자에게 전달"
-],
-"settings": [],
-"notes": [
-"Mod Update and Alert System(ChuckleberryFinnAlertSystem) 필요",
-"게임 플레이에는 영향 없음, 순수 디버깅 용도"
-],
-"order": 3
-},
-{
-"id": "DryThatFoodMP",
-"workshop": "3487128902",
-"title": "Dry That Food!",
-"name": "Dry That Food 멀티플레이 (음식 건조)",
-"category": "요리·음식·농사",
-"summary": "과일·채소·허브를 말려 오래 보존하는 건조 레시피를 멀티플레이용으로 추가합니다.",
-"features": [
-"휴대용 식물 건조대(Plant Dryer) 제작: 노끈 5 + 나무 막대 7 (요리 2)",
-"과일 15종(사과, 바나나, 체리, 포도, 망고, 딸기, 수박 등) 건조",
-"채소 20여 종(감자, 당근, 토마토, 양파, 양배추, 호박 등)과 베리 건조",
-"바질·캐모마일 등 바닐라 허브 건조",
-"말린 식재료 묶음(Bundle) 레시피 (예: 말린 무 12개 → 1묶음)"
-],
-"how": [
-"제작 메뉴 '보존(Preserve)' 분류에서 건조대 + 날카로운 칼(또는 식칼)로 건조"
-],
-"settings": [],
-"notes": [
-"건조 레시피 대부분은 재료 여러 개(예: 사과 16개)를 말린 것 1개로 만듦"
-],
-"order": 72
-},
-{
-"id": "VanillaFoodsExpanded",
-"workshop": "3577903007",
-"title": "Vanilla Foods Expanded",
-"name": "바닐라 푸드 확장 (Vanilla Foods Expanded)",
-"category": "요리·음식·농사",
-"summary": "바닐라 스타일의 음식, 레시피, 진화형 레시피를 2,800개 이상 추가하는 대형 음식 모드입니다.",
-"features": [
-"다양한 통조림(라비올리, 스파게티와 미트볼, 슬로피 조, 미트로프, 칠리 등)과 통조림 박스",
-"병조림, 부용 큐브, 수프 봉지 등 가공식품",
-"통조림 열기, 통조림 상자 열기/포장하기 등 [VFX] 레시피",
-"바닐라와 같은 방식으로 쓰는 새 진화형 요리 레시피"
-],
-"how": [
-"월드 루팅으로 음식 획득",
-"통조림 우클릭 → 열기, 제작/요리 메뉴의 [VFX] 레시피 사용"
-],
-"settings": [],
-"notes": [
-"한국어 번역은 Hx_KR_VanillaFoodsExpanded 모드가 담당",
-"샌드박스의 'VFE' 항목은 이 모드가 아니라 총기 모드 설정임"
-],
-"order": 118
-},
-{
-"id": "SKITTLE_LongTermPreservation4220",
-"workshop": "3774789651",
-"title": "Long Term Preservation [42.20]",
-"name": "장기 보존 식품 (Long Term Preservation)",
-"category": "요리·음식·농사",
-"summary": "냉동고 없이 고기·과일을 오래 보관하는 염장·건조·병조림·페미컨·라드·잼 레시피를 추가합니다.",
-"features": [
-"육포(훈제 돼지고기/소고기/사슴 고기/생선살) 만들기: 고기 1 + 소금 5",
-"페미컨 만들기, 돼지 지방을 녹여 라드 만들기",
-"유리병에 고기 넣기(병조림) / 유리병 열기",
-"으깬 베리 → 잼 만들기",
-"소금 바위: 숲·깊은 숲·농지 등에서 채집 → 부숴서 소금 획득"
-],
-"how": [
-"제작 메뉴 요리 분류에서 레시피 사용",
-"소금이 부족하면 채집(돌 분류)으로 소금 바위 찾기"
-],
-"settings": [],
-"notes": [
-"Build 42.20용 커뮤니티 업데이트판"
-],
-"order": 87
-},
-{
-"id": "Project_Cook",
-"workshop": "3490188370",
-"title": "Project Cook [B42]",
-"name": "프로젝트 쿡 (Project Cook)",
-"category": "요리·음식·농사",
-"summary": "요리 레시피를 찾아보고 재료를 골라 바로 조리할 수 있는 요리 도우미 UI를 추가합니다.",
-"features": [
-"'기초 요리'와 '레시피로 요리하기' 두 가지 모드의 요리 패널",
-"기초 재료(냄비·그릇 등) 지정 후 재료·조미료를 추가하는 방식",
-"가능한 재료 표시/숨기기, 재료 정렬, 무작위 재료 추가",
-"조리 정보(수치 표시 자릿수 선택) 표시"
-],
-"how": [
-"화면 왼쪽 사이드바에 추가된 요리 버튼으로 요리 패널 열기",
-"기초 재료 설정 → 재료 추가 → 조리"
-],
-"settings": [
-"냉동 음식으로 요리 허용: 꺼짐 (해동 필요한 재료는 해동 후 사용)"
-],
-"notes": [
-"NeatUI Framework 필요"
-],
-"order": 100
-},
-{
-"id": "AliceGear",
-"workshop": "3610005735",
-"title": "ALICE Gear [B41/B42.20]",
-"name": "ALICE 장비 (ALICE Gear)",
-"category": "의류·장비·가방",
-"summary": "미군 ALICE 계열 웨빙 조끼, 배낭, 수통, 방독면 등을 추가합니다.",
-"features": [
-"ALICE 웨빙 조끼 여러 구성: 2P/4P(탄약 파우치), C(수통), E(야전삽), H(홀스터) 조합",
-"ALICE 배낭(용량 40), 야전 배낭, 훈련용 야전 배낭",
-"ALICE 수통(2L), M9 총검과 M9 대검 칼집",
-"M40 방독면(스트랩 유/무), 방독면 파우치(어깨/허벅지), 후드 벗은 형태",
-"착용 슬롯: 오른쪽/왼쪽 수통 슬롯, M9 칼집 슬롯"
-],
-"how": [
-"제작 메뉴의 [ALICE] 레시피로 조끼에 파우치·수통·야전삽·홀스터 추가 또는 기본형으로 되돌리기",
-"[ALICE] M9 대검 칼집 만들기",
-"아이템 우클릭 → '타이트 하게 착용하기/풀기', '어깨에 걸치기', '다리' 등 착용 위치 변경, 방독면 '스트랩 있음/없음'"
-],
-"settings": [],
-"notes": [],
-"order": 49
-},
-{
-"id": "alicesWeaponSling",
-"workshop": "3775549570",
-"title": "Alice's Weapon Sling",
-"name": "Alice의 무기 슬링",
-"category": "의류·장비·가방",
-"summary": "총기·장무기를 몸에 걸어 둘 수 있는 착용형 무기 슬링을 추가합니다.",
-"features": [
-"착용하면 핫바에 슬링 부착 슬롯 생성",
-"메는 방향 4종: 앞쪽 \\, 앞쪽 /, 앞쪽 --, 등",
-"슬링 끈 텍스처 숨기기/표시",
-"월드에서 루팅하거나 직접 제작 가능 (3D 모델 포함)"
-],
-"how": [
-"제작: [Alice] 무기 슬링 만들기 — 벨트 1, 가죽 끈 4, 실 1 + 가위/날카로운 칼, 바늘 (재봉 2 필요)",
-"슬링 우클릭 → 앞쪽 \\ / 앞쪽 / / 앞쪽 -- / 등에 메기 로 위치 변경"
-],
-"settings": [],
-"notes": [],
-"order": 50
-},
-{
-"id": "Authentic Z - Current",
-"workshop": "2335368829",
-"title": "Authentic Z",
-"name": "Authentic Z (좀비 의상·아이템 확장)",
-"category": "의류·장비·가방",
-"summary": "140종 이상의 특색 있는 좀비 의상과 다양한 의류·소품 아이템을 추가합니다.",
-"features": [
-"현실감 있는 좀비 복장 분포, 140종 이상의 커스텀 좀비(코스튬 좀비 포함)",
-"앞치마, 헤드폰, 탄띠, 꽃다발, 우산 등 다수의 의류·소품 추가",
-"가방 강화: 책가방·더플백·등산가방·큰 배낭에 보조 가방/물병/손전등/우산 등 부착 슬롯 추가",
-"의류 착용 변형: 풀기/조이기, 허리에 두르기, 재킷 열기/닫기, 모자 위에 모자, 목에 걸기 등",
-"광부 헬멧 전등, 군용 손전등, 전기톱(정지·연료 보충·막힘 해제) 등 기능 아이템"
-],
-"how": [
-"의류·아이템 우클릭 → 착용 방식 변경 메뉴",
-"제작: 가방 업그레이드, 카라비너 만들기, 보조 가방 만들기, 착용형/아이템 변환 등"
-],
-"settings": [],
-"notes": [
-"원작자 경고: AuthenticZ-Lite 또는 Backpacks+와 함께 쓰지 말 것",
-"서버에 'Authentic Z - 42.15 FIX'도 함께 켜져 있음",
-"아이템 이름·레시피는 한국어 번역이 비어 있어 영어로 보일 수 있음 (우클릭 메뉴·UI·툴팁은 한국어 있음)",
-"게임 도중 추가해도 안전하다고 명시"
-],
-"order": 53
-},
-{
-"id": "SM4BootsExpandedB42",
-"workshop": "2850935956",
-"title": "Boots Expanded 11 for B41 and B42 (42.15 quickfix)",
-"name": "Boots Expanded (신발 확장)",
-"category": "의류·장비·가방",
-"summary": "바닐라 신발 전부에 3D 모델과 고유 능력치·설명을 주고 희귀 신발을 추가합니다.",
-"features": [
-"모든 바닐라 신발에 3D 모델 적용",
-"신발마다 밟기 위력(Stomp Power)과 내구도 차등 (툴팁에 표시)",
-"양말(일반/긴/두꺼운), 발토시, 군용·사막 부츠 등 세분화",
-"희귀 신발 추가"
-],
-"how": [
-"신발 툴팁에서 밟기 위력·내구도 확인"
-],
-"settings": [],
-"notes": [
-"원작자 표기상 개발 중(UNDER DEVELOPMENT) 모드",
-"성능 문제 시 Flat Shoes 애드온으로 운동화·구두를 평면 모델로 되돌릴 수 있음"
-],
-"order": 59
-},
-{
-"id": "FixedLightOnBeltAF",
-"workshop": "3778709615",
-"title": "[B42.20/B42.21] Simple Belt Flashlight+ (Better Flashlights Compatible)",
-"name": "간단한 벨트 손전등+ (Simple Belt Flashlight+)",
-"category": "의류·장비·가방",
-"summary": "손전등을 벨트(허리)에 차고 켠 채로 다닐 수 있게 하는 모드입니다.",
-"features": [
-"바닐라 손전등·각진 손전등(군용 포함)·임시 손전등을 벨트 좌/우 슬롯에 장착 가능",
-"허리 위치에 맞춘 장착 모델 위치 조정",
-"Better Flashlights, Authentic Z 손전등 선택적 지원",
-"기존 FixedLightOnBeltAF 대체 버전 — 기존 세이브에서 그대로 작동"
-],
-"how": [
-"손전등을 핫바/벨트 슬롯에 장착 후 켜 두면 양손이 자유로운 상태로 조명 사용"
-],
-"settings": [
-"멀티플레이 진단 로그: 꺼짐"
-],
-"notes": [],
-"order": 30
-},
-{
-"id": "RepairAnyClothes",
-"workshop": "2142622992",
-"title": "Repair Any Clothes",
-"name": "모든 옷 수리 (Repair Any Clothes)",
-"category": "의류·장비·가방",
-"summary": "조끼, 방탄복, 점프슈트처럼 원래 수리가 안 되는 옷도 수리할 수 있게 합니다.",
-"features": [
-"원단 종류가 지정되지 않은 의류(신체 부위를 덮는 옷)에 가죽 원단 속성을 부여",
-"이로써 패치(헝겊 덧대기)로 수리 가능해짐",
-"게임 시작 시 자동 적용"
-],
-"how": [
-"옷 우클릭 → 수리(가죽 조각 등으로 덧대기)"
-],
-"settings": [],
-"notes": [
-"원단이 없던 옷은 '가죽'으로 취급되므로 가죽 조각이 필요함"
-],
-"order": 106
-},
-{
-"id": "GlassHats",
-"workshop": "2423266708",
-"title": "Hats and Glasses Don't Fall",
-"name": "모자·안경 안 떨어짐",
-"category": "의류·장비·가방",
-"summary": "맞거나 넘어져도 모자와 안경이 떨어지지 않게 합니다.",
-"features": [
-"모든 아이템의 떨어질 확률(ChanceToFall)을 0으로 설정",
-"플레이어와 좀비 모두에게 적용",
-"월드 시작·로드 시 모드 아이템까지 전부 일괄 적용"
-],
-"how": [],
-"settings": [],
-"notes": [
-"좀비 모자도 떨어지지 않으므로 모자는 시체에서 직접 벗겨야 함"
-],
-"order": 80
-},
-{
-"id": "MysticOfficeCostumeB42",
-"workshop": "2862044942",
-"title": "Mystic's Office Costumes",
-"name": "미스틱 오피스 의상 (Mystic's Office Costume)",
-"category": "의류·장비·가방",
-"summary": "사무직 의상과 일부 의류 리텍스처를 추가하는 의상 모드입니다.",
-"features": [
-"블라우스(반팔·실크), V넥 긴팔 셔츠, 내복(상·하의) 등 사무직/생활 의류 추가",
-"켄터키주 범죄수사국 ID 카드 아이템",
-"ALICE 벨트와 멜빵을 보이지 않게 바꾸는 레시피와 원래대로 되돌리는 레시피"
-],
-"how": [
-"의류는 월드 루팅으로 획득",
-"제작 메뉴에서 'Make ALICE Belt Invisible'/'Restore ALICE Belt'로 외형 전환"
-],
-"settings": [],
-"notes": [
-"ALICE 관련 레시피·아이템명은 한국어 번역이 없어 영어로 표시됨"
-],
-"order": 95
-},
-{
-"id": "VanillaGearExpanded",
-"workshop": "3401134276",
-"title": "Vanilla Gear Expanded",
-"name": "바닐라 기어 확장 (Vanilla Gear Expanded)",
-"category": "의류·장비·가방",
-"summary": "경찰·특수부대 등 법 집행 기관용 의상과 장비를 추가합니다.",
-"features": [
-"방탄 조끼: ATF, FBI, 경찰, 언론(Press), SWAT",
-"야구모자: ATF, FBI, Press, SWAT / FBI 재킷",
-"전술 장비: 전술 헬멧(파랑·회색·녹색), 크래시 헬멧, 전술 고글, 헤드셋, 발라클라바, 체스트 리그, 전술 조끼·벨트, 전술 장갑(손가락 없는 장갑 포함)",
-"폭동 진압 장비: 교도소/전술 폭동 헬멧, 교도소 폭동 조끼, 어깨 보호대, 팔 보호대, 폭동 진압대 셔츠·바지",
-"해당 의상을 입은 좀비가 등장하고 루팅 테이블에도 추가"
-],
-"how": [
-"경찰서·교도소 등에서 루팅하거나 해당 좀비에게서 획득"
-],
-"settings": [],
-"notes": [],
-"order": 119
-},
-{
-"id": "VanillaOutfitsExpanded",
-"workshop": "3783094058",
-"title": "Vanilla Outfits Expanded",
-"name": "바닐라 아웃핏 확장 (Vanilla Outfits Expanded)",
-"category": "의류·장비·가방",
-"summary": "일상복, 작업복, 구급대원·소방 의상 등 새 의상을 추가합니다(제작 진행 중 모드).",
-"features": [
-"구급대원(EMS) 모자·재킷·셔츠·티셔츠·바지",
-"소방관 장갑, 사격 장갑",
-"겨울 재킷·파카(사냥 위장 포함), 필드 재킷, 스목 재킷(위장 포함), 데님 재킷, 보디 워머, 유틸리티 조끼",
-"카고 바지(위장 포함), 청바지(일반·찢어진), 트랙수트, 킬트, 드레스·치마·반바지류",
-"시마그(일반·해골, 착용 방식 4종), 해골 반다나",
-"해당 의상을 입은 좀비와 루팅 추가"
-],
-"how": [
-"월드 루팅이나 좀비에게서 획득",
-"시마그·반다나는 착용 방식별 아이템이 따로 있음"
-],
-"settings": [],
-"notes": [
-"한국어 번역은 VOEKoreanTranslation 모드가 담당",
-"모드 설명상 아직 제작 중(WIP)"
-],
-"order": 120
-},
-{
-"id": "ScrapArmorB42",
-"workshop": "3786672015",
-"title": "Scrap Armor B42",
-"name": "스크랩 아머 (Scrap Armor B42)",
-"category": "의류·장비·가방",
-"summary": "고철·타이어·도로 표지판 등으로 만드는 방어구와 방패, 칼집·다리 주머니를 추가합니다.",
-"features": [
-"고철 손등판·견갑·정강이받이·어깨보호대·다리보호대·킬트, 스크랩 헬멧·주전자 헬멧 등",
-"금속봉·나사·톱날·도로 표지판으로 방어구 개조(강화)",
-"방패: 스크랩 방패, 차문 방패, 나무 방패",
-"검 칼집(칼 수납), 좌/우 다리 주머니, 여행용 배낭",
-"레시피 잡지: 포스트 아포칼립틱 기사단 1~3권, 자신을 보호하라 1호 등"
-],
-"how": [
-"잡지를 읽어 레시피 학습 → 제작 메뉴에서 방어구 제작",
-"완성품 우클릭 → 착용하기"
-],
-"settings": [],
-"notes": [
-"The Workshop(TheWorkshopB42) 모드 필요"
-],
-"order": 108
-},
-{
-"id": "KuromiBackpack",
-"workshop": "3022845661",
-"title": "Hello Kitty Backpacks",
-"name": "헬로키티 배낭",
-"category": "의류·장비·가방",
-"summary": "산리오 캐릭터 디자인 배낭 7종을 추가합니다.",
-"features": [
-"쿠로미, 헬로키티, 마이멜로디, 시나모롤, 배드바츠마루, 케로피, 폼폼푸린 배낭",
-"모두 용량 30, 무게 감소 80%",
-"스폰: 옷가게, 여성용 옷장, 학교 사물함(가장 흔함)"
-],
-"how": [
-"옷가게, 여성용 옷장, 특히 학교 사물함에서 자주 발견"
-],
-"settings": [],
-"notes": [],
-"order": 81
-},
-{
 "id": "CyesPushDoors",
 "workshop": "3780683663",
 "title": "Cye's Push Doors! [SP/MP]",
@@ -2660,337 +1232,140 @@
 "order": 39
 },
 {
-"id": "TheWorkshopB42",
-"workshop": "3786670855",
-"title": "The Workshop B42",
-"name": "더 워크숍 B42 (The Workshop)",
-"category": "제작·기술",
-"summary": "금속 작업대·주조·차량 부품 해체 등 고철 가공과 금속 제작을 크게 확장하는 모드입니다.",
+"id": "GunsOfMarz",
+"workshop": "3722134990",
+"title": "[42.21MP] GoM - Guns of Marz",
+"name": "건즈 오브 마즈 (GoM - Guns of Marz)",
+"category": "총기·탄약",
+"summary": "다양한 기능을 가진 총기를 대량으로 추가하고 바닐라 총기·탄약·부착물을 대체하는 총기 팩입니다.",
 "features": [
-"금속 작업대: '고철 가공(Scrapping)' 탭 레시피 전부에 사용",
-"차량 부품 해체(배터리, 서스펜션, 브레이크, 차문, 연료탱크, 머플러, 바퀴 등)로 고철·부품 획득",
-"거푸집(금속 파이프/주괴/작은 금속판)으로 금속 주조, 납 파이프 주조",
-"프로판 가스로 조립, 프로판 저장고·산업용 프로판 탱크(트레일러로만 운반 가능) 및 충전 레시피",
-"새 재료·공구: 금속 부품, 나사·대형 볼트, 스프링, 사슬, 모터, 쇠줄, 펜치, 금속 절단기, 총기 부품, 공기통, 공구 벨트(특수 벨트)",
-"레시피 대부분(61개)은 책으로 배워야 함: 바보를 위한 DIY 제작 1~3권, 멍청이도 하는 뒷마당 제련, 한눈에 보는 자동차 해체"
+"다수의 신규 총기와 탄창, 부착물(총열, 양각대, 조준경, 레일, 반동 패드, 멜빵, 하부 부착물 등 부위별 장착)",
+"Gunworks 기능 사용: 사격 모드 전환, 탄약 장전 UI, 총검·양각대·개머리판 조작",
+"탄약 상자/패키지/보관함 열기·포장 레시피, 구형 MarzGuns 탄약 변환",
+"산탄총 총열 짧게 자르기, 정글 탄창 만들기/분리",
+"옵션에 따라 대용량·드럼 탄창, 수류탄·연막·소이탄이 군·경찰 루트에 등장"
 ],
 "how": [
-"레시피 책을 찾아 읽은 뒤 제작 메뉴 '고철 가공'/'용접'/'TW: 메인' 탭 사용",
-"금속 작업대를 먼저 만들어 두면 고철 가공 레시피 전부 사용 가능",
-"일부 용접 레시피는 금속 용접 1~4레벨 요구"
+"키: T 사격 모드, O 장전 UI, U 하부 부착물 (Gunworks 키 설정)",
+"탄약 상자는 우클릭/제작 메뉴의 '상자 열기' 레시피로 개봉"
+],
+"settings": [
+"바닐라 총기·탄약·부착물을 GoM 버전으로 대체: 모두 켜짐",
+"GoM 루트 배율: 1.0",
+"대용량 탄창 스폰: 켜짐",
+"수류탄·폭발물 스폰: 켜짐"
+],
+"notes": [
+"Gunworks Framework(SWMG) 필요",
+"Vanilla Firearms Expansion(VFE)도 함께 켜져 있어 총기 종류가 겹치거나 많아질 수 있음",
+"GoM 자체 전술 재장전 옵션 값은 서버 파일에 없음 — 전술 재장전은 Hot Brass Tactical Reload 모드가 별도로 켜져 있음"
+],
+"order": 25
+},
+{
+"id": "VFExpansion1",
+"workshop": "3761077099",
+"title": "[B42] Vanilla Firearms Expansion [CLASSIC]",
+"name": "바닐라 총기 확장 (Vanilla Firearms Expansion) [CLASSIC]",
+"category": "총기·탄약",
+"summary": "AK-47, SKS, Mini-14, SPAS-12, M60 등 바닐라풍 총기와 탄약·부착물을 추가하는 총기 모드입니다.",
+"features": [
+"총기 추가: AK-47, MAK-90, SKS, Mini-14, M24, R700/R788, W1866, SPAS-12, M590, R1187 등과 M60 같은 중화기",
+"탄약: 7.62x39, .223, .22, 5.45, 7.62x54R, 5.7, 4.6, 5.56 배틀팩, M13 탄띠(.308) 등",
+"개머리판 접기/펼치기·자르기, 총검(M9) 공격 전환, 가죽/나일론 멜빵, 조준기 업그레이드",
+"탄창 커플링(5.56/7.62), M13 탄띠 제작·장전, M60 탄띠 파우치·탄피 수집기",
+"경찰·군인·생존자 좀비, 차량, 주택, 군/경찰 보관함, 총포상·전당포, 범죄자 은닉처, 사냥 컨테이너, 생존자 은신처에 총기 스폰"
+],
+"how": [
+"총 우클릭으로 개머리판·총검·멜빵 조작, 제작 메뉴에서 탄약 상자·탄띠 레시피"
+],
+"settings": [
+"모든 스폰 위치(경찰·군인·생존자·기타 좀비, 차량, 주택, 중화기, 군/경찰/상점/범죄/사냥/은신처): 켜짐",
+"총기 루트 배율 1.0, 주택 무기 배율 1.0",
+"VFE 컨테이너에서 바닐라 총 제거: 꺼짐",
+"부착물: 2배율 사거리+5/조준+5, 4배율 +10/+10, 8배율 +15/+20, 레드닷 조준-10, 레이저 조준-5/명중+10, 양각대 조준-5/명중+30/사거리+5, 반동패드 조준-5/반동지연-2",
+"상자당 탄약: 7.62x39 20, .223 20, .22 50, 5.45 20, 7.62x54R 30, 5.7 50, 4.6 50, 5.56 배틀팩 90, M13 30"
+],
+"notes": [
+"Guns of Marz도 바닐라 총기 대체가 켜져 있어 총기 종류가 많이 섞여 나옴",
+"아이템 이름 등 상당수 문자열의 한국어 번역이 비어 있어 영어로 보일 수 있음"
+],
+"order": 40
+},
+{
+"id": "HBTacReload",
+"workshop": "3610677934",
+"title": "[41/42.20.4MP] Visible Casing Ejection Framework - Hot Brass",
+"name": "핫 브라스 - 전술 재장전 (Hot Brass Tactical Reload)",
+"category": "총기·탄약",
+"summary": "탄창을 바닥에 떨어뜨리며 빠르게 교체하는 전술 재장전을 추가하는 모드입니다.",
+"features": [
+"탄창이 꽂힌 총을 재장전할 때 기존 탄창을 바닥으로 떨어뜨리고 새 탄창을 바로 삽입해 재장전 시간 단축",
+"떨어진 탄창에는 남은 탄약 수가 그대로 보존됨",
+"탄창 낙하 효과음 4종과 물리 낙하 연출"
+],
+"how": [
+"평소처럼 재장전 키로 재장전 — 떨어진 탄창은 나중에 바닥에서 다시 주워야 함"
 ],
 "settings": [],
 "notes": [
-"'토치 연료 채우기 (XL)' 레시피가 있어 Fix BlowTorch & PropaneTank와 함께 토치 충전 방식에 영향을 줄 수 있음",
-"공구 벨트는 '착용하기'로 입는 특수 벨트"
+"Hot Brass 프레임워크(HBVCEFb42) 필요",
+"급하게 쓰다 보면 탄창을 현장에 두고 올 수 있으니 주의"
 ],
-"order": 8
+"order": 24
 },
 {
-"id": "CraftEnginePartsCheap",
-"workshop": "2744114761",
-"title": "Craft Engine Parts",
-"name": "엔진 부품 제작 (저렴한 버전)",
-"category": "제작·기술",
-"summary": "잡지를 읽어 엔진 부품(Engine Parts)을 직접 만들 수 있게 합니다.",
+"id": "HBAmmoCraft",
+"workshop": "3610677934",
+"title": "[41/42.20.4MP] Visible Casing Ejection Framework - Hot Brass",
+"name": "핫 브라스 - 탄약 제작 (Hot Brass Ammo Crafting)",
+"category": "총기·탄약",
+"summary": "주운 탄피를 뇌관·탄두·화약과 조립해 다시 탄약으로 만드는 재장전(리로딩) 제작 모드입니다.",
 "features": [
-"새 잡지 'The Machinist' 추가 → 엔진 부품 제작법 3종 습득",
-"용접 방식: 금속용접 2, 용접 마스크·망치·드라이버·렌치, 토치 5회분·용접봉 3, 고철·금속 파이프·금속판·나사 5 → 엔진 부품 4개 (금속용접 4에서 자동 습득)",
-"정비 방식: 정비 4, 파이프 렌치 등, 토치 3·용접봉 2, 덕트 테이프·금속 파이프·작은 금속판·나사 10 → 엔진 부품 4개 (정비 6에서 자동 습득)",
-"전기 방식: 전기 1, 토치 2·용접봉 1, 덕트 테이프·전선·전자 부품 2·나사 16 → 엔진 부품 4개 (전기 3에서 자동 습득)",
-"잡지 스폰: 서점·도서관·잡지 진열대·전자제품점·우체국·정비소 책장 등"
+"리로딩 도구, 소총/권총/산탄 뇌관, 구경별 탄두(9x19mm, .45 ACP, .38, .357, .44, 5.56, .308, 7.62x39 등), 12게이지 산탄 알 아이템 추가",
+"리로딩 작업대: 망치 + 판자 2 + 못 2 + 리로딩 도구로 설치(목공 3 필요, 목공 경험치 50)",
+"작업대에서 탄피 + 탄두 + 뇌관 + 화약으로 탄약 조립(예: 12게이지 쉘 = 빈 쉘 1 + 산탄 알 9 + 산탄 뇌관 1 + 화약 3), 재장전 경험치 획득",
+"펜치/바이스그립으로 탄약 분해 → 탄피·탄두·뇌관·화약 회수(아무 표면에서 가능)",
+"경량/중량/대구경탄·산탄총 쉘에서 부품 얻기, 탄두·뇌관 상자 열기/담기 레시피"
 ],
 "how": [
-"제작 메뉴 '수리(Repair)' 분류의 'Make Spare Engine Parts'"
+"제작 메뉴의 '탄약 제작' 카테고리에서 리로딩 작업대 설치",
+"작업대 근처에서 [HotBrass] ... 탄약 조립하기 레시피 사용",
+"사격 후 바닥에 떨어진 탄피(Hot Brass 프레임워크)를 주워 재료로 사용"
 ],
 "settings": [],
 "notes": [
-"한국어 번역이 없어 잡지·레시피 이름이 영어로 보임"
+"Hot Brass - Visible Casing Ejection Framework(HBVCEFb42) 필요",
+"이 서버는 탄피가 바닥에 계속 남는 설정이라 탄피 회수가 쉬움(HBVCEFb42 항목 참고)"
 ],
-"order": 66
+"order": 23
 },
 {
-"id": "PropaneRefuel",
-"workshop": "3778284920",
-"title": "Propane Refuelling at Gas Pumps",
-"name": "주유소 프로판 충전 (Propane Refuelling at Gas Pumps)",
-"category": "제작·기술",
-"summary": "전기가 들어오는 주유소 펌프에서 프로판 탱크, 용접 토치, 프로판 랜턴 용기를 충전할 수 있게 합니다.",
+"id": "HBVCEFb42",
+"workshop": "3610677934",
+"title": "[41/42.20.4MP] Visible Casing Ejection Framework - Hot Brass",
+"name": "핫 브라스 - 탄피 배출 프레임워크 (Hot Brass VCEF)",
+"category": "총기·탄약",
+"summary": "총을 쏠 때 탄피가 눈에 보이게 튀어나오고 바닥에 떨어지게 하는 모드입니다.",
 "features": [
-"작동하는 주유 펌프에서 빈 프로판 탱크 충전",
-"용접 토치·프로판 랜턴 용기 직접 충전",
-"맵에 있는 대형 산업용 프로판 탱크를 프로판 저장소로 사용(꺼내기/채워 넣기)",
-"다른 차량 모드의 프로판 탱커 트럭이 자체 프로판 비축량을 가지며 펌프에서 탱커 충전 가능",
-"펌프가 비었거나 전력이 없으면 충전 불가"
+"사격 시 탄피 배출 연출(물리 낙하)",
+"구경별 탄피 아이템(9x19mm, .45 오토, .308, 5.56x45mm, 7.62x39mm 등)과 빈 산탄총 쉘(빨강/초록) 추가",
+"탄피·탄약 전용 아이콘, 탄피가 바닥에 떨어지는 소리",
+"Hot Brass 탄약 제작·전술 재장전 모드의 기반"
 ],
 "how": [
-"주유 펌프 우클릭 → Take Propane(프로판 충전)",
-"탱커 트럭을 펌프 옆에 세우고 → Fill Propane Tanker",
-"산업용 탱크 우클릭 → Store Propane / Store All로 저장"
+"사격 후 바닥의 탄피를 주워 탄약 제작 재료로 사용(HBAmmoCraft)"
 ],
 "settings": [
-"펌프 연료 소모(가득 찬 펌프=100): 프로판 탱크 20, 용접 토치 4, 랜턴 용기 6",
-"용접 토치·랜턴 용기 충전 허용",
-"프로판 탱커 사용 및 펌프에서 탱커 충전 허용(탱커 초기 비축 0~200)",
-"산업용 프로판 탱크 사용: 발견 시 0~500, 최대 용량 1000"
+"탄피 바닥에 유지(PermanentCasings): 켜짐",
+"커스텀 아이콘: 켜짐",
+"탄피 소리: 켜짐",
+"Bandits 모드 탄피 배출: 꺼짐"
 ],
 "notes": [
-"UI 문자열에 한국어 번역이 없어 메뉴가 영어로 표시됨"
+"탄피가 계속 남으므로 사격장 주변 바닥에 아이템이 많이 쌓일 수 있음"
 ],
-"order": 102
-},
-{
-"id": "FixBlowTorchPropaneTank",
-"workshop": "3044705007",
-"title": "[B42/41] Fix BlowTorch & PropaneTank",
-"name": "프로판 토치 & 프로판 통 수정",
-"category": "제작·기술",
-"summary": "프로판 토치 용량을 100으로 늘리고, 프로판 통 하나로 토치를 16회 충전할 수 있게 고치는 모드입니다.",
-"features": [
-"프로판 토치 용량 10 → 100으로 증가",
-"프로판 통으로 토치 16회 충전 가능하도록 충전 비율 수정",
-"프로판 통 아이템 능력치는 건드리지 않아 Real Metalworking 등 프로판 통 수정 모드와 호환"
-],
-"how": [
-"토치 충전 레시피(프로판 통 사용)로 충전"
-],
-"settings": [],
-"notes": [
-"충전하기를 누르면 토치 잔량과 상관없이 프로판 통 1회분이 소모되니 거의 빈 토치를 충전할 것",
-"The Workshop의 '토치 연료 채우기 (XL)' 등 다른 토치 충전 레시피와 함께 존재"
-],
-"order": 35
-},
-{
-"id": "MaDZombieLootB42",
-"workshop": "3789934624",
-"title": "MaD's Awesome Zombie Loot [Build 42]",
-"name": "MaD's 좀비 전리품",
-"category": "좀비·이벤트·난이도",
-"summary": "좀비가 희귀한 생존 물품을 지니게 하고, 직업 복장별 전용 드롭도 추가합니다.",
-"features": [
-"좀비 인벤토리에 탄약·탄약 상자·근접무기·권총·장총·통조림·간식·자원(테이프·접착제)·가방·총기 가방·잡동사니 추가",
-"복장(직업)별 전용 아이템 드롭",
-"좀비가 멘 가방·총기 가방 안 내용물",
-"총과 함께 낱개 탄약 묶음",
-"아이템 상태·소모품 잔량 범위 설정"
-],
-"how": [
-"좀비 시체를 뒤지면 됨"
-],
-"settings": [
-"모든 배수 100 (= 기본 1배)",
-"최대 내구도 확률 20%, 최소 상태 10%",
-"소모품 가득 찰 확률 20%, 최소 잔량 20%",
-"낱개 탄약 최대 25개",
-"추가 롤·제거 아이템 없음"
-],
-"notes": [
-"샌드박스 설정 섹션 이름은 원작과 같은 'AirbobbelzLoot'"
-],
-"order": 88
-},
-{
-"id": "SanboidStory",
-"workshop": "3808331424",
-"title": "khan story",
-"name": "sanboid story (서버 공동 탈출 스토리)",
-"category": "좀비·이벤트·난이도",
-"summary": "생존자들이 힘을 모아 송신기를 완성하고 구조 헬기로 녹스 카운티를 탈출하는 이 서버 전용 스토리 캠페인입니다.",
-"features": [
-"국가 비상방송(관리자 시작)으로 시작: 비상 주파수 47.8로 다수 생존자 집단의 접속을 요구",
-"초기 송신기 조립 세트 제작 → 거점에 설치 → 부품 4종(군용 통신 모듈, 고출력 발전 장치, 장거리 송신 안테나, 신호 증폭기)을 찾아 장착",
-"부품은 한 명이 확보하면 팀 전체 진행에 반영, 거점 송신기에 보관해 두면 요구 레벨을 갖춘 동료가 설치",
-"연구 기록·밀봉된 연구 샘플(백신 샘플) 등 스토리 아이템과 손글씨 문서, 무전 교신 기록",
-"두 단계 구조 작전: 1차 방어(구조 지점) → 대체 철수지로 이동 → 최종 방어 후 헬기 탑승·탈출 엔딩",
-"방어 중 서버 공동으로 좀비 웨이브 생성, 폭풍 기상 연출",
-"관리자는 진행 참여·자동 획득에서 제외되고 배치·추적·복구만 담당"
-],
-"how": [
-"월드/인벤토리 우클릭: '[스토리] 작전 현황 표시/숨김', '스토리: 무전·팀 조사 기록', '탈출 계획 열기', '교신 기록', '자막·음향 설정'",
-"조립 세트 소지 후 거점 옆 빈 바닥 우클릭 → '이곳에 초기 송신기 설치' (설치 3분), 이후 '부품 보관' / '<부품> 설치', '송신기 회수해서 옮기기'",
-"무전기 우클릭 → '이 무전기를 소문 방송 수신기로 등록' (전원 켜고 같은 주파수 유지)",
-"송신기에서 '군용 주파수로 송신', '구조 신호 전송', 구조 지점에서 '구조대에 탑승'",
-"초기 송신기 조립 세트 재료: 전자부품 16, 무전 수신기 1, 무전 송신기 1, 전선 6, 알루미늄 2, 나사못 25, 강철봉 8, 금속 파이프 4, 금속판 4, 작은 금속판 4, 판자 4 + 드라이버·용접 마스크, 프로판 토치 2회분"
-],
-"settings": [
-"부품 설치 요구 레벨: 통신 모듈 전기 8 / 발전 장치 기계 6 / 안테나 금속용접 7 / 신호 증폭기 전기 5 (획득·보관엔 레벨 불필요)",
-"부품 설치 시간 120초(실제), 이동·사망·접속 종료 시 취소",
-"초기 송신기 조립 세트 제작: 전기공학 3, 금속용접 2",
-"1차 방어 6시간 / 최종 방어 8시간 (게임 시간)",
-"탈출 증원(좀비 웨이브) 켜짐: 동시 상한 1차 64 / 최종 128, 누적 상한 1차 400 / 최종 1600, 한 번에 8 / 16마리, 간격 15초 / 10초",
-"거점 무전 가청 범위 35칸, 1차·최종 구조지 최소 거리 500칸",
-"구조 작전 폭풍 기상 켜짐, 일반 생존자 미접속 시 자동 진행 일시정지 켜짐"
-],
-"notes": [
-"단전·단수는 이 모드가 아니라 서버 설정을 따름",
-"헬기 도착 후 실제 2분 안에 탑승(탑승 간격 15초), 샘플은 소지자가 탑승할 때 인계"
-],
-"order": 82
-},
-{
-"id": "survivingthroughseasons",
-"workshop": "2753086629",
-"title": "[B42MP/B41]Surviving Through Seasons",
-"name": "계절 따라 살아남기 (Surviving Through Seasons)",
-"category": "좀비·이벤트·난이도",
-"summary": "한 달 일수를 줄여 계절이 더 빨리 바뀌도록 매일 달력 날짜를 건너뛰는 모드입니다.",
-"features": [
-"계절별로 '한 달 최대 일수'를 정해, 매일이 끝날 때 그만큼 달력 날짜를 추가로 넘김",
-"예: 한 달 10일이면 하루가 지날 때마다 약 2일씩 추가로 건너뜀(실제 월 일수 기준 계산)",
-"날짜만 건너뛰며, 시간 경과로 계산되는 다른 월드 시간은 그대로(모드 주석 기준)"
-],
-"how": [],
-"settings": [
-"봄·여름·가을·겨울 모두 한 달 10일 — 즉 한 계절이 게임 내 약 30일"
-],
-"notes": [
-"겨울이 빨리 오므로 식량·연료·월동 준비를 일찍 해야 함",
-"날짜 기준으로 판단하는 요소(계절·달력)와 시간 기준 요소(부패 등)의 체감이 다를 수 있음"
-],
-"order": 42
-},
-{
-"id": "TheyKnewContinued",
-"workshop": "3813362974",
-"title": "They Knew Continued",
-"name": "그들은 알고 있었다 컨티뉴드 (They Knew Continued)",
-"category": "좀비·이벤트·난이도",
-"summary": "실험용 녹스 바이러스 치료제를 지닌 방호복 좀비를 추가해, 감염을 치료·지연·예방할 수 있는 길을 열어 줍니다.",
-"features": [
-"방호복 좀비 4종: 검은색(정체불명 방호복), 흰색(연구소), 주황색(격리팀), 육군 화생방 보호복",
-"좀복시비르 앰풀(치료제): 감염 완치, 회복 기간 동안 부작용(메스꺼움·통증·피로·우울)",
-"좀보솔론 알약(감염 지연), 좀복시사이클린 알약(감염 예방), 좀복시백스 주사기(백신)",
-"바이러스 검사 키트로 감염 여부 확인(양성/음성)",
-"전술 책가방, 수상한 배낭 등 방호복 좀비 전용 드롭 가방, 방호복 수리 레시피",
-"방호복 좀비는 시야·청각이 떨어져 몰래 접근 가능(플레이어가 입어도 동일)",
-"시간이 지날수록 방호복 좀비가 늘어남"
-],
-"how": [
-"방호복 좀비를 처치하고 시체를 뒤져 약품 획득",
-"앰풀 우클릭 → 앰플 깨기(사용), 주사기 → 주사하기, 검사 키트 → 바이러스 검사하기"
-],
-"settings": [
-"검은 방호복 등장률 0.3 (약 1,200마리 중 1), 흰/주황/육군 0.3, 군기지 2%, 연구소 8%",
-"60일에 걸쳐 방호복 좀비가 최대 3배까지 증가",
-"방호복 착용 시 시야·청각: 나쁨, 위장 보균자: 꺼짐",
-"검은 방호복 드롭: 치료제 100%, 검사 키트 25%, 백신 2%, 수상한 배낭 3% (지연제·예방제 0%)",
-"흰색: 예방제 50%, 검사 키트 50%, 치료제 5%, 백신 1% / 주황색: 지연제 50%, 검사 키트 25% / 육군: 예방제 40%, 지연제 25%, 치료제 10%",
-"의료 보관함 스폰: 전부 0% (방호복 좀비에게서만 획득)",
-"치료제 부작용 켜짐(회복 24시간), 유통기한 없음 / 좀보솔론: 감염 초기화 방식 / 예방제 지속 24시간 / 백신 30일",
-"전술 책가방 용량 8, 무게 감소 80%"
-],
-"notes": [
-"같은 워크숍 항목에 TheyKnewContinued_ZVV 하위 모드가 별도로 있음"
-],
-"order": 113
-},
-{
-"id": "DynamicHordeEventsB42",
-"workshop": "3716405632",
-"title": "Dynamic Horde Events B42",
-"name": "다이내믹 호드 이벤트",
-"category": "좀비·이벤트·난이도",
-"summary": "주기적으로 좀비 무리(호드)를 플레이어 주변에 생성해 몰려오게 하는 이벤트를 추가합니다.",
-"features": [
-"일반 호드: 정해진 간격마다 주변에 좀비 무리 생성 후 소리로 유인",
-"떠도는 호드(Wandering): 근처를 지나가는 이동형 대규모 무리",
-"대재앙 호드(Cataclysm): 드물게 오는 초하드코어 무리 + 안개·바람·화면 효과",
-"생존 일수에 따라 호드 규모 증가",
-"방향 표시기, 경고음, 캐릭터 대사('젠장... 근처에 호드가 있어...')로 사전 경고",
-"타이머는 세이브에 저장되어 서버 재시작에도 유지"
-],
-"how": [
-"별도 조작 없음 — 경고 표시·대사가 나오면 방어 준비 또는 회피"
-],
-"settings": [
-"일반 호드: 무작위 간격 12~48시간, 5~30마리, 생성 거리 80~200칸(멀티에서는 최대 70칸으로 제한), 밤에도 발생",
-"규모 증가: 생존 일수 기준 7일마다 +10%, 최대 150%",
-"일반 호드 추적/경로 보조: 꺼짐 (유인 소리 반경·크기 500)",
-"떠도는 호드: 48~120시간마다, 40~120마리, 140~220칸",
-"대재앙 호드: 90~120일마다, 200~500마리, 140~240칸, 4시간 추적, 8시간 악천후, 화면 효과 15초",
-"방향 표시 20초(대재앙 25초, 떠도는 35초), 경고음·대사 켜짐, 실내 생성 회피 켜짐"
-],
-"notes": [],
-"order": 74
-},
-{
-"id": "SkullysZombieCollision",
-"workshop": "3778511497",
-"title": "Skully's Zombie Collision [B42.20+]",
-"name": "스컬리의 좀비 충돌 (Skully's Zombie Collision)",
-"category": "좀비·이벤트·난이도",
-"summary": "좀비끼리 서로 겹치지 않고 밀어내도록 좀비 간 충돌 판정을 추가합니다.",
-"features": [
-"플레이어 주변 좀비에 히트박스 충돌을 적용해 한 칸에 겹쳐 뭉치는 현상 감소",
-"맞거나 밀쳐져 비틀거리는 좀비, 넘어지는 좀비는 더 큰 반경으로 주변 좀비를 밀어냄",
-"성능을 위해 틱당 처리 좀비 수와 거리 제한"
-],
-"how": [
-"별도 조작 없음"
-],
-"settings": [
-"틱당 처리 좀비 수 12 (기본 6)",
-"플레이어로부터 15타일 이내 적용 (기본 6)",
-"충돌 반경·밀어내는 힘은 기본값 (일반 0.46/0.05, 기절 0.65/0.19, 넘어짐 0.75/0.24)"
-],
-"notes": [],
-"order": 109
-},
-{
-"id": "TheOnlyCure",
-"workshop": "3580276809",
-"title": "[B42.20] The Only Cure",
-"name": "유일한 치료법 (The Only Cure)",
-"category": "좀비·이벤트·난이도",
-"summary": "물렸을 때 팔다리를 절단해 감염을 막는 선택지와 지혈대·의수를 추가하는 모드입니다.",
-"features": [
-"손/팔목/팔뚝(좌우) 절단: 절단만, 절단+붕대, 절단+봉합, 절단+봉합+붕대",
-"상처 지지기(소작), 상처 닦기, 상처 치유(흉터화) 진행과 상처 오염도",
-"지혈대(팔·다리) 착용",
-"의수·후크 의수 제작([TOC] 레시피)과 장착, 의수 숙련도",
-"좌/우 절단 지식 경험치(한 손으로 생활하는 숙련)",
-"캐릭터 생성 시 절단 상태로 시작하는 특성(손/팔목/팔 전체 절단)"
-],
-"how": [
-"톱(톱·소형 톱 등)을 가진 상태에서 우클릭 > 절단하기 > 부위(손/팔목/팔뚝) 선택",
-"붕대·실·바늘 등을 갖고 있으면 절단과 함께 처치",
-"의수는 레시피로 만든 뒤 우클릭 '오른팔/왼팔에 의수 장착'"
-],
-"settings": [
-"상처 치유 속도: 1(기본)",
-"상처 오염도 배율: 1",
-"외과의(의사) 능력 중요도: 2(기본)"
-],
-"notes": [
-"좀비에 의한 절단 옵션 값은 서버 파일에 없음(기본값 사용)"
-],
-"order": 32
-},
-{
-"id": "ZombieVisibilityFix",
-"workshop": "3814073243",
-"title": "Zombie Visibility Fix + Stair-O-Vision",
-"name": "좀비 시야 수정 (Zombie Visibility Fix + Stair-O-Vision)",
-"category": "좀비·이벤트·난이도",
-"summary": "플레이어 시야각과 실제로 보이는 좀비가 어긋나는 문제를 고쳐, 보여야 할 좀비를 정확히 드러내 줍니다.",
-"features": [
-"정밀 레이캐스트로 시야 안의 좀비를 드러냄(타일 단위보다 정밀)",
-"Stair-O-Vision: 오르는 계단 꼭대기에 있는 좀비 표시",
-"드러난 좀비의 투명도, 처리 빈도, 처리 거리 설정",
-"조준 중에만 작동하는 옵션, 켜기/끄기 단축키"
-],
-"how": [
-"모드 옵션(Zombie Visibility Fix)에서 설정과 토글 키 지정"
-],
-"settings": [
-"이 모드로 드러난 좀비도 플레이어를 감지함: 켜짐",
-"하드 모드(좀비 전체 폭이 가려지지 않아야 표시): 꺼짐"
-],
-"notes": [
-"옵션 문자열은 한국어 번역이 없어 영어로 표시됨"
-],
-"order": 124
+"order": 4
 },
 {
 "id": "04vwTouran",
@@ -6117,140 +4492,790 @@
 "order": 115
 },
 {
-"id": "GunsOfMarz",
-"workshop": "3722134990",
-"title": "[42.21MP] GoM - Guns of Marz",
-"name": "건즈 오브 마즈 (GoM - Guns of Marz)",
-"category": "총기·탄약",
-"summary": "다양한 기능을 가진 총기를 대량으로 추가하고 바닐라 총기·탄약·부착물을 대체하는 총기 팩입니다.",
+"id": "KAMER_RepairWall",
+"workshop": "3006882690",
+"title": "[B41&B42] Repair Wall",
+"name": "[K] 벽 수리 (Repair Wall)",
+"category": "건축·가구",
+"summary": "손상된 벽·구조물을 우클릭으로 수리할 수 있게 하는 모드입니다.",
 "features": [
-"다수의 신규 총기와 탄창, 부착물(총열, 양각대, 조준경, 레일, 반동 패드, 멜빵, 하부 부착물 등 부위별 장착)",
-"Gunworks 기능 사용: 사격 모드 전환, 탄약 장전 UI, 총검·양각대·개머리판 조작",
-"탄약 상자/패키지/보관함 열기·포장 레시피, 구형 MarzGuns 탄약 변환",
-"산탄총 총열 짧게 자르기, 정글 탄창 만들기/분리",
-"옵션에 따라 대용량·드럼 탄창, 수류탄·연막·소이탄이 군·경찰 루트에 등장"
+"손상된 오브젝트 우클릭 시 '수리' 메뉴 추가",
+"마우스를 올리면 필요한 재료·도구와 예상 회복량(%) 툴팁 표시",
+"나무 구조물은 목공, 금속 구조물은 금속 용접 레벨에 따라 회복량 증가",
+"망치 자동 장착, 금속 수리 시 용접 마스크 자동 착용"
 ],
 "how": [
-"키: T 사격 모드, O 장전 UI, U 하부 부착물 (Gunworks 키 설정)",
-"탄약 상자는 우클릭/제작 메뉴의 '상자 열기' 레시피로 개봉"
+"손상된 벽/문/바리케이드 등 우클릭 > 수리 > 수리할 대상 선택"
 ],
-"settings": [
-"바닐라 총기·탄약·부착물을 GoM 버전으로 대체: 모두 켜짐",
-"GoM 루트 배율: 1.0",
-"대용량 탄창 스폰: 켜짐",
-"수류탄·폭발물 스폰: 켜짐"
-],
-"notes": [
-"Gunworks Framework(SWMG) 필요",
-"Vanilla Firearms Expansion(VFE)도 함께 켜져 있어 총기 종류가 겹치거나 많아질 수 있음",
-"GoM 자체 전술 재장전 옵션 값은 서버 파일에 없음 — 전술 재장전은 Hot Brass Tactical Reload 모드가 별도로 켜져 있음"
-],
-"order": 25
+"settings": [],
+"notes": [],
+"order": 26
 },
 {
-"id": "VFExpansion1",
-"workshop": "3761077099",
-"title": "[B42] Vanilla Firearms Expansion [CLASSIC]",
-"name": "바닐라 총기 확장 (Vanilla Firearms Expansion) [CLASSIC]",
-"category": "총기·탄약",
-"summary": "AK-47, SKS, Mini-14, SPAS-12, M60 등 바닐라풍 총기와 탄약·부착물을 추가하는 총기 모드입니다.",
+"id": "Disassemble Container With Items",
+"workshop": "2835852387",
+"title": "Disassemble Container With Items",
+"name": "내용물 든 가구 분해",
+"category": "건축·가구",
+"summary": "안에 물건이 들어 있는 가구(컨테이너)도 분해할 수 있게 하고, 내용물은 바닥에 떨어뜨립니다.",
 "features": [
-"총기 추가: AK-47, MAK-90, SKS, Mini-14, M24, R700/R788, W1866, SPAS-12, M590, R1187 등과 M60 같은 중화기",
-"탄약: 7.62x39, .223, .22, 5.45, 7.62x54R, 5.7, 4.6, 5.56 배틀팩, M13 탄띠(.308) 등",
-"개머리판 접기/펼치기·자르기, 총검(M9) 공격 전환, 가죽/나일론 멜빵, 조준기 업그레이드",
-"탄창 커플링(5.56/7.62), M13 탄띠 제작·장전, M60 탄띠 파우치·탄피 수집기",
-"경찰·군인·생존자 좀비, 차량, 주택, 군/경찰 보관함, 총포상·전당포, 범죄자 은닉처, 사냥 컨테이너, 생존자 은신처에 총기 스폰"
+"바닐라 가구 분해 로직(ISMoveableSpriteProps)을 교체",
+"분해 시 컨테이너 안의 아이템을 그 칸 바닥에 내려놓음",
+"내용물을 미리 비우는 수고를 덜어 줌 (나머지 분해 동작·재료 반환은 바닐라 방식)"
 ],
 "how": [
-"총 우클릭으로 개머리판·총검·멜빵 조작, 제작 메뉴에서 탄약 상자·탄띠 레시피"
-],
-"settings": [
-"모든 스폰 위치(경찰·군인·생존자·기타 좀비, 차량, 주택, 중화기, 군/경찰/상점/범죄/사냥/은신처): 켜짐",
-"총기 루트 배율 1.0, 주택 무기 배율 1.0",
-"VFE 컨테이너에서 바닐라 총 제거: 꺼짐",
-"부착물: 2배율 사거리+5/조준+5, 4배율 +10/+10, 8배율 +15/+20, 레드닷 조준-10, 레이저 조준-5/명중+10, 양각대 조준-5/명중+30/사거리+5, 반동패드 조준-5/반동지연-2",
-"상자당 탄약: 7.62x39 20, .223 20, .22 50, 5.45 20, 7.62x54R 30, 5.7 50, 4.6 50, 5.56 배틀팩 90, M13 30"
-],
-"notes": [
-"Guns of Marz도 바닐라 총기 대체가 켜져 있어 총기 종류가 많이 섞여 나옴",
-"아이템 이름 등 상당수 문자열의 한국어 번역이 비어 있어 영어로 보일 수 있음"
-],
-"order": 40
-},
-{
-"id": "HBTacReload",
-"workshop": "3610677934",
-"title": "[41/42.20.4MP] Visible Casing Ejection Framework - Hot Brass",
-"name": "핫 브라스 - 전술 재장전 (Hot Brass Tactical Reload)",
-"category": "총기·탄약",
-"summary": "탄창을 바닥에 떨어뜨리며 빠르게 교체하는 전술 재장전을 추가하는 모드입니다.",
-"features": [
-"탄창이 꽂힌 총을 재장전할 때 기존 탄창을 바닥으로 떨어뜨리고 새 탄창을 바로 삽입해 재장전 시간 단축",
-"떨어진 탄창에는 남은 탄약 수가 그대로 보존됨",
-"탄창 낙하 효과음 4종과 물리 낙하 연출"
-],
-"how": [
-"평소처럼 재장전 키로 재장전 — 떨어진 탄창은 나중에 바닥에서 다시 주워야 함"
+"바닐라와 같이 가구 우클릭 → 분해"
 ],
 "settings": [],
 "notes": [
-"Hot Brass 프레임워크(HBVCEFb42) 필요",
-"급하게 쓰다 보면 탄창을 현장에 두고 올 수 있으니 주의"
+"바닐라 이동·분해 파일을 통째로 덮어쓰는 방식이라, 같은 파일을 고치는 다른 모드와 충돌 가능"
 ],
-"order": 24
+"order": 70
 },
 {
-"id": "HBAmmoCraft",
-"workshop": "3610677934",
-"title": "[41/42.20.4MP] Visible Casing Ejection Framework - Hot Brass",
-"name": "핫 브라스 - 탄약 제작 (Hot Brass Ammo Crafting)",
-"category": "총기·탄약",
-"summary": "주운 탄피를 뇌관·탄두·화약과 조립해 다시 탄약으로 만드는 재장전(리로딩) 제작 모드입니다.",
+"id": "Neat_Building",
+"workshop": "3536052310",
+"title": "Neat Building [B42]",
+"name": "니트 빌딩 (Neat Building)",
+"category": "건축·가구",
+"summary": "건설 메뉴를 Neat UI 방식으로 바꾸고 다양한 문·문틀 등 추가 건축물을 넣어 줍니다.",
 "features": [
-"리로딩 도구, 소총/권총/산탄 뇌관, 구경별 탄두(9x19mm, .45 ACP, .38, .357, .44, 5.56, .308, 7.62x39 등), 12게이지 산탄 알 아이템 추가",
-"리로딩 작업대: 망치 + 판자 2 + 못 2 + 리로딩 도구로 설치(목공 3 필요, 목공 경험치 50)",
-"작업대에서 탄피 + 탄두 + 뇌관 + 화약으로 탄약 조립(예: 12게이지 쉘 = 빈 쉘 1 + 산탄 알 9 + 산탄 뇌관 1 + 화약 3), 재장전 경험치 획득",
-"펜치/바이스그립으로 탄약 분해 → 탄피·탄두·뇌관·화약 회수(아무 표면에서 가능)",
-"경량/중량/대구경탄·산탄총 쉘에서 부품 얻기, 탄두·뇌관 상자 열기/담기 레시피"
+"바닐라 건설 UI를 대체하는 Neat Building 건설 메뉴(검색, 아이템 유형/이름 필터)",
+"[NB] 표시가 붙은 추가 건축물: 헛간 나무 문, 철도/패널/타일 문틀, 실내 나무 문, 색상 금속 문 등",
+"문틀 기본/고급/장인 단계",
+"요구 조건 부족으로 건축이 취소되면 짧은 알림 표시(옵션)"
 ],
 "how": [
-"제작 메뉴의 '탄약 제작' 카테고리에서 리로딩 작업대 설치",
-"작업대 근처에서 [HotBrass] ... 탄약 조립하기 레시피 사용",
-"사격 후 바닥에 떨어진 탄피(Hot Brass 프레임워크)를 주워 재료로 사용"
+"건설 메뉴를 열면 Neat Building UI로 표시됨",
+"모드 옵션 'Neat Building UI 사용'을 끄면 바닐라 건설 UI로 복귀"
 ],
 "settings": [],
 "notes": [
-"Hot Brass - Visible Casing Ejection Framework(HBVCEFb42) 필요",
-"이 서버는 탄피가 바닥에 계속 남는 설정이라 탄피 회수가 쉬움(HBVCEFb42 항목 참고)"
+"NeatUI Framework 필요",
+"Stairs East & South 모드나 모듈형 Neat Building 변형과 함께 쓰지 말 것(모드 설명)",
+"기존 세이브에서 바로 빼면 안 되며, 제거 시 Safe Uninstall Support 모드를 쓰라고 안내됨"
 ],
-"order": 23
+"order": 96
 },
 {
-"id": "HBVCEFb42",
-"workshop": "3610677934",
-"title": "[41/42.20.4MP] Visible Casing Ejection Framework - Hot Brass",
-"name": "핫 브라스 - 탄피 배출 프레임워크 (Hot Brass VCEF)",
-"category": "총기·탄약",
-"summary": "총을 쏠 때 탄피가 눈에 보이게 튀어나오고 바닥에 떨어지게 하는 모드입니다.",
+"id": "MoreBuilds",
+"workshop": "515555911",
+"title": "More Builds",
+"name": "모어 빌드 (More Builds B42)",
+"category": "건축·가구",
+"summary": "가구, 구조물, 수납함, 설비, 조명, 장식 등 대량의 건설 항목과 전용 건축 카탈로그 창을 추가합니다.",
 "features": [
-"사격 시 탄피 배출 연출(물리 낙하)",
-"구경별 탄피 아이템(9x19mm, .45 오토, .308, 5.56x45mm, 7.62x39mm 등)과 빈 산탄총 쉘(빨강/초록) 추가",
-"탄피·탄약 전용 아이콘, 탄피가 바닥에 떨어지는 소리",
-"Hot Brass 탄약 제작·전술 재장전 모드의 기반"
+"벽·기둥·문틀·창틀·울타리를 여러 색/재질(회색·흰색 회반죽, 붉은 헛간 나무, 회색 나무 등)로 추가",
+"가구·수납·설비·야외·장식 등 카테고리별 건축 카탈로그(검색, 즐겨찾기, 상세 정보 포함)",
+"우물·물 펌프 등 물 공급원 건설 가능(자동으로 물이 다시 차오름)",
+"멀티플레이에서 많이 지어진 건물을 모아 보여 주는 '인기 건물' 카테고리",
+"서랍, 전자 마이크, 페인트 벽지 등 일부 제작 레시피 추가"
 ],
 "how": [
-"사격 후 바닥의 탄피를 주워 탄약 제작 재료로 사용(HBAmmoCraft)"
+"기본 단축키 Ctrl+B로 More Builds 창 열기(키 설정에서 변경 가능)",
+"또는 바닥/오브젝트 우클릭 메뉴에서 More Builds 창 열기",
+"카테고리 선택 또는 검색 → 항목 선택 → Build로 배치"
 ],
 "settings": [
-"탄피 바닥에 유지(PermanentCasings): 켜짐",
-"커스텀 아이콘: 켜짐",
-"탄피 소리: 켜짐",
-"Bandits 모드 탄피 배출: 꺼짐"
+"우물 최대 저수량 1200, 물 펌프 최대 100 (기본값)",
+"건설 직후 물 25% 채워진 상태, 자동 보충 배율 1.0",
+"건설 가능 최소 권한: user (일반 플레이어 모두 건설 가능)",
+"인기 건물: 켜짐 (최소 점수 5, 최대 24개 표시, 7일마다 점수 절반 감소)"
 ],
 "notes": [
-"탄피가 계속 남으므로 사격장 주변 바닥에 아이템이 많이 쌓일 수 있음"
+"문자열 샘플 기준 이 모드의 한국어 번역이 없어 메뉴가 영어로 표시될 수 있음"
 ],
-"order": 4
+"order": 92
+},
+{
+"id": "TheWorkshopB42",
+"workshop": "3786670855",
+"title": "The Workshop B42",
+"name": "더 워크숍 B42 (The Workshop)",
+"category": "제작·기술",
+"summary": "금속 작업대·주조·차량 부품 해체 등 고철 가공과 금속 제작을 크게 확장하는 모드입니다.",
+"features": [
+"금속 작업대: '고철 가공(Scrapping)' 탭 레시피 전부에 사용",
+"차량 부품 해체(배터리, 서스펜션, 브레이크, 차문, 연료탱크, 머플러, 바퀴 등)로 고철·부품 획득",
+"거푸집(금속 파이프/주괴/작은 금속판)으로 금속 주조, 납 파이프 주조",
+"프로판 가스로 조립, 프로판 저장고·산업용 프로판 탱크(트레일러로만 운반 가능) 및 충전 레시피",
+"새 재료·공구: 금속 부품, 나사·대형 볼트, 스프링, 사슬, 모터, 쇠줄, 펜치, 금속 절단기, 총기 부품, 공기통, 공구 벨트(특수 벨트)",
+"레시피 대부분(61개)은 책으로 배워야 함: 바보를 위한 DIY 제작 1~3권, 멍청이도 하는 뒷마당 제련, 한눈에 보는 자동차 해체"
+],
+"how": [
+"레시피 책을 찾아 읽은 뒤 제작 메뉴 '고철 가공'/'용접'/'TW: 메인' 탭 사용",
+"금속 작업대를 먼저 만들어 두면 고철 가공 레시피 전부 사용 가능",
+"일부 용접 레시피는 금속 용접 1~4레벨 요구"
+],
+"settings": [],
+"notes": [
+"'토치 연료 채우기 (XL)' 레시피가 있어 Fix BlowTorch & PropaneTank와 함께 토치 충전 방식에 영향을 줄 수 있음",
+"공구 벨트는 '착용하기'로 입는 특수 벨트"
+],
+"order": 8
+},
+{
+"id": "CraftEnginePartsCheap",
+"workshop": "2744114761",
+"title": "Craft Engine Parts",
+"name": "엔진 부품 제작 (저렴한 버전)",
+"category": "제작·기술",
+"summary": "잡지를 읽어 엔진 부품(Engine Parts)을 직접 만들 수 있게 합니다.",
+"features": [
+"새 잡지 'The Machinist' 추가 → 엔진 부품 제작법 3종 습득",
+"용접 방식: 금속용접 2, 용접 마스크·망치·드라이버·렌치, 토치 5회분·용접봉 3, 고철·금속 파이프·금속판·나사 5 → 엔진 부품 4개 (금속용접 4에서 자동 습득)",
+"정비 방식: 정비 4, 파이프 렌치 등, 토치 3·용접봉 2, 덕트 테이프·금속 파이프·작은 금속판·나사 10 → 엔진 부품 4개 (정비 6에서 자동 습득)",
+"전기 방식: 전기 1, 토치 2·용접봉 1, 덕트 테이프·전선·전자 부품 2·나사 16 → 엔진 부품 4개 (전기 3에서 자동 습득)",
+"잡지 스폰: 서점·도서관·잡지 진열대·전자제품점·우체국·정비소 책장 등"
+],
+"how": [
+"제작 메뉴 '수리(Repair)' 분류의 'Make Spare Engine Parts'"
+],
+"settings": [],
+"notes": [
+"한국어 번역이 없어 잡지·레시피 이름이 영어로 보임"
+],
+"order": 66
+},
+{
+"id": "PropaneRefuel",
+"workshop": "3778284920",
+"title": "Propane Refuelling at Gas Pumps",
+"name": "주유소 프로판 충전 (Propane Refuelling at Gas Pumps)",
+"category": "제작·기술",
+"summary": "전기가 들어오는 주유소 펌프에서 프로판 탱크, 용접 토치, 프로판 랜턴 용기를 충전할 수 있게 합니다.",
+"features": [
+"작동하는 주유 펌프에서 빈 프로판 탱크 충전",
+"용접 토치·프로판 랜턴 용기 직접 충전",
+"맵에 있는 대형 산업용 프로판 탱크를 프로판 저장소로 사용(꺼내기/채워 넣기)",
+"다른 차량 모드의 프로판 탱커 트럭이 자체 프로판 비축량을 가지며 펌프에서 탱커 충전 가능",
+"펌프가 비었거나 전력이 없으면 충전 불가"
+],
+"how": [
+"주유 펌프 우클릭 → Take Propane(프로판 충전)",
+"탱커 트럭을 펌프 옆에 세우고 → Fill Propane Tanker",
+"산업용 탱크 우클릭 → Store Propane / Store All로 저장"
+],
+"settings": [
+"펌프 연료 소모(가득 찬 펌프=100): 프로판 탱크 20, 용접 토치 4, 랜턴 용기 6",
+"용접 토치·랜턴 용기 충전 허용",
+"프로판 탱커 사용 및 펌프에서 탱커 충전 허용(탱커 초기 비축 0~200)",
+"산업용 프로판 탱크 사용: 발견 시 0~500, 최대 용량 1000"
+],
+"notes": [
+"UI 문자열에 한국어 번역이 없어 메뉴가 영어로 표시됨"
+],
+"order": 102
+},
+{
+"id": "FixBlowTorchPropaneTank",
+"workshop": "3044705007",
+"title": "[B42/41] Fix BlowTorch & PropaneTank",
+"name": "프로판 토치 & 프로판 통 수정",
+"category": "제작·기술",
+"summary": "프로판 토치 용량을 100으로 늘리고, 프로판 통 하나로 토치를 16회 충전할 수 있게 고치는 모드입니다.",
+"features": [
+"프로판 토치 용량 10 → 100으로 증가",
+"프로판 통으로 토치 16회 충전 가능하도록 충전 비율 수정",
+"프로판 통 아이템 능력치는 건드리지 않아 Real Metalworking 등 프로판 통 수정 모드와 호환"
+],
+"how": [
+"토치 충전 레시피(프로판 통 사용)로 충전"
+],
+"settings": [],
+"notes": [
+"충전하기를 누르면 토치 잔량과 상관없이 프로판 통 1회분이 소모되니 거의 빈 토치를 충전할 것",
+"The Workshop의 '토치 연료 채우기 (XL)' 등 다른 토치 충전 레시피와 함께 존재"
+],
+"order": 35
+},
+{
+"id": "DryThatFoodMP",
+"workshop": "3487128902",
+"title": "Dry That Food!",
+"name": "Dry That Food 멀티플레이 (음식 건조)",
+"category": "요리·음식·농사",
+"summary": "과일·채소·허브를 말려 오래 보존하는 건조 레시피를 멀티플레이용으로 추가합니다.",
+"features": [
+"휴대용 식물 건조대(Plant Dryer) 제작: 노끈 5 + 나무 막대 7 (요리 2)",
+"과일 15종(사과, 바나나, 체리, 포도, 망고, 딸기, 수박 등) 건조",
+"채소 20여 종(감자, 당근, 토마토, 양파, 양배추, 호박 등)과 베리 건조",
+"바질·캐모마일 등 바닐라 허브 건조",
+"말린 식재료 묶음(Bundle) 레시피 (예: 말린 무 12개 → 1묶음)"
+],
+"how": [
+"제작 메뉴 '보존(Preserve)' 분류에서 건조대 + 날카로운 칼(또는 식칼)로 건조"
+],
+"settings": [],
+"notes": [
+"건조 레시피 대부분은 재료 여러 개(예: 사과 16개)를 말린 것 1개로 만듦"
+],
+"order": 72
+},
+{
+"id": "VanillaFoodsExpanded",
+"workshop": "3577903007",
+"title": "Vanilla Foods Expanded",
+"name": "바닐라 푸드 확장 (Vanilla Foods Expanded)",
+"category": "요리·음식·농사",
+"summary": "바닐라 스타일의 음식, 레시피, 진화형 레시피를 2,800개 이상 추가하는 대형 음식 모드입니다.",
+"features": [
+"다양한 통조림(라비올리, 스파게티와 미트볼, 슬로피 조, 미트로프, 칠리 등)과 통조림 박스",
+"병조림, 부용 큐브, 수프 봉지 등 가공식품",
+"통조림 열기, 통조림 상자 열기/포장하기 등 [VFX] 레시피",
+"바닐라와 같은 방식으로 쓰는 새 진화형 요리 레시피"
+],
+"how": [
+"월드 루팅으로 음식 획득",
+"통조림 우클릭 → 열기, 제작/요리 메뉴의 [VFX] 레시피 사용"
+],
+"settings": [],
+"notes": [
+"한국어 번역은 Hx_KR_VanillaFoodsExpanded 모드가 담당",
+"샌드박스의 'VFE' 항목은 이 모드가 아니라 총기 모드 설정임"
+],
+"order": 118
+},
+{
+"id": "SKITTLE_LongTermPreservation4220",
+"workshop": "3774789651",
+"title": "Long Term Preservation [42.20]",
+"name": "장기 보존 식품 (Long Term Preservation)",
+"category": "요리·음식·농사",
+"summary": "냉동고 없이 고기·과일을 오래 보관하는 염장·건조·병조림·페미컨·라드·잼 레시피를 추가합니다.",
+"features": [
+"육포(훈제 돼지고기/소고기/사슴 고기/생선살) 만들기: 고기 1 + 소금 5",
+"페미컨 만들기, 돼지 지방을 녹여 라드 만들기",
+"유리병에 고기 넣기(병조림) / 유리병 열기",
+"으깬 베리 → 잼 만들기",
+"소금 바위: 숲·깊은 숲·농지 등에서 채집 → 부숴서 소금 획득"
+],
+"how": [
+"제작 메뉴 요리 분류에서 레시피 사용",
+"소금이 부족하면 채집(돌 분류)으로 소금 바위 찾기"
+],
+"settings": [],
+"notes": [
+"Build 42.20용 커뮤니티 업데이트판"
+],
+"order": 87
+},
+{
+"id": "Project_Cook",
+"workshop": "3490188370",
+"title": "Project Cook [B42]",
+"name": "프로젝트 쿡 (Project Cook)",
+"category": "요리·음식·농사",
+"summary": "요리 레시피를 찾아보고 재료를 골라 바로 조리할 수 있는 요리 도우미 UI를 추가합니다.",
+"features": [
+"'기초 요리'와 '레시피로 요리하기' 두 가지 모드의 요리 패널",
+"기초 재료(냄비·그릇 등) 지정 후 재료·조미료를 추가하는 방식",
+"가능한 재료 표시/숨기기, 재료 정렬, 무작위 재료 추가",
+"조리 정보(수치 표시 자릿수 선택) 표시"
+],
+"how": [
+"화면 왼쪽 사이드바에 추가된 요리 버튼으로 요리 패널 열기",
+"기초 재료 설정 → 재료 추가 → 조리"
+],
+"settings": [
+"냉동 음식으로 요리 허용: 꺼짐 (해동 필요한 재료는 해동 후 사용)"
+],
+"notes": [
+"NeatUI Framework 필요"
+],
+"order": 100
+},
+{
+"id": "BetterFireExtinguishers",
+"workshop": "3795847162",
+"title": "Better Fire Extinguishers [B42] [SP & MP]",
+"name": "Better Fire Extinguishers (소화기 분사)",
+"category": "생활·위생·취미",
+"summary": "바닐라 소화기를 조준해서 연속 분사하며 불을 끌 수 있게 합니다.",
+"features": [
+"소화기를 겨누고 공격 버튼을 누르는 동안 분사 (가벼운 분말 효과)",
+"불 끄기 판정은 서버에서 처리 (멀티 동기화)",
+"소화기 재충전 레시피 추가"
+],
+"how": [
+"소화기를 양손 장착 → 조준(우클릭 유지) + 공격(좌클릭 유지)으로 분사",
+"제작: [BFE] 소화기 다시 채우기 — 베이킹 소다 3, 깔때기, 타이어 펌프, 렌치(또는 파이프 렌치) 필요"
+],
+"settings": [
+"분사 지속 시간 배수 2 (기본값)"
+],
+"notes": [],
+"order": 55
+},
+{
+"id": "BetterSoapB42",
+"workshop": "1902468232",
+"title": "Better Soap B42",
+"name": "Better Soap (비누 개선)",
+"category": "생활·위생·취미",
+"summary": "비누가 더 오래 가고 월드에서 더 자주 나오도록 합니다.",
+"features": [
+"비누(Base.Soap2) 사용량(UseDelta)을 0.02로 낮춰 훨씬 오래 사용",
+"욕실 카운터·선반, 탈의실 카운터, 약국 화장품 코너에 비누 스폰 추가",
+"교실·어린이집·교도소 감방의 잡동사니 목록에도 비누 추가"
+],
+"how": [],
+"settings": [],
+"notes": [],
+"order": 57
+},
+{
+"id": "DWTB_Spirituality",
+"workshop": "3781127365",
+"title": "DWTB Spirituality v3.45.0 (B42.20.2)",
+"name": "DWTB 신앙 (Spirituality)",
+"category": "생활·위생·취미",
+"summary": "성경·십자가로 기도하거나 교회·성소에 머물러 공황·스트레스·공포·불행을 줄입니다.",
+"features": [
+"기도: 공황 40, 스트레스 30, 불행 20, 지루함 15, 공포 30 즉시 감소 + 약 12시간(게임) 동안 공황을 25 이하로 억제",
+"신앙 상태: 기도 후 7일(게임) 유지. 신앙 중에는 교회·예배당, 십자가·제단·신도석 근처, 성경+십자가 목걸이 소지만으로도 서서히 안정",
+"설교자(Preacher) 직업/특성: 주변 12칸의 신앙 있는 생존자 전원에게 '축복' 부여 (기적 확률 1%)",
+"기도 25회 하면 설교자 특성 획득",
+"월드의 십자가를 집어 들어 다른 곳에 설치 가능 (벽/바닥, 방향 선택)",
+"음성 기도·설교 오디오 (남성 음성)"
+],
+"how": [
+"인벤토리에서 성경·십자가·묵주 우클릭 → '기도하기' (쿨타임 60분)",
+"설교: 성경을 손에 들고 십자가 목걸이 착용 → 월드 우클릭 '설교하기' (쿨타임 180분, 피로·갈증 증가)",
+"십자가 근처 우클릭 → '조심스럽게 십자가 집어 들기' / '여기에 십자가 설치하기'"
+],
+"settings": [
+"모든 수치 기본값: 기도 시간 1000틱(약 20초), 기도 후 안정 720분, 신앙 유지 7일, 쿨타임 60분",
+"안정 구역(교회·성소·소지품) 켜짐, 강도 100",
+"설교 켜짐: 범위 12칸, 축복 1440분, 쿨타임 180분, 청중 재축복 1440분",
+"기도 음성 켜짐(남성 캐릭터만 음성), 무음 시 텍스트 표시",
+"평온·독실함·신성함 무들 옵션 켜짐"
+],
+"notes": [
+"무들 3종은 MoodleFramework 모드가 필요한데 이 서버 모드 목록에서 확인되지 않음 → 무들은 안 보이고 효과만 적용될 가능성"
+],
+"order": 73
+},
+{
+"id": "LifestyleHobbies",
+"workshop": "3403870858",
+"title": "Lifestyle: Hobbies",
+"name": "Lifestyle: Hobbies (생활·취미)",
+"category": "생활·위생·취미",
+"summary": "음악·춤·명상·요가·위생·청소·미술·발명 등 취미와 생활 활동을 대거 추가합니다.",
+"features": [
+"음악: 악기 연주, 노래 수백 곡 습득(음악 2레벨부터), 스탠딩 마이크로 노래, 밴드 연주",
+"파티: 작동하는 주크박스, 디제잉 부스, 디스코 볼·디스코 바닥, 수백 가지 춤 동작의 춤 취미",
+"명상·요가: 마음챙김 상태(스트레스·통증·공황 완화, 치유), 요가 매트·향",
+"위생·청소: 위생·화장실(방광)·편안함 욕구, 샤워·욕조·칫솔·빗·거울·향수 등, 빗자루·대걸레·표백제로 청소",
+"미술: 이젤 그림, 조각 작업대, 작품으로 아름다움 욕구 충족",
+"발명: 발명 작업대에서 기기·장난감·진기한 물건 연구·생산, 업그레이드 부품",
+"야망(Ambitions) 목표 시스템, 활동 숙련에 따른 특성 획득"
+],
+"how": [
+"악기·가구·위생 시설·청소 도구 등 대상에 우클릭해 활동 시작 ('청소하기', '발명 준비하기' 등)",
+"제작: [Lifestyle] 디스코 볼/디스코 바닥/스탠딩 마이크/악보 책 만들기, 디제잉 부스·조각 작업대 조립, 발명 작업대 건설 등"
+],
+"settings": [
+"음악·춤·명상·위생·미술 기능 모두 켜짐, 야망 켜짐 (쿨다운 12, 기본 36 / 동시 1개, 총 3개)",
+"음악 연주·감상 효과 '높음', 곡 습득 확률 '쉬움', 연주 시 피로 발생",
+"춤 효과 '높음', 명상 효과 보통·치유 2.0, 명상·요가 중 가방 착용 유지 켜짐",
+"요가 매트 필수 아님, 보조 도구 효과 켜짐, 요가 낙상 확률 '드물게'(기본 '자주')",
+"위생 욕구 1.0, 방광 욕구 0.66배, 위생 신경 쓰기 시작 1~3일차(기본 4~12일), 주변 청결 신경 1~3일차(기본 4~12일)",
+"막힌 변기 등도 청소 가능, 미숙련 활동 시 쓰레기 발생 '낮음', 감기 확률 0",
+"아름다움 배수 1.0, 편안함 욕구 1.0"
+],
+"notes": [
+"행동 시간을 줄이는 모드와는 호환되지 않는다고 원작자가 안내",
+"기능이 매우 방대하여 일부 세부 조작은 모드 내 툴팁 참고"
+],
+"order": 84
+},
+{
+"id": "TakeABathAndShowerNew",
+"workshop": "3592172476",
+"title": "[B42:SP/MP] Take A Bath And Shower",
+"name": "목욕과 샤워 (Take A Bath And Shower)",
+"category": "생활·위생·취미",
+"summary": "욕조 목욕과 샤워, 수온·입욕제·몸때 시스템을 추가하는 위생 모드입니다.",
+"features": [
+"욕조 목욕·샤워(온수/냉수): 배관 연결 필요, 온수는 전기 필요, 비누·수건 사용",
+"수온 개념: 따뜻한 물로 체온 상승·스트레스 해소, 전기가 있으면 목욕물 재가열",
+"입욕제 6종(라벤더·시트러스·플로럴·포레스트·허브·로즈): 숙면, 마음 안정, 통증·근육통 완화, 감기 예방, 상처·골절·화상 케어 등",
+"바디 샴푸(샤워 시 비누 대용), 포장된 샤워기 부품으로 벽걸이 샤워기 설치",
+"욕조 물 저장(빗물 수집, 씻으면 물이 더러워짐), 단수 후에도 수도에 남는 물",
+"몸때(Grime) 시스템: 피·흙이 쌓이면 몸때 증가 → 불쾌감·악취, 씻으면 제거"
+],
+"how": [
+"욕조 우클릭 > 목욕하기 / 욕조 메뉴(UI), 샤워기 우클릭 > 샤워하기: 온수/냉수",
+"남은 물이 꼬였을 때 욕조 우클릭 '남은 목욕물 제거하기'",
+"모드 옵션: 욕조 메뉴 표시 방식, 목욕 후 자동 몸 닦기, 화장 지우기, 목욕을 봐도 괜찮은 사용자 지정"
+],
+"settings": [
+"수온 개념: 켜짐, 목욕물 재가열: 켜짐",
+"단수 후 남는 물: 욕조 수도 100, 샤워 수도 20(무작위 감소 최대 25%)",
+"욕조 용량 200, 빗물 수집 켜짐, 목욕물 오염 켜짐",
+"샤워 1회 물 소모 80, 욕조에서 씻기 물 소모 배율 0.8",
+"입욕 효과 일일 한도: 30분",
+"목욕 부정 효과·남의 시선 스트레스: 켜져 있음(비활성화 안 함)",
+"몸때 시스템·무들·불쾌감·악취: 켜짐, 몸 씻기로 몸때 제거 켜짐(비누 불필요)"
+],
+"notes": [
+"DepthMap 수정 모드(ATakeABathAndShowerDepthMap) 필요",
+"멀티에서는 다른 플레이어가 목욕하는 모습을 보면 스트레스 — 모드 옵션에서 괜찮은 사용자 이름 등록 가능"
+],
+"order": 38
+},
+{
+"id": "RainCleansBlood",
+"workshop": "2956146279",
+"title": "Rain Cleans Blood [B42.20 + MP]",
+"name": "비가 피를 씻어냄 (Rain Cleans Blood)",
+"category": "생활·위생·취미",
+"summary": "비나 눈이 오면 바닥의 피 자국과 오물이 서서히 지워지게 합니다.",
+"features": [
+"비·눈이 일정 강도 이상이면 플레이어 주변 무작위 타일의 피 자국을 점차 제거",
+"옵션에 따라 시체 태운 재, 동물 배설물도 제거",
+"차량에 묻은 피, 착용 중인 옷의 피·때도 서서히 씻김",
+"실내 바닥 청소 여부, 날씨 무관 상시 청소 옵션 있음"
+],
+"how": [
+"별도 조작 없음: 비/눈이 오는 날 밖에 있으면 자동 적용"
+],
+"settings": [
+"분당 처리 타일 수 300 (기본값)",
+"날씨 강도 기준 0.25 (기본값)",
+"재 청소 켜짐, 동물 배설물 청소 켜짐",
+"실내 청소 꺼짐 (건물 안 피는 지워지지 않음)",
+"차량 청소 켜짐 (속도 0.1), 옷 청소 켜짐 (속도 1.0)",
+"날씨 무관 상시 청소 꺼짐"
+],
+"notes": [],
+"order": 249
+},
+{
+"id": "UsefulBarrelsMP",
+"workshop": "3436537035",
+"title": "Useful Barrels",
+"name": "쓸모 있는 배럴 (Useful Barrels)",
+"category": "생활·위생·취미",
+"summary": "맵에 있는 드럼통(배럴)을 열어 연료·물 등 액체를 저장하고 꺼내 쓰는 용기로 만들어 줍니다.",
+"features": [
+"배럴 마개를 열어 액체 저장소로 사용, 일부 배럴에는 처음부터 액체가 들어 있음",
+"들고 있는 용기·바닥의 용기·주변 오브젝트·차량 연료 탱크에서 배럴로 액체 옮기기",
+"배럴에서 발전기·차량에 직접 주유",
+"배럴 뚜껑을 잘라내기(용접 마스크·토치 필요)",
+"깔때기가 근처에 있으면 채우는 속도 증가"
+],
+"how": [
+"배럴 우클릭 → '열기'(파이프 렌치 필요) → 유체 전달/연료 추가 등 메뉴 사용",
+"발전기·차량 근처에서 배럴 우클릭 → 연료 보급(고무 호스 필요)"
+],
+"settings": [
+"배럴 용량 400",
+"개봉에 파이프 렌치 필요, 꺼낼 때 고무 호스 필요, 채울 때 깔때기 불필요(깔때기 있으면 1.25배 빠름)",
+"저장 가능: 산업용·연료·위험물·물 / 불가: 술·음료·의료·염료·페인트·독",
+"발전기·차량 주유 및 차량에서 배럴 채우기 허용(모두 고무 호스 필요)",
+"초기 액체 25% 확률, 최대 54 (산·물·오염된 물·휘발유·표백제·강력 독극물 중)",
+"뚜껑 절단에 용접 마스크와 토치 필요"
+],
+"notes": [
+"초기 액체가 오염된 물·산·독일 수 있으니 마시기 전에 확인"
+],
+"order": 117
+},
+{
+"id": "SleepWithFriends",
+"workshop": "2686624983",
+"title": "Sleep with Friends v2.1",
+"name": "친구와 함께 잠자기 (Sleep With Friends)",
+"category": "생활·위생·취미",
+"summary": "멀티플레이에서 혼자 자도 실제 시간 몇 분 안에 피로가 회복되도록 수면을 빠르게 해 줍니다.",
+"features": [
+"잠든 동안 서버가 피로와 지구력을 빠르게 회복시킴(모두가 잘 필요 없음)",
+"침대 품질(좋음/보통/나쁨/바닥)과 베개 유무에 따라 회복 배율 차등",
+"피로가 0이 되면 자동 기상"
+],
+"how": [
+"평소처럼 침대나 바닥에서 잠자기"
+],
+"settings": [
+"수면 시간 기준: 실제 시간(분)",
+"피로 최대 상태에서 약 1분(실제 시간) 만에 회복 (보통 침대 기준, 기본 2분)",
+"지구력 회복 배율 2",
+"자동 기상: 켜짐",
+"침대 배율: 좋음 1.1(베개 1.15), 보통 1.0(1.05), 나쁨 0.9(0.95), 바닥 0.6(0.75)"
+],
+"notes": [],
+"order": 110
+},
+{
+"id": "AliceGear",
+"workshop": "3610005735",
+"title": "ALICE Gear [B41/B42.20]",
+"name": "ALICE 장비 (ALICE Gear)",
+"category": "의류·장비·가방",
+"summary": "미군 ALICE 계열 웨빙 조끼, 배낭, 수통, 방독면 등을 추가합니다.",
+"features": [
+"ALICE 웨빙 조끼 여러 구성: 2P/4P(탄약 파우치), C(수통), E(야전삽), H(홀스터) 조합",
+"ALICE 배낭(용량 40), 야전 배낭, 훈련용 야전 배낭",
+"ALICE 수통(2L), M9 총검과 M9 대검 칼집",
+"M40 방독면(스트랩 유/무), 방독면 파우치(어깨/허벅지), 후드 벗은 형태",
+"착용 슬롯: 오른쪽/왼쪽 수통 슬롯, M9 칼집 슬롯"
+],
+"how": [
+"제작 메뉴의 [ALICE] 레시피로 조끼에 파우치·수통·야전삽·홀스터 추가 또는 기본형으로 되돌리기",
+"[ALICE] M9 대검 칼집 만들기",
+"아이템 우클릭 → '타이트 하게 착용하기/풀기', '어깨에 걸치기', '다리' 등 착용 위치 변경, 방독면 '스트랩 있음/없음'"
+],
+"settings": [],
+"notes": [],
+"order": 49
+},
+{
+"id": "alicesWeaponSling",
+"workshop": "3775549570",
+"title": "Alice's Weapon Sling",
+"name": "Alice의 무기 슬링",
+"category": "의류·장비·가방",
+"summary": "총기·장무기를 몸에 걸어 둘 수 있는 착용형 무기 슬링을 추가합니다.",
+"features": [
+"착용하면 핫바에 슬링 부착 슬롯 생성",
+"메는 방향 4종: 앞쪽 \\, 앞쪽 /, 앞쪽 --, 등",
+"슬링 끈 텍스처 숨기기/표시",
+"월드에서 루팅하거나 직접 제작 가능 (3D 모델 포함)"
+],
+"how": [
+"제작: [Alice] 무기 슬링 만들기 — 벨트 1, 가죽 끈 4, 실 1 + 가위/날카로운 칼, 바늘 (재봉 2 필요)",
+"슬링 우클릭 → 앞쪽 \\ / 앞쪽 / / 앞쪽 -- / 등에 메기 로 위치 변경"
+],
+"settings": [],
+"notes": [],
+"order": 50
+},
+{
+"id": "Authentic Z - Current",
+"workshop": "2335368829",
+"title": "Authentic Z",
+"name": "Authentic Z (좀비 의상·아이템 확장)",
+"category": "의류·장비·가방",
+"summary": "140종 이상의 특색 있는 좀비 의상과 다양한 의류·소품 아이템을 추가합니다.",
+"features": [
+"현실감 있는 좀비 복장 분포, 140종 이상의 커스텀 좀비(코스튬 좀비 포함)",
+"앞치마, 헤드폰, 탄띠, 꽃다발, 우산 등 다수의 의류·소품 추가",
+"가방 강화: 책가방·더플백·등산가방·큰 배낭에 보조 가방/물병/손전등/우산 등 부착 슬롯 추가",
+"의류 착용 변형: 풀기/조이기, 허리에 두르기, 재킷 열기/닫기, 모자 위에 모자, 목에 걸기 등",
+"광부 헬멧 전등, 군용 손전등, 전기톱(정지·연료 보충·막힘 해제) 등 기능 아이템"
+],
+"how": [
+"의류·아이템 우클릭 → 착용 방식 변경 메뉴",
+"제작: 가방 업그레이드, 카라비너 만들기, 보조 가방 만들기, 착용형/아이템 변환 등"
+],
+"settings": [],
+"notes": [
+"원작자 경고: AuthenticZ-Lite 또는 Backpacks+와 함께 쓰지 말 것",
+"서버에 'Authentic Z - 42.15 FIX'도 함께 켜져 있음",
+"아이템 이름·레시피는 한국어 번역이 비어 있어 영어로 보일 수 있음 (우클릭 메뉴·UI·툴팁은 한국어 있음)",
+"게임 도중 추가해도 안전하다고 명시"
+],
+"order": 53
+},
+{
+"id": "SM4BootsExpandedB42",
+"workshop": "2850935956",
+"title": "Boots Expanded 11 for B41 and B42 (42.15 quickfix)",
+"name": "Boots Expanded (신발 확장)",
+"category": "의류·장비·가방",
+"summary": "바닐라 신발 전부에 3D 모델과 고유 능력치·설명을 주고 희귀 신발을 추가합니다.",
+"features": [
+"모든 바닐라 신발에 3D 모델 적용",
+"신발마다 밟기 위력(Stomp Power)과 내구도 차등 (툴팁에 표시)",
+"양말(일반/긴/두꺼운), 발토시, 군용·사막 부츠 등 세분화",
+"희귀 신발 추가"
+],
+"how": [
+"신발 툴팁에서 밟기 위력·내구도 확인"
+],
+"settings": [],
+"notes": [
+"원작자 표기상 개발 중(UNDER DEVELOPMENT) 모드",
+"성능 문제 시 Flat Shoes 애드온으로 운동화·구두를 평면 모델로 되돌릴 수 있음"
+],
+"order": 59
+},
+{
+"id": "FixedLightOnBeltAF",
+"workshop": "3778709615",
+"title": "[B42.20/B42.21] Simple Belt Flashlight+ (Better Flashlights Compatible)",
+"name": "간단한 벨트 손전등+ (Simple Belt Flashlight+)",
+"category": "의류·장비·가방",
+"summary": "손전등을 벨트(허리)에 차고 켠 채로 다닐 수 있게 하는 모드입니다.",
+"features": [
+"바닐라 손전등·각진 손전등(군용 포함)·임시 손전등을 벨트 좌/우 슬롯에 장착 가능",
+"허리 위치에 맞춘 장착 모델 위치 조정",
+"Better Flashlights, Authentic Z 손전등 선택적 지원",
+"기존 FixedLightOnBeltAF 대체 버전 — 기존 세이브에서 그대로 작동"
+],
+"how": [
+"손전등을 핫바/벨트 슬롯에 장착 후 켜 두면 양손이 자유로운 상태로 조명 사용"
+],
+"settings": [
+"멀티플레이 진단 로그: 꺼짐"
+],
+"notes": [],
+"order": 30
+},
+{
+"id": "RepairAnyClothes",
+"workshop": "2142622992",
+"title": "Repair Any Clothes",
+"name": "모든 옷 수리 (Repair Any Clothes)",
+"category": "의류·장비·가방",
+"summary": "조끼, 방탄복, 점프슈트처럼 원래 수리가 안 되는 옷도 수리할 수 있게 합니다.",
+"features": [
+"원단 종류가 지정되지 않은 의류(신체 부위를 덮는 옷)에 가죽 원단 속성을 부여",
+"이로써 패치(헝겊 덧대기)로 수리 가능해짐",
+"게임 시작 시 자동 적용"
+],
+"how": [
+"옷 우클릭 → 수리(가죽 조각 등으로 덧대기)"
+],
+"settings": [],
+"notes": [
+"원단이 없던 옷은 '가죽'으로 취급되므로 가죽 조각이 필요함"
+],
+"order": 106
+},
+{
+"id": "GlassHats",
+"workshop": "2423266708",
+"title": "Hats and Glasses Don't Fall",
+"name": "모자·안경 안 떨어짐",
+"category": "의류·장비·가방",
+"summary": "맞거나 넘어져도 모자와 안경이 떨어지지 않게 합니다.",
+"features": [
+"모든 아이템의 떨어질 확률(ChanceToFall)을 0으로 설정",
+"플레이어와 좀비 모두에게 적용",
+"월드 시작·로드 시 모드 아이템까지 전부 일괄 적용"
+],
+"how": [],
+"settings": [],
+"notes": [
+"좀비 모자도 떨어지지 않으므로 모자는 시체에서 직접 벗겨야 함"
+],
+"order": 80
+},
+{
+"id": "MysticOfficeCostumeB42",
+"workshop": "2862044942",
+"title": "Mystic's Office Costumes",
+"name": "미스틱 오피스 의상 (Mystic's Office Costume)",
+"category": "의류·장비·가방",
+"summary": "사무직 의상과 일부 의류 리텍스처를 추가하는 의상 모드입니다.",
+"features": [
+"블라우스(반팔·실크), V넥 긴팔 셔츠, 내복(상·하의) 등 사무직/생활 의류 추가",
+"켄터키주 범죄수사국 ID 카드 아이템",
+"ALICE 벨트와 멜빵을 보이지 않게 바꾸는 레시피와 원래대로 되돌리는 레시피"
+],
+"how": [
+"의류는 월드 루팅으로 획득",
+"제작 메뉴에서 'Make ALICE Belt Invisible'/'Restore ALICE Belt'로 외형 전환"
+],
+"settings": [],
+"notes": [
+"ALICE 관련 레시피·아이템명은 한국어 번역이 없어 영어로 표시됨"
+],
+"order": 95
+},
+{
+"id": "VanillaGearExpanded",
+"workshop": "3401134276",
+"title": "Vanilla Gear Expanded",
+"name": "바닐라 기어 확장 (Vanilla Gear Expanded)",
+"category": "의류·장비·가방",
+"summary": "경찰·특수부대 등 법 집행 기관용 의상과 장비를 추가합니다.",
+"features": [
+"방탄 조끼: ATF, FBI, 경찰, 언론(Press), SWAT",
+"야구모자: ATF, FBI, Press, SWAT / FBI 재킷",
+"전술 장비: 전술 헬멧(파랑·회색·녹색), 크래시 헬멧, 전술 고글, 헤드셋, 발라클라바, 체스트 리그, 전술 조끼·벨트, 전술 장갑(손가락 없는 장갑 포함)",
+"폭동 진압 장비: 교도소/전술 폭동 헬멧, 교도소 폭동 조끼, 어깨 보호대, 팔 보호대, 폭동 진압대 셔츠·바지",
+"해당 의상을 입은 좀비가 등장하고 루팅 테이블에도 추가"
+],
+"how": [
+"경찰서·교도소 등에서 루팅하거나 해당 좀비에게서 획득"
+],
+"settings": [],
+"notes": [],
+"order": 119
+},
+{
+"id": "VanillaOutfitsExpanded",
+"workshop": "3783094058",
+"title": "Vanilla Outfits Expanded",
+"name": "바닐라 아웃핏 확장 (Vanilla Outfits Expanded)",
+"category": "의류·장비·가방",
+"summary": "일상복, 작업복, 구급대원·소방 의상 등 새 의상을 추가합니다(제작 진행 중 모드).",
+"features": [
+"구급대원(EMS) 모자·재킷·셔츠·티셔츠·바지",
+"소방관 장갑, 사격 장갑",
+"겨울 재킷·파카(사냥 위장 포함), 필드 재킷, 스목 재킷(위장 포함), 데님 재킷, 보디 워머, 유틸리티 조끼",
+"카고 바지(위장 포함), 청바지(일반·찢어진), 트랙수트, 킬트, 드레스·치마·반바지류",
+"시마그(일반·해골, 착용 방식 4종), 해골 반다나",
+"해당 의상을 입은 좀비와 루팅 추가"
+],
+"how": [
+"월드 루팅이나 좀비에게서 획득",
+"시마그·반다나는 착용 방식별 아이템이 따로 있음"
+],
+"settings": [],
+"notes": [
+"한국어 번역은 VOEKoreanTranslation 모드가 담당",
+"모드 설명상 아직 제작 중(WIP)"
+],
+"order": 120
+},
+{
+"id": "ScrapArmorB42",
+"workshop": "3786672015",
+"title": "Scrap Armor B42",
+"name": "스크랩 아머 (Scrap Armor B42)",
+"category": "의류·장비·가방",
+"summary": "고철·타이어·도로 표지판 등으로 만드는 방어구와 방패, 칼집·다리 주머니를 추가합니다.",
+"features": [
+"고철 손등판·견갑·정강이받이·어깨보호대·다리보호대·킬트, 스크랩 헬멧·주전자 헬멧 등",
+"금속봉·나사·톱날·도로 표지판으로 방어구 개조(강화)",
+"방패: 스크랩 방패, 차문 방패, 나무 방패",
+"검 칼집(칼 수납), 좌/우 다리 주머니, 여행용 배낭",
+"레시피 잡지: 포스트 아포칼립틱 기사단 1~3권, 자신을 보호하라 1호 등"
+],
+"how": [
+"잡지를 읽어 레시피 학습 → 제작 메뉴에서 방어구 제작",
+"완성품 우클릭 → 착용하기"
+],
+"settings": [],
+"notes": [
+"The Workshop(TheWorkshopB42) 모드 필요"
+],
+"order": 108
+},
+{
+"id": "KuromiBackpack",
+"workshop": "3022845661",
+"title": "Hello Kitty Backpacks",
+"name": "헬로키티 배낭",
+"category": "의류·장비·가방",
+"summary": "산리오 캐릭터 디자인 배낭 7종을 추가합니다.",
+"features": [
+"쿠로미, 헬로키티, 마이멜로디, 시나모롤, 배드바츠마루, 케로피, 폼폼푸린 배낭",
+"모두 용량 30, 무게 감소 80%",
+"스폰: 옷가게, 여성용 옷장, 학교 사물함(가장 흔함)"
+],
+"how": [
+"옷가게, 여성용 옷장, 특히 학교 사물함에서 자주 발견"
+],
+"settings": [],
+"notes": [],
+"order": 81
 },
 {
 "id": "better-auto-mechanics",
@@ -6482,5 +5507,980 @@
 "B42.20 이상"
 ],
 "order": 259
+},
+{
+"id": "MaDZombieLootB42",
+"workshop": "3789934624",
+"title": "MaD's Awesome Zombie Loot [Build 42]",
+"name": "MaD's 좀비 전리품",
+"category": "좀비·이벤트·난이도",
+"summary": "좀비가 희귀한 생존 물품을 지니게 하고, 직업 복장별 전용 드롭도 추가합니다.",
+"features": [
+"좀비 인벤토리에 탄약·탄약 상자·근접무기·권총·장총·통조림·간식·자원(테이프·접착제)·가방·총기 가방·잡동사니 추가",
+"복장(직업)별 전용 아이템 드롭",
+"좀비가 멘 가방·총기 가방 안 내용물",
+"총과 함께 낱개 탄약 묶음",
+"아이템 상태·소모품 잔량 범위 설정"
+],
+"how": [
+"좀비 시체를 뒤지면 됨"
+],
+"settings": [
+"모든 배수 100 (= 기본 1배)",
+"최대 내구도 확률 20%, 최소 상태 10%",
+"소모품 가득 찰 확률 20%, 최소 잔량 20%",
+"낱개 탄약 최대 25개",
+"추가 롤·제거 아이템 없음"
+],
+"notes": [
+"샌드박스 설정 섹션 이름은 원작과 같은 'AirbobbelzLoot'"
+],
+"order": 88
+},
+{
+"id": "SanboidStory",
+"workshop": "3808331424",
+"title": "khan story",
+"name": "sanboid story (서버 공동 탈출 스토리)",
+"category": "좀비·이벤트·난이도",
+"summary": "생존자들이 힘을 모아 송신기를 완성하고 구조 헬기로 녹스 카운티를 탈출하는 이 서버 전용 스토리 캠페인입니다.",
+"features": [
+"국가 비상방송(관리자 시작)으로 시작: 비상 주파수 47.8로 다수 생존자 집단의 접속을 요구",
+"초기 송신기 조립 세트 제작 → 거점에 설치 → 부품 4종(군용 통신 모듈, 고출력 발전 장치, 장거리 송신 안테나, 신호 증폭기)을 찾아 장착",
+"부품은 한 명이 확보하면 팀 전체 진행에 반영, 거점 송신기에 보관해 두면 요구 레벨을 갖춘 동료가 설치",
+"연구 기록·밀봉된 연구 샘플(백신 샘플) 등 스토리 아이템과 손글씨 문서, 무전 교신 기록",
+"두 단계 구조 작전: 1차 방어(구조 지점) → 대체 철수지로 이동 → 최종 방어 후 헬기 탑승·탈출 엔딩",
+"방어 중 서버 공동으로 좀비 웨이브 생성, 폭풍 기상 연출",
+"관리자는 진행 참여·자동 획득에서 제외되고 배치·추적·복구만 담당"
+],
+"how": [
+"월드/인벤토리 우클릭: '[스토리] 작전 현황 표시/숨김', '스토리: 무전·팀 조사 기록', '탈출 계획 열기', '교신 기록', '자막·음향 설정'",
+"조립 세트 소지 후 거점 옆 빈 바닥 우클릭 → '이곳에 초기 송신기 설치' (설치 3분), 이후 '부품 보관' / '<부품> 설치', '송신기 회수해서 옮기기'",
+"무전기 우클릭 → '이 무전기를 소문 방송 수신기로 등록' (전원 켜고 같은 주파수 유지)",
+"송신기에서 '군용 주파수로 송신', '구조 신호 전송', 구조 지점에서 '구조대에 탑승'",
+"초기 송신기 조립 세트 재료: 전자부품 16, 무전 수신기 1, 무전 송신기 1, 전선 6, 알루미늄 2, 나사못 25, 강철봉 8, 금속 파이프 4, 금속판 4, 작은 금속판 4, 판자 4 + 드라이버·용접 마스크, 프로판 토치 2회분"
+],
+"settings": [
+"부품 설치 요구 레벨: 통신 모듈 전기 8 / 발전 장치 기계 6 / 안테나 금속용접 7 / 신호 증폭기 전기 5 (획득·보관엔 레벨 불필요)",
+"부품 설치 시간 120초(실제), 이동·사망·접속 종료 시 취소",
+"초기 송신기 조립 세트 제작: 전기공학 3, 금속용접 2",
+"1차 방어 6시간 / 최종 방어 8시간 (게임 시간)",
+"탈출 증원(좀비 웨이브) 켜짐: 동시 상한 1차 64 / 최종 128, 누적 상한 1차 400 / 최종 1600, 한 번에 8 / 16마리, 간격 15초 / 10초",
+"거점 무전 가청 범위 35칸, 1차·최종 구조지 최소 거리 500칸",
+"구조 작전 폭풍 기상 켜짐, 일반 생존자 미접속 시 자동 진행 일시정지 켜짐"
+],
+"notes": [
+"단전·단수는 이 모드가 아니라 서버 설정을 따름",
+"헬기 도착 후 실제 2분 안에 탑승(탑승 간격 15초), 샘플은 소지자가 탑승할 때 인계"
+],
+"order": 82
+},
+{
+"id": "survivingthroughseasons",
+"workshop": "2753086629",
+"title": "[B42MP/B41]Surviving Through Seasons",
+"name": "계절 따라 살아남기 (Surviving Through Seasons)",
+"category": "좀비·이벤트·난이도",
+"summary": "한 달 일수를 줄여 계절이 더 빨리 바뀌도록 매일 달력 날짜를 건너뛰는 모드입니다.",
+"features": [
+"계절별로 '한 달 최대 일수'를 정해, 매일이 끝날 때 그만큼 달력 날짜를 추가로 넘김",
+"예: 한 달 10일이면 하루가 지날 때마다 약 2일씩 추가로 건너뜀(실제 월 일수 기준 계산)",
+"날짜만 건너뛰며, 시간 경과로 계산되는 다른 월드 시간은 그대로(모드 주석 기준)"
+],
+"how": [],
+"settings": [
+"봄·여름·가을·겨울 모두 한 달 10일 — 즉 한 계절이 게임 내 약 30일"
+],
+"notes": [
+"겨울이 빨리 오므로 식량·연료·월동 준비를 일찍 해야 함",
+"날짜 기준으로 판단하는 요소(계절·달력)와 시간 기준 요소(부패 등)의 체감이 다를 수 있음"
+],
+"order": 42
+},
+{
+"id": "TheyKnewContinued",
+"workshop": "3813362974",
+"title": "They Knew Continued",
+"name": "그들은 알고 있었다 컨티뉴드 (They Knew Continued)",
+"category": "좀비·이벤트·난이도",
+"summary": "실험용 녹스 바이러스 치료제를 지닌 방호복 좀비를 추가해, 감염을 치료·지연·예방할 수 있는 길을 열어 줍니다.",
+"features": [
+"방호복 좀비 4종: 검은색(정체불명 방호복), 흰색(연구소), 주황색(격리팀), 육군 화생방 보호복",
+"좀복시비르 앰풀(치료제): 감염 완치, 회복 기간 동안 부작용(메스꺼움·통증·피로·우울)",
+"좀보솔론 알약(감염 지연), 좀복시사이클린 알약(감염 예방), 좀복시백스 주사기(백신)",
+"바이러스 검사 키트로 감염 여부 확인(양성/음성)",
+"전술 책가방, 수상한 배낭 등 방호복 좀비 전용 드롭 가방, 방호복 수리 레시피",
+"방호복 좀비는 시야·청각이 떨어져 몰래 접근 가능(플레이어가 입어도 동일)",
+"시간이 지날수록 방호복 좀비가 늘어남"
+],
+"how": [
+"방호복 좀비를 처치하고 시체를 뒤져 약품 획득",
+"앰풀 우클릭 → 앰플 깨기(사용), 주사기 → 주사하기, 검사 키트 → 바이러스 검사하기"
+],
+"settings": [
+"검은 방호복 등장률 0.3 (약 1,200마리 중 1), 흰/주황/육군 0.3, 군기지 2%, 연구소 8%",
+"60일에 걸쳐 방호복 좀비가 최대 3배까지 증가",
+"방호복 착용 시 시야·청각: 나쁨, 위장 보균자: 꺼짐",
+"검은 방호복 드롭: 치료제 100%, 검사 키트 25%, 백신 2%, 수상한 배낭 3% (지연제·예방제 0%)",
+"흰색: 예방제 50%, 검사 키트 50%, 치료제 5%, 백신 1% / 주황색: 지연제 50%, 검사 키트 25% / 육군: 예방제 40%, 지연제 25%, 치료제 10%",
+"의료 보관함 스폰: 전부 0% (방호복 좀비에게서만 획득)",
+"치료제 부작용 켜짐(회복 24시간), 유통기한 없음 / 좀보솔론: 감염 초기화 방식 / 예방제 지속 24시간 / 백신 30일",
+"전술 책가방 용량 8, 무게 감소 80%"
+],
+"notes": [
+"같은 워크숍 항목에 TheyKnewContinued_ZVV 하위 모드가 별도로 있음"
+],
+"order": 113
+},
+{
+"id": "DynamicHordeEventsB42",
+"workshop": "3716405632",
+"title": "Dynamic Horde Events B42",
+"name": "다이내믹 호드 이벤트",
+"category": "좀비·이벤트·난이도",
+"summary": "주기적으로 좀비 무리(호드)를 플레이어 주변에 생성해 몰려오게 하는 이벤트를 추가합니다.",
+"features": [
+"일반 호드: 정해진 간격마다 주변에 좀비 무리 생성 후 소리로 유인",
+"떠도는 호드(Wandering): 근처를 지나가는 이동형 대규모 무리",
+"대재앙 호드(Cataclysm): 드물게 오는 초하드코어 무리 + 안개·바람·화면 효과",
+"생존 일수에 따라 호드 규모 증가",
+"방향 표시기, 경고음, 캐릭터 대사('젠장... 근처에 호드가 있어...')로 사전 경고",
+"타이머는 세이브에 저장되어 서버 재시작에도 유지"
+],
+"how": [
+"별도 조작 없음 — 경고 표시·대사가 나오면 방어 준비 또는 회피"
+],
+"settings": [
+"일반 호드: 무작위 간격 12~48시간, 5~30마리, 생성 거리 80~200칸(멀티에서는 최대 70칸으로 제한), 밤에도 발생",
+"규모 증가: 생존 일수 기준 7일마다 +10%, 최대 150%",
+"일반 호드 추적/경로 보조: 꺼짐 (유인 소리 반경·크기 500)",
+"떠도는 호드: 48~120시간마다, 40~120마리, 140~220칸",
+"대재앙 호드: 90~120일마다, 200~500마리, 140~240칸, 4시간 추적, 8시간 악천후, 화면 효과 15초",
+"방향 표시 20초(대재앙 25초, 떠도는 35초), 경고음·대사 켜짐, 실내 생성 회피 켜짐"
+],
+"notes": [],
+"order": 74
+},
+{
+"id": "SkullysZombieCollision",
+"workshop": "3778511497",
+"title": "Skully's Zombie Collision [B42.20+]",
+"name": "스컬리의 좀비 충돌 (Skully's Zombie Collision)",
+"category": "좀비·이벤트·난이도",
+"summary": "좀비끼리 서로 겹치지 않고 밀어내도록 좀비 간 충돌 판정을 추가합니다.",
+"features": [
+"플레이어 주변 좀비에 히트박스 충돌을 적용해 한 칸에 겹쳐 뭉치는 현상 감소",
+"맞거나 밀쳐져 비틀거리는 좀비, 넘어지는 좀비는 더 큰 반경으로 주변 좀비를 밀어냄",
+"성능을 위해 틱당 처리 좀비 수와 거리 제한"
+],
+"how": [
+"별도 조작 없음"
+],
+"settings": [
+"틱당 처리 좀비 수 12 (기본 6)",
+"플레이어로부터 15타일 이내 적용 (기본 6)",
+"충돌 반경·밀어내는 힘은 기본값 (일반 0.46/0.05, 기절 0.65/0.19, 넘어짐 0.75/0.24)"
+],
+"notes": [],
+"order": 109
+},
+{
+"id": "TheOnlyCure",
+"workshop": "3580276809",
+"title": "[B42.20] The Only Cure",
+"name": "유일한 치료법 (The Only Cure)",
+"category": "좀비·이벤트·난이도",
+"summary": "물렸을 때 팔다리를 절단해 감염을 막는 선택지와 지혈대·의수를 추가하는 모드입니다.",
+"features": [
+"손/팔목/팔뚝(좌우) 절단: 절단만, 절단+붕대, 절단+봉합, 절단+봉합+붕대",
+"상처 지지기(소작), 상처 닦기, 상처 치유(흉터화) 진행과 상처 오염도",
+"지혈대(팔·다리) 착용",
+"의수·후크 의수 제작([TOC] 레시피)과 장착, 의수 숙련도",
+"좌/우 절단 지식 경험치(한 손으로 생활하는 숙련)",
+"캐릭터 생성 시 절단 상태로 시작하는 특성(손/팔목/팔 전체 절단)"
+],
+"how": [
+"톱(톱·소형 톱 등)을 가진 상태에서 우클릭 > 절단하기 > 부위(손/팔목/팔뚝) 선택",
+"붕대·실·바늘 등을 갖고 있으면 절단과 함께 처치",
+"의수는 레시피로 만든 뒤 우클릭 '오른팔/왼팔에 의수 장착'"
+],
+"settings": [
+"상처 치유 속도: 1(기본)",
+"상처 오염도 배율: 1",
+"외과의(의사) 능력 중요도: 2(기본)"
+],
+"notes": [
+"좀비에 의한 절단 옵션 값은 서버 파일에 없음(기본값 사용)"
+],
+"order": 32
+},
+{
+"id": "ZombieVisibilityFix",
+"workshop": "3814073243",
+"title": "Zombie Visibility Fix + Stair-O-Vision",
+"name": "좀비 시야 수정 (Zombie Visibility Fix + Stair-O-Vision)",
+"category": "좀비·이벤트·난이도",
+"summary": "플레이어 시야각과 실제로 보이는 좀비가 어긋나는 문제를 고쳐, 보여야 할 좀비를 정확히 드러내 줍니다.",
+"features": [
+"정밀 레이캐스트로 시야 안의 좀비를 드러냄(타일 단위보다 정밀)",
+"Stair-O-Vision: 오르는 계단 꼭대기에 있는 좀비 표시",
+"드러난 좀비의 투명도, 처리 빈도, 처리 거리 설정",
+"조준 중에만 작동하는 옵션, 켜기/끄기 단축키"
+],
+"how": [
+"모드 옵션(Zombie Visibility Fix)에서 설정과 토글 키 지정"
+],
+"settings": [
+"이 모드로 드러난 좀비도 플레이어를 감지함: 켜짐",
+"하드 모드(좀비 전체 폭이 가려지지 않아야 표시): 꺼짐"
+],
+"notes": [
+"옵션 문자열은 한국어 번역이 없어 영어로 표시됨"
+],
+"order": 124
+},
+{
+"id": "Greenleaf B42 version",
+"workshop": "3602388131",
+"title": "Greenleaf B42 version",
+"name": "그린리프 (Greenleaf)",
+"category": "맵",
+"summary": "로즈우드 북서쪽에 평화로운 마을 그린리프를 추가하는 맵입니다.",
+"features": [
+"위치: 로즈우드 북서쪽(좌표 약 X 6140~6770, Y 10210~10760)",
+"병원, 경찰서, 소방서, 학교, 교회, 호텔·모텔, 총포상 2곳, 군장점, 마트·식료품점, 변전소",
+"대저택, 안전가옥, 요새화된 나이트클럽, 냉동창고·식량창고",
+"전용 아이템: 다미아오 배낭, 일부 오브젝트 우클릭 '음악 재생'",
+"지하실(basements) 및 맵 자체 스폰 지점 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Greenleaf): 켜짐"
+],
+"notes": [
+"일부 문자열(음악 재생 등)은 한국어 번역이 비어 있음"
+],
+"order": 16
+},
+{
+"id": "RavenCreekB42",
+"workshop": "3484263516",
+"title": "Raven Creek B42",
+"name": "레이븐 크릭 (Raven Creek)",
+"category": "맵",
+"summary": "맵 남서쪽 끝에 인구 3만 7천 명 규모의 항구 도시를 추가하는 대형 맵입니다.",
+"features": [
+"위치: 맵 남서쪽 끝(좌표 약 X 4200~6550, Y 15300~17670)",
+"대도시급 시설: 대형병원·병원 다수, 대학교, 고등학교, 법원, 쇼핑몰·백화점, 기가마트, 영화관, 자동차극장",
+"군사 시설: 막사, 의무막사, 벙커, 헬기장, 검문소, 안테나",
+"교도소, 정신병원, 연구실, 건전지 공장 등 공장·대형창고",
+"항구: 화물선, 컨테이너, 저유탱크, 기차역, 톨게이트, 터널",
+"맵 자체 스폰 지점 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Raven Creek): 켜짐"
+],
+"notes": [
+"기본 녹스 카운티와 거리가 멀어 차량 이동이 필요"
+],
+"order": 20
+},
+{
+"id": "Maplewood",
+"workshop": "3644794945",
+"title": "Maplewood [B42]",
+"name": "메이플우드 (Maplewood)",
+"category": "맵",
+"summary": "멀드로 서쪽, 폴스 레이크 옆에 19세기풍 시골 마을을 추가하는 맵입니다.",
+"features": [
+"위치: 멀드로 서쪽, 폴스 레이크 인근(좌표 약 X 8120~8370, Y 8440~8740)",
+"19세기 미국풍 건축, 주변은 농지",
+"경찰서, 소방서, 은행, 교회·공동묘지, 약국, 헬스장, 서점, 악기점, 철물점, 주유소",
+"지하 탄약·지하실 무기고(지도 메모 기준)",
+"전용 지도 아이템 '메이플우드 지도'(Map of Maplewood), 맵 자체 스폰 지점 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Maplewood): 켜짐"
+],
+"notes": [],
+"order": 19
+},
+{
+"id": "IrisEyot",
+"workshop": "3545473388",
+"title": "Iris Eyot [B42]",
+"name": "아이리스 에이트 (Iris Eyot)",
+"category": "맵",
+"summary": "물로 둘러싸인 피난처 섬 아이리스 에이트를 추가하는 맵입니다.",
+"features": [
+"위치: 로즈우드 서쪽 먼 곳의 섬(좌표 약 X 4480~4740, Y 11170~11460)",
+"경찰서, 소방서, 도서관, 우체국, 약국, 군장점, 정육점, 카센터, 폐차장, 주유소",
+"대저택(주변 수확 가능한 꽃), 농장(소·돼지·닭), 도축장, 캠핑장",
+"지하 벙커, 비밀 연구소, 각종 작업대가 모인 시설(지도 메모 기준)",
+"전용 아이템: 아이리스 에이트 배낭(실·가죽/데님 끈으로 T1~T3 업그레이드), 와인 통",
+"맵 자체 스폰 지점 포함"
+],
+"how": [
+"배낭 업그레이드: 배낭 + 실 3 + 가죽/데님 끈 3, 가위·바늘 필요"
+],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Iris Eyot): 켜짐"
+],
+"notes": [
+"섬이라 차량 진입 경로를 미리 확인할 것"
+],
+"order": 18
+},
+{
+"id": "AnruisiTown",
+"workshop": "3659676359",
+"title": "AnruisiTown (Military Bastion)",
+"name": "안루이시 타운 (군사 요새 마을)",
+"category": "맵",
+"summary": "멀드로 남동쪽에 군사화된 작은 마을을 추가하는 맵입니다.",
+"features": [
+"위치: 멀드로 남동쪽(좌표 약 X 11750~12600, Y 11400~11950)",
+"병원, 경찰서, 소방서, 총포상, 군장점, 기가마트, 약국, 제재소, 주유소 등",
+"군사 구역: 무기고, 생활관, 의무실, 벙커, 지하실, 다량의 탄약·무기·식량 보관 건물",
+"지하수 펌프와 우물",
+"전용 아이템: 군용 마체테, 군용 수납 배낭, 못 박힌 금속 야구방망이, SWAT 진압봉, 나무 전기톱"
+],
+"how": [
+"월드맵의 '안루이시 타운' 표시 확인"
+],
+"settings": [],
+"notes": [
+"맵 자체 spawnpoints 파일이 있으나 Sanboid 랜덤 스폰 지역 목록에는 없음"
+],
+"order": 12
+},
+{
+"id": "WestPointExpansionB42",
+"workshop": "3475754603",
+"title": "West Point Expansion B42",
+"name": "웨스트 포인트 확장 (West Point Expansion)",
+"category": "맵",
+"summary": "웨스트 포인트에 병원과 철길 동쪽 신시가지 샌디 리지를 추가하는 맵입니다.",
+"features": [
+"위치: 웨스트 포인트 동쪽, 철길 건너편(좌표 약 X 12050~12700, Y 6710~7400)",
+"병원 2곳, 기차역, 법원, 도서관, 우체국, 소방서, 커뮤니티 센터",
+"대형마트·대형창고, 공장, 중고차 매장, 무기 컨테이너, 총포상, 전당포",
+"주거·상업·산업 구역 다수, 맵 자체 스폰 지점 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(West Point Expansion): 켜짐"
+],
+"notes": [],
+"order": 22
+},
+{
+"id": "Clover Lake",
+"workshop": "3759558202",
+"title": "Clover Lake (Homestead & Cottage)",
+"name": "클로버 레이크 (농가 & 별장)",
+"category": "맵",
+"summary": "물과 목초지가 풍부해 목축·농사와 거점 짓기에 좋은 호숫가 지역을 추가하는 맵입니다.",
+"features": [
+"위치: 멀드로 서쪽(좌표 약 X 9470~9980, Y 8960~9980)",
+"인구가 적은 호숫가, 넓은 목초지 — 가축·농사용",
+"지역을 관통하는 도로, 양 끝에 거점 짓기 좋은 장소",
+"맵 자체 스폰 지점 2곳(무직 기준) 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Clover Lake): 켜짐"
+],
+"notes": [
+"같은 워크숍 아이템의 Clover Lake Highway KY-316과 함께 쓰면 북쪽 도로와 연결됨"
+],
+"order": 13
+},
+{
+"id": "Clover Lake Highway KY-316",
+"workshop": "3759558202",
+"title": "Clover Lake (Homestead & Cottage)",
+"name": "클로버 레이크 고속도로 KY-316",
+"category": "맵",
+"summary": "클로버 레이크와 리버사이드 방면 도로를 잇는 고속도로 KY-316을 추가하는 맵입니다.",
+"features": [
+"위치: 클로버 레이크 북쪽(좌표 약 X 9470~9730, Y 7940~9220)",
+"클로버 레이크와 Riverside Road를 연결하는 도로"
+],
+"how": [],
+"settings": [],
+"notes": [
+"Clover Lake와 세트, 스폰 지점 없음"
+],
+"order": 14
+},
+{
+"id": "Fort Waterfront B42",
+"workshop": "3486814612",
+"title": "Fort Waterfront B42",
+"name": "포트 워터프런트 (Fort Waterfront)",
+"category": "맵",
+"summary": "시설을 갖춘 소규모 군사기지를 추가하는 맵입니다.",
+"features": [
+"위치: 멀드로 남서쪽(좌표 약 X 10220~10380, Y 10920~11100)",
+"군 병원, 여러 창고, 탄약, 주유기, 온실",
+"입구를 막기 좋은 구조(지도 메모 기준)",
+"맵 자체 스폰 지점 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Fort Waterfront): 켜짐"
+],
+"notes": [],
+"order": 15
+},
+{
+"id": "muldraughmilitarybaseas24",
+"workshop": "3496507146",
+"title": "[B42&MP]Fort Preston",
+"name": "포트 프레스턴 (Fort Preston)",
+"category": "맵",
+"summary": "멀드로와 로즈우드 사이 도로변에 군사기지를 추가하는 맵입니다.",
+"features": [
+"위치: 멀드로와 로즈우드 사이 도로(좌표 약 X 8800~9150, Y 10800~11100)",
+"사령부, 관사, 무기고(1층 무기고 포함), 탄약, 군용품·의약품 창고",
+"지하 벙커와 벙커 입구, 병원, 차량 정비소, 주유기"
+],
+"how": [
+"월드맵에서 '포트프레스턴' 표시 확인(WorldMap Name Symbols)"
+],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(Muldraugh Military Base): 켜짐"
+],
+"notes": [
+"맵 자체 spawnpoints 파일은 없음 — 이 서버에서는 Sanboid 랜덤 스폰으로 이 일대 실내에 스폰될 수 있음"
+],
+"order": 11
+},
+{
+"id": "HavenFall",
+"workshop": "3728357493",
+"title": "Haven Fall [B42]",
+"name": "헤이븐 폴 (Haven Fall)",
+"category": "맵",
+"summary": "맵 서쪽에 상가·농장·탄약 보관 건물이 많은 마을 헤이븐 폴을 추가하는 맵입니다.",
+"features": [
+"위치: 폴스 레이크보다 훨씬 서쪽(좌표 약 X 4230~4630, Y 8900~9330)",
+"경찰서, 소방서, 학교, 약국, 쇼핑몰, 호텔, 총포상, 군장점, 전당포, 낚시용품점 등",
+"여러 건물 층·지하에 탄약 보관(지도 메모 기준), 지하 창고 다수",
+"농장 구역: 수확 가능한 작물, 작물 창고, 소·양, 우물",
+"전용 배낭(EsBackpack, SeanBackpack, ZhiziBackpack 등)과 배낭 업그레이드 레시피(T1~T3)",
+"맵 자체 스폰 지점 포함"
+],
+"how": [],
+"settings": [
+"Sanboid 랜덤 스폰 후보 지역(HavenFall): 켜짐"
+],
+"notes": [],
+"order": 17
+},
+{
+"id": "SM4BootsExpandedFlatshoes",
+"workshop": "2850935956",
+"title": "Boots Expanded 11 for B41 and B42 (42.15 quickfix)",
+"name": "Boots Expanded - 평면 신발 애드온",
+"category": "그래픽·사운드",
+"summary": "Boots Expanded의 운동화·구두를 바닐라 평면 모델로 되돌려 성능 부담을 줄입니다.",
+"features": [
+"운동화·일반 신발 모델만 바닐라 평면형으로 복귀",
+"능력치 변경은 본체 그대로",
+"본체 사용 중 성능 문제가 있을 때 쓰는 선택(OPTIONAL) 애드온"
+],
+"how": [],
+"settings": [],
+"notes": [
+"Boots Expanded(SM4BootsExpandedB42)의 선택 애드온"
+],
+"order": 60
+},
+{
+"id": "MysticLongHairB42",
+"workshop": "3775339561",
+"title": "Mystic's Long Hair",
+"name": "미스틱 롱 헤어 (Mystic Long Hair)",
+"category": "그래픽·사운드",
+"summary": "데드 라이징 2의 레베카 장에서 영감을 받은 여성용 긴 머리를 추가합니다.",
+"features": [
+"여성 헤어 2종 추가: 미스틱(Mystic Long), 미스틱 윈터(Mystic Long Winter)",
+"머리 길이 단계별 모델(G1·G2·G4) 포함",
+"좀비에게는 생성되지 않는 플레이어 전용 헤어"
+],
+"how": [
+"캐릭터 생성 또는 머리 손질 메뉴에서 '미스틱' 선택"
+],
+"settings": [],
+"notes": [],
+"order": 248
+},
+{
+"id": "MysticFaceAllRacesB42",
+"workshop": "2862505798",
+"title": "Mystic's Face Retexture",
+"name": "미스틱 얼굴 리텍스처 - 전 피부색 (Mystic's Face Retexture - All Skin Tones [B42])",
+"category": "그래픽·사운드",
+"summary": "여성 캐릭터 얼굴 텍스처를 커스텀 얼굴로 교체합니다(모든 피부색).",
+"features": [
+"바닐라 여성 몸 텍스처 FemaleBody01~05(피부색 5종)를 커스텀 얼굴 텍스처로 교체",
+"원본 512px 텍스처를 1024px로 업스케일한 B42 변환판",
+"텍스처만 교체, lua·셰이더 변경 없음"
+],
+"how": [],
+"settings": [],
+"notes": [
+"단일 피부색 버전(Mystic's Face Retexture B42)과 같이 켜면 안 됨",
+"FemaleBody 텍스처를 바꾸는 다른 모드와는 겹침"
+],
+"order": 247
+},
+{
+"id": "AatheomEMVFSM",
+"workshop": "3322066592",
+"title": "Every Missing Vanilla Food Static Model",
+"name": "바닐라 음식 3D 모델 보강 (Every Missing Vanilla Food Static Model)",
+"category": "그래픽·사운드",
+"summary": "3D 모델이 없던 바닐라 음식·식기 아이템에 모델을 붙여 손에 들거나 바닥에 놓았을 때 보이게 합니다.",
+"features": [
+"사과파이·바나나·버거·브로콜리·육포 등 약 250종 바닐라 음식/항생제 등에 손에 드는 3D 모델 추가",
+"머그컵·금속/구리/은/금 컵·텀블러 모델(머그는 색상별)",
+"일부 음식의 먹는 동작(EatType) 조정",
+"Vanilla Foods Expanded가 켜져 있으면 시리얼 모델은 건너뛰어 충돌 방지"
+],
+"how": [],
+"settings": [],
+"notes": [],
+"order": 242
+},
+{
+"id": "SpnHair",
+"workshop": "2463184726",
+"title": "Spongie's Hair",
+"name": "스폰지 헤어 (Spongie's Hair)",
+"category": "그래픽·사운드",
+"summary": "남녀 공용 새 헤어스타일 80종을 추가합니다.",
+"features": [
+"헤어 80종 추가(남녀 각각 사용 가능): 바보(Fool), 아이기스, 발렌타인, 레드필드 꼬리, 케네디, 미카사, 단테, 버질 등",
+"일부 스타일은 '평평한 머리(Flat)'·짧은 머리 등 변형 제공",
+"게임 내 이름 앞에 [Spongie's] 표시"
+],
+"how": [
+"캐릭터 생성 또는 머리 손질 메뉴에서 [Spongie's] 항목 선택"
+],
+"settings": [],
+"notes": [
+"Fluffy Hair(FH) 필수",
+"헤어젤로 세우는 스타일 기능은 SpnHairAPI 모드가 있어야 작동하는데, 이 서버 목록에는 없음"
+],
+"order": 250
+},
+{
+"id": "NewFrontierHairSalon",
+"workshop": "3387569160",
+"title": "[A&M] New Frontier: Hair Salon",
+"name": "애쉬 & 메이 헤어 살롱 V9 - 뉴 프런티어 (Ash and Mae's Hair Salon ~ New Frontier B42)",
+"category": "그래픽·사운드",
+"summary": "여성 캐릭터용 헤어스타일을 대량으로 추가하는 헤어 팩입니다.",
+"features": [
+"여성 전용 헤어스타일 약 60종(길이 변형 포함 85개 항목) 추가: Princess Peach, Maemento, Vixen, Riven, Mango 등",
+"모델·텍스처 직접 제작한 커스텀 헤어",
+"캐릭터 생성·미용(이발) 시 선택 가능"
+],
+"how": [
+"캐릭터 생성 화면 또는 거울/가위를 이용한 머리 손질 메뉴에서 선택"
+],
+"settings": [],
+"notes": [
+"V9부터 바닐라 여성 체형 지원 종료: 제작자는 Project AVA 체형 모드를 권장하며, 이 서버 목록에는 해당 체형 모드가 보이지 않아 일부 머리가 몸/옷과 겹쳐 보일 수 있음"
+],
+"order": 240
+},
+{
+"id": "YakiHSBasegameTexture",
+"workshop": "2761200458",
+"title": "Yaki's Hair Salon",
+"name": "야키 헤어 살롱 (Yaki's Hair Salon)",
+"category": "그래픽·사운드",
+"summary": "바닐라 분위기에 맞춘 남녀 헤어스타일을 추가합니다(기본 텍스처 버전).",
+"features": [
+"남녀 공용 헤어 추가: 크로프트, 제시카, 캣니스, 올림머리(앞머리 유/무), 아프로, 땋은 포니테일, 치어리더, 반묶음, 드레드락, 언더컷, 양갈래, 셰리, 야키 스타일 등",
+"바닐라 게임 텍스처를 사용하는 기본판"
+],
+"how": [
+"캐릭터 생성 또는 머리 손질 메뉴에서 선택"
+],
+"settings": [],
+"notes": [
+"Fluffy Hair(FH) 필수",
+"새 텍스처 애드온(YakiHS)과 함께 켜져 있음",
+"Yaki's Hair Retexture와 함께 쓰지 말라는 제작자 경고 있음(이 서버엔 둘 다 켜져 있음)",
+"버전 전환 후 텍스처가 안 바뀌면 게임 재시작"
+],
+"order": 253
+},
+{
+"id": "YakiHS",
+"workshop": "2761200458",
+"title": "Yaki's Hair Salon",
+"name": "야키 헤어 살롱 새 텍스처 애드온 (Yaki's Hair Salon New Texture - ADDON - B42)",
+"category": "그래픽·사운드",
+"summary": "Yaki's Hair Salon 헤어에 새 텍스처를 입히고 바닐라 머리 텍스처도 교체하는 애드온입니다.",
+"features": [
+"Yaki's Hair Salon 헤어(아프로 올림머리·드레드락·언더컷 등)에 새 텍스처 적용",
+"바닐라 머리 텍스처(긴 곱슬·짧은 곱슬·땋은 머리·흰색 계열 등)도 새 텍스처로 교체"
+],
+"how": [],
+"settings": [],
+"notes": [
+"Yaki's Hair Salon 본체와 함께 사용",
+"Yaki's Hair Retexture와 같은 텍스처 파일(F_HairCurly_Long, F_Hair_Braids, F_Hair_White)을 교체해 충돌 — 이 서버에서는 이 애드온이 뒤에 로드되어 우선 적용됨"
+],
+"order": 252
+},
+{
+"id": "FoggyBreath",
+"workshop": "3799314878",
+"title": "Foggy Breath And Gun Smoke",
+"name": "입김 (Foggy Breath)",
+"category": "그래픽·사운드",
+"summary": "추운 날 캐릭터가 하얀 입김을 내뿜는 시각 효과를 추가합니다.",
+"features": [
+"기온이 일정 이하(기본 15°C 미만)일 때 숨 쉴 때마다 입김 표시",
+"달리기·피로·공포 상태에서 호흡이 빨라지고 입김이 강해짐",
+"총을 쏠 때 총구 연기(빈 총·걸린 총은 제외)",
+"흡연 시 회색 담배 연기(본인 캐릭터만)",
+"클라이언트 전용 시각 효과, 게임 수치에는 영향 없음"
+],
+"how": [
+"설정 > 모드 옵션 'Foggy Breath'에서 입김 기준 온도·크기·투명도·실내 표시, 총구 연기, 담배 연기 각각 켜기/끄기와 세부 조절"
+],
+"settings": [],
+"notes": [
+"Cigarette Smoke 모드와 담배 연기가 중복될 수 있음 — 한쪽의 담배 연기 옵션을 끄면 됨"
+],
+"order": 244
+},
+{
+"id": "CarWeaponFix",
+"workshop": "3783874874",
+"title": "[B42.20+] Vehicle Weapon Clipping Fix",
+"name": "차량 무기 관통 수정 (Vehicle Weapon Clipping Fix)",
+"category": "그래픽·사운드",
+"summary": "차 안에 있을 때 손에 든 양손 무기를 숨겨 창문·지붕을 뚫고 보이는 현상을 고치는 모드입니다.",
+"features": [
+"차량 탑승 중 장착한 양손 무기 모델 숨김",
+"하차하면 다시 표시(장착 상태는 유지)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"외형만 바뀌는 클라이언트 수정"
+],
+"order": 28
+},
+{
+"id": "Project_Cook_Pixel_Icon_Pack",
+"workshop": "3490188370",
+"title": "Project Cook [B42]",
+"name": "프로젝트 쿡 픽셀 아이콘 팩",
+"category": "그래픽·사운드",
+"summary": "Project Cook UI에 쓰이는 아이콘을 픽셀 스타일로 바꿔 주는 아이콘 팩입니다.",
+"features": [
+"Project Cook 요리 패널 아이콘을 픽셀 아트 스타일로 교체",
+"기능 변화 없음(외형만)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"NeatUI Framework와 Project Cook 필요"
+],
+"order": 101
+},
+{
+"id": "FH",
+"workshop": "2447729538",
+"title": "Fluffy Hair [B41/B42]",
+"name": "플러피 헤어 (Fluffy Hair)",
+"category": "그래픽·사운드",
+"summary": "바닐라 헤어스타일 모델을 더 풍성한 모델로 교체하고, 모자를 써도 머리가 포니테일로 바뀌지 않게 합니다.",
+"features": [
+"바닐라 남녀 헤어 모델(단발·장발·곱슬·모히칸 등)을 풍성한 버전으로 교체",
+"모자 착용 시 헤어별 전용 '모자용' 변형으로 표시(포니테일 강제 변환 없음)",
+"머리 길이 단계(G1~G4)별 모델 포함"
+],
+"how": [],
+"settings": [],
+"notes": [
+"Spongie's Hair, Yaki's Hair Salon의 필수 모드",
+"'zDoNotPickMe'라는 항목은 모자용 내부 변형이므로 선택하지 말 것"
+],
+"order": 243
+},
+{
+"id": "Improved_Fire_And_Smoke_Ffects",
+"workshop": "2645975408",
+"title": "Improved Fire & Smoke Effects",
+"name": "향상된 불·연기 효과 (Improved Fire & Smoke Effects)",
+"category": "그래픽·사운드",
+"summary": "화재의 불꽃과 연기 그래픽을 고해상도 텍스처로 바꿉니다.",
+"features": [
+"불꽃(Fire2x) 텍스처 팩 교체",
+"연기(Smoke2x) 텍스처 팩 교체",
+"그래픽만 바뀌며 화재 확산 등 수치에는 영향 없음"
+],
+"how": [],
+"settings": [],
+"notes": [
+"모드 설명이 비어 있어 파일 구성(텍스처 팩 2개)으로만 확인함"
+],
+"order": 246
+},
+{
+"id": "Improved_Blood_Ffects",
+"workshop": "2648152698",
+"title": "Improved Blood Effects",
+"name": "향상된 피 효과 (Improved Blood Effects)",
+"category": "그래픽·사운드",
+"summary": "캐릭터·무기·차량에 묻는 피 텍스처를 더 사실적으로 바꿉니다.",
+"features": [
+"신체 부위별(머리·목·가슴·팔·다리·손발 등) 피 마스크 텍스처 교체",
+"무기에 묻는 피 오버레이 교체",
+"차량에 묻는 피(많이 묻음) 텍스처 교체",
+"텍스처 팩 교체만 하며 게임 수치에는 영향 없음"
+],
+"how": [],
+"settings": [],
+"notes": [],
+"order": 245
+},
+{
+"id": "LifestyleHobbies_KR_Wigfri",
+"workshop": "3698278327",
+"title": "Lifestyle: Hobbies 한글번역",
+"name": "Lifestyle: Hobbies 한글 번역",
+"category": "번역",
+"summary": "Lifestyle: Hobbies 모드의 한국어 번역입니다.",
+"features": [
+"Lifestyle: Hobbies(취미·생활 활동 모드)의 텍스트 한국어화"
+],
+"how": [],
+"settings": [],
+"notes": [
+"원본 Lifestyle: Hobbies 필요(이 서버에 있음)"
+],
+"order": 268
+},
+{
+"id": "VOEKoreanTranslation",
+"workshop": "3789736250",
+"title": "V.O.E 한국어 번역",
+"name": "[Hagaren] V.O.E 한국어 번역",
+"category": "번역",
+"summary": "Vanilla Outfits Expanded의 한국어 번역 모드입니다.",
+"features": [
+"Vanilla Outfits Expanded(의상 확장 모드) 아이템 이름 등 한국어화"
+],
+"how": [],
+"settings": [],
+"notes": [
+"원본 Vanilla Outfits Expanded 필요(이 서버에 있음)"
+],
+"order": 269
+},
+{
+"id": "Hx_KR_VanillaOverride",
+"workshop": "3040632900",
+"title": "Hx's 좀보이드 통합 번역",
+"name": "[Hx] 모드 한글화 - (선택형) 바닐라 문구 변경 모드용",
+"category": "번역",
+"summary": "일부 모드가 바닐라 문구(무들·특성 설명·로딩 팁·바닐라 아이템 이름 등)를 바꿀 때 쓰는 한국어 번역입니다.",
+"features": [
+"모드가 변경한 바닐라 컨텍스트 메뉴·무선 방송·UI·아이템 이름 문구 번역"
+],
+"how": [],
+"settings": [],
+"notes": [
+"해당 모드를 쓸 때만 켜고, 통합 번역보다 아래에 배치"
+],
+"order": 267
+},
+{
+"id": "Hx_KR_GoM",
+"workshop": "3040632900",
+"title": "Hx's 좀보이드 통합 번역",
+"name": "[Hx] 모드 한글화 - GoM(Guns of Marz) 총기 모드 번역",
+"category": "번역",
+"summary": "Guns of Marz 총기 모드의 아이템 이름·툴팁을 한국어로 번역합니다.",
+"features": [
+"Guns of Marz 총기 관련 아이템 이름·툴팁 번역, 통합 번역과 겹치는 바닐라 아이템 이름 덮어쓰기"
+],
+"how": [],
+"settings": [],
+"notes": [
+"통합 번역보다 아래에 배치",
+"Guns of Marz 본체 필요(이 서버에 있음)"
+],
+"order": 262
+},
+{
+"id": "Hx_KR_VanillaFoodsExpanded",
+"workshop": "3040632900",
+"title": "Hx's 좀보이드 통합 번역",
+"name": "[Hx] 모드 한글화 - Vanilla Foods Expanded 번역",
+"category": "번역",
+"summary": "Vanilla Foods Expanded가 바꾸는 바닐라 음식 이름을 한국어로 번역합니다.",
+"features": [
+"Vanilla Foods Expanded용 아이템 이름·컨텍스트 메뉴 번역"
+],
+"how": [],
+"settings": [],
+"notes": [
+"Vanilla Foods Expanded 사용 시에만, 통합 번역보다 아래에 배치(이 서버에 본체 있음)"
+],
+"order": 266
+},
+{
+"id": "Hx_KR_Map",
+"workshop": "3040632900",
+"title": "Hx's 좀보이드 통합 번역",
+"name": "[Hx] 모드 한글화 - 맵 선택 번역",
+"category": "번역",
+"summary": "월드 생성 화면의 모드 맵 이름을 한국어로 번역합니다.",
+"features": [
+"모드 맵 이름 번역(월드 생성 시 맵 선택 화면용)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"서버 접속 플레이어에게는 체감이 거의 없음(월드 생성 화면용)"
+],
+"order": 263
+},
+{
+"id": "Hx_KR_Mod",
+"workshop": "3040632900",
+"title": "Hx's 좀보이드 통합 번역",
+"name": "[Hx] 모드 한글화 - 통합 번역",
+"category": "번역",
+"summary": "여러 인기 모드를 한꺼번에 한국어로 번역하는 통합 번역팩입니다.",
+"features": [
+"다수 모드의 아이템·레시피·UI·컨텍스트 메뉴 등을 한국어로 번역(대상 목록은 창작마당 설명 참고)",
+"바닐라 문구는 덮어쓰지 않음"
+],
+"how": [],
+"settings": [],
+"notes": [
+"모드 목록 가장 아래쪽에 배치해야 적용",
+"바닐라 문구를 바꾸는 모드용 번역은 '(선택형) 바닐라 문구 변경 모드용'을 함께 켜야 함"
+],
+"order": 264
+},
+{
+"id": "Hx_KR_Vanilla",
+"workshop": "3040632900",
+"title": "Hx's 좀보이드 통합 번역",
+"name": "[Hx] 바닐라 한글화",
+"category": "번역",
+"summary": "B42 바닐라 게임 전체를 자체 번역한 한국어 패치입니다.",
+"features": [
+"바닐라 텍스트 전체 한국어 번역, B42 미지원 폰트 수정",
+"도로명·월드맵 지역명·디버그 메뉴 번역 포함"
+],
+"how": [],
+"settings": [],
+"notes": [
+"바닐라 번역 모드는 하나만 쓰라고 권장",
+"Darker Map 모드 사용 시 도로명 번역 미적용(이 서버 목록에는 없음)"
+],
+"order": 265
+},
+{
+"id": "DynamicHordeEventsB42_KO",
+"workshop": "3809079119",
+"title": "Dynamic Horde Events B42 - 한국어 + 관리자 패치",
+"name": "다이내믹 호드 이벤트 한국어 패치 (Dynamic Horde Events B42 - 한국어 패치)",
+"category": "번역",
+"summary": "Dynamic Horde Events를 한국어로 번역하고 관리자용 호드 제어 패널을 추가하는 패치입니다.",
+"features": [
+"호드 경고 대사·알림·샌드박스 옵션 한국어화(예: '젠장... 근처에 호드가 있어. 이쪽으로 오는 것 같은데.')",
+"관리자 전용 'DHE 호드 관리자 패널': 일반/배회/대재앙 호드를 실제로 발생시키기(접속 중인 일반 생존자 1명 무작위 대상, 관리자·운영자 제외)",
+"강제 발생 시 해당 호드의 다음 대기시간 갱신",
+"디버그 메시지는 관리자에게만 표시, 일반 플레이어는 실제 경고만 봄",
+"일반·배회·대재앙 호드의 일정(무작위 간격/고정 일수·시각)을 세이브에 저장해 재시작 후에도 유지"
+],
+"how": [
+"관리자: 월드 우클릭 > 'DHE: 호드 관리자 패널 (실제 발생)' / 'DHE: 내 위치 테스트 (관리자 전용)' — 샌드박스 EnableDebugContextMenu가 켜져 있어야 보임",
+"관리자 단축키 F6(근처 스폰 테스트)·F7(UI·소리 테스트)·F8(표시 지우기)는 EnableDebugHotkey가 켜져 있어야 작동"
+],
+"settings": [
+"일반 호드: 무작위 간격 12~48시간, 좀비 5~30마리, 생존 일수에 따라 7일마다 +10%(최대 150%)",
+"배회 호드: 무작위 간격 48~120시간, 좀비 40~120마리",
+"대재앙 호드: 무작위 간격 90~120일, 좀비 200~500마리, 4시간 직접 추적, 8시간 폭풍 날씨",
+"알림·방향 표시·경고음·대사 켜짐",
+"EnableDebugContextMenu = false, EnableDebugHotkey = false → 관리자 패널·단축키 현재 비활성"
+],
+"notes": [
+"원본 Dynamic Horde Events B42 필요(원본 0.10.1, B42.20 기준)"
+],
+"order": 260
+},
+{
+"id": "Authentic Z - 42.15 FIX",
+"workshop": "3689659469",
+"title": "[42.15+FIX] Authentic Z",
+"name": "오센틱 Z 42.15+ 텍스트 수정 ([42.15+FIX] Authentic Z)",
+"category": "번역",
+"summary": "B42.15부터 바뀐 JSON 번역 형식 때문에 깨진 Authentic Z의 텍스트·번역을 고칩니다.",
+"features": [
+"Authentic Z(좀비 의상 140종 이상 추가 모드)의 아이템 이름·툴팁·레시피·UI 문자열을 JSON 형식으로 제공",
+"영어 및 중국어·독일어·스페인어·프랑스어·러시아어 등 다국어 포함(한국어 파일은 없음)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"반드시 Authentic Z 본체보다 뒤에 로드(이 서버는 본체 53번, 수정본 254번으로 순서 맞음)",
+"Authentic Z Lite나 Backpacks+와 같이 쓰면 중복",
+"한국어 표시는 별도 한글화(Hx 통합 번역 등)에 의존"
+],
+"order": 254
+},
+{
+"id": "PZGKO_KI5_B42",
+"workshop": "2900444089",
+"title": "프로젝트 좀보이드 갤러리 모드 번역 [PZGKO]",
+"name": "프로젝트 좀보이드 갤러리 모드 번역 B42 [PZGKO_KI5]",
+"category": "번역",
+"summary": "KI5 차량 모음의 차량·부품 이름 등을 한국어로 번역합니다.",
+"features": [
+"KI5 차량 약 300종의 차량명·부품·레시피·툴팁·샌드박스 문구 번역(프로젝트 좀보이드 갤러리 번역 지원)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"이 묶음의 '96 랜서 에보, 새턴, 부시마스터, 스테이지아, CVPI, 캠퍼, M540, M577, ISO 컨테이너 등 최신 KI5 차량 이름은 이 번역에 포함되지 않음(트레일러 일부만 포함)"
+],
+"order": 270
+},
+{
+"id": "PZGKO_Main_B42",
+"workshop": "2900444089",
+"title": "프로젝트 좀보이드 갤러리 모드 번역 [PZGKO]",
+"name": "프로젝트 좀보이드 갤러리 모드 번역 B42 [PZGKO_Main]",
+"category": "번역",
+"summary": "여러 모드의 한국어 번역을 묶어 제공하는 갤러리 번역팩 본편입니다.",
+"features": [
+"다양한 모드의 아이템·레시피·UI·무들·가구·맵 이름 등 번역(대상 목록은 창작마당 페이지 참고)"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42 전용"
+],
+"order": 271
 }
 ]
