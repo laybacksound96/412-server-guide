@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>모드 가이드 · 412's server</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>412's server</h1>
+  <nav><a href="index.html">서버 안내</a><a class="on" href="mods.html">모드 가이드</a><a href="https://github.com/laybacksound96/412-server-guide/wiki">업데이트 내역</a></nav>
+</div></header>
+<main><div class="wrap">
+  <h2 style="margin-top:0">모드 가이드</h2>
+  <p class="lead">서버에 켜져 있는 모드 전체 설명. 이름·기능·사용법으로 검색 가능. 항목을 누르면 자세한 내용이 열림.</p>
+  <div class="tools">
+    <input id="q" type="search" placeholder="검색: 타이어, 업적, 봉제 인형, 단축키 …" autocomplete="off">
+    <span class="count" id="count"></span>
+  </div>
+  <div class="chips" id="cats"></div>
+  <div id="list"></div>
+</div></main>
+<footer><div class="wrap">412's server 플레이어 가이드 · 모드 설명은 각 모드 파일과 서버 설정을 바탕으로 작성됨</div></footer>
+<script>
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let mods = [], cat = '전체';
+const list = document.getElementById('list'), q = document.getElementById('q');
+function block(title, arr) {
+  return arr && arr.length ? `<h4>${title}</h4><ul>${arr.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
+}
+function render() {
+  const words = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const shown = mods.filter(m => (cat === '전체' || m.category === cat) &&
+    words.every(w => m._text.includes(w)));
+  document.getElementById('count').textContent = `${shown.length} / ${mods.length}개`;
+  list.innerHTML = shown.map(m => `
+    <details class="mod">
+      <summary><span class="name">${esc(m.name)}</span><span class="cat">${esc(m.category)}</span>
+        <span class="sum">${esc(m.summary)}</span></summary>
+      <div class="body">
+        ${block('기능', m.features)}${block('사용법', m.how)}${block('이 서버 설정', m.settings)}${block('참고', m.notes)}
+        <div class="meta">모드 ID <code>${esc(m.id)}</code> · <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${esc(m.workshop)}" target="_blank" rel="noopener">${esc(m.title)} (창작마당)</a></div>
+      </div>
+    </details>`).join('');
+}
+fetch('mods.json').then(r => r.json()).then(data => {
+  mods = data.map(m => ({...m, _text: [m.name, m.title, m.id, m.category, m.summary, ...m.features, ...m.how, ...m.settings, ...m.notes].join(' ').toLowerCase()}));
+  const cats = ['전체', ...new Set(mods.map(m => m.category))];
+  const box = document.getElementById('cats');
+  box.innerHTML = cats.map(c => `<button class="chip${c === cat ? ' on' : ''}" data-c="${esc(c)}">${esc(c)} <span class="count">${c === '전체' ? mods.length : mods.filter(m => m.category === c).length}</span></button>`).join('');
+  box.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    cat = b.dataset.c; box.querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === b)); render();
+  });
+  q.addEventListener('input', render);
+  const h = decodeURIComponent(location.hash.slice(1)); if (h) q.value = h;
+  render();
+});
+</script>
+</body>
+</html>
