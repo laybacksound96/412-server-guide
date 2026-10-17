@@ -1,386 +1,5 @@
 [
 {
-"id": "Server412Patch",
-"workshop": "3821533933",
-"title": "412's server 패치",
-"name": "412's server 패치",
-"category": "서버·운영 도구",
-"summary": "이 서버에서 발견한 오류를 고치고 한국어 번역을 보충하는 서버 전용 패치 모드입니다.",
-"features": [
-"떨어진 아이템 때문에 가구·좀비가 안 보이던 그래픽 오류 방지",
-"차 문 잠그기 실패, 사망·리스폰 직후 모드 오류 등 여러 오류 방지",
-"미번역 문구 약 4,800개 한국어 번역, 표기 통일(레시피 모드 태그 제거, 색상·브랜드 표기)",
-"Lifestyle \"야망\"을 \"업적\"으로, 숨겨진 업적은 \"히든 업적 해금/달성\"으로 표시",
-"탄창 장탄수 바, 제작 화면 레시피 출처 모드 표시",
-"스폰 선택 화면 지도 표시 수정, 맵 이름 한국어",
-"클라이언트 Lua 오류를 서버에 자동 기록(오류 문구와 모드 이름만)"
-],
-"how": [
-"따로 조작할 것 없음. 모든 모드 중 가장 마지막에 불러옴"
-],
-"settings": [],
-"notes": [
-"변경 내역은 위키 업데이트 내역 참고"
-],
-"order": 999
-},
-{
-"id": "AbsWeight",
-"workshop": "3780301677",
-"title": "AbsWeight - Item Weight Control",
-"name": "AbsWeight - 아이템 무게 조절",
-"category": "서버·운영 도구",
-"summary": "샌드박스 설정으로 아이템 무게를 카테고리별·개별로 조정합니다.",
-"features": [
-"전체 배수 + 11개 카테고리(무기, 음식, 의류, 탄약, 가방, 책, 재료, 의료, 도구, 차량 부품, 기타) 배수",
-"목재·금속·대장장이 재료·콘크리트/석고·무전기 전용 배수",
-"열쇠·열쇠고리·자동차 키 무게 0 옵션",
-"동물 운반 무게, 트레일러 공간, 들어올리기 한도 조절 및 '모든 동물 들기' 옵션",
-"아이템 개별 지정(Overrides), 최소·최대 무게 제한",
-"연료 연소 시간은 바닐라 유지, 기존 세이브에도 적용"
-],
-"how": [
-"플레이어가 따로 할 일 없음 (서버 설정으로 자동 적용)"
-],
-"settings": [
-"전체 배수 1.0",
-"음식 0.5 / 탄약 0.5 / 차량 부품 0.5 / 기타(가구·생활용품 등) 0.25",
-"무기·의류·가방·책·재료·의료·도구 1.0",
-"목재·금속·대장장이·콘크리트/석고·무전기 각 0.5",
-"열쇠 무게 0: 켜짐",
-"모든 동물 들어올리기 가능: 켜짐",
-"최소 0 / 최대 100"
-],
-"notes": [
-"무게가 줄면 같은 가방에 더 많이 들어감 (용량도 무게 단위)",
-"서버에 MetalWoodHalfWeight(목재·금속 50%)도 켜져 있음. 그 모드가 OnGameBoot에서 먼저 무게를 절반으로 만든 뒤 AbsWeight가 그 값을 기준으로 다시 0.5를 곱하므로 겹치는 목재·금속 아이템은 바닐라의 약 25%가 될 수 있음",
-"ZeroWeightKeys_B42와 열쇠 무게 0 기능이 중복됨 (결과는 동일)"
-],
-"order": 47
-},
-{
-"id": "SanboidRandomSpawnB42",
-"workshop": "3805565148",
-"title": "Sanboid Random Spawn B42 - Indoor Only",
-"name": "Sanboid 랜덤 스폰 B42 (실내 전용)",
-"category": "서버·운영 도구",
-"summary": "켜진 지역 중 하나를 균등하게 골라 건물 1층 실내에 무작위로 스폰시키는 모드입니다.",
-"features": [
-"활성화된 지역들 중 동일 확률로 마을을 고른 뒤 그 지역의 1층 건물 실내로 스폰",
-"서버가 마을 목록·건물 선정을 직접 관리(멀티플레이 대응)",
-"선택 지역에 쓸 수 있는 실내가 없으면 멀드로 실내로 대체",
-"바닐라 지역과 모드 맵(그린리프, 클로버 레이크, 아이리스 에이트, 레이븐 크릭 등) 지역 개별 on/off"
-],
-"how": [
-"스폰 선택 화면에서 랜덤 스폰을 고르면 자동으로 실내 위치를 확인 후 스폰",
-"'서버에서 마을별 스폰 목록을 받지 못했습니다' 메시지가 나오면 모드 버전 불일치 — 운영자에게 알림"
-],
-"settings": [
-"랜덤 스폰: 켜짐",
-"켜진 지역: 리버사이드, 멀드로, 웨스트 포인트, 루이빌, 로즈우드, 로즈우드 교도소, 에코 크릭, 에크론, 폴스 레이크, 어빙턴, 마치 리지, 브랜던버그, 밸리 스테이션, 그린리프, 클로버 레이크, 아이리스 에이트, 포트 워터프런트, 레이븐 크릭, 멀드로 군사기지(포트 프레스턴), 메이플우드, 웨스트 포인트 확장, 헤이븐 폴",
-"꺼진 지역: 티키타운, 넬리스 공군기지"
-],
-"notes": [
-"설정 변경 후 서버 재시작 필요(툴팁 안내)"
-],
-"order": 21
-},
-{
-"id": "ArmystorageSpawnTableFix",
-"workshop": "3786236842",
-"title": "[42.20] Vanilla Spawn Table Fix",
-"name": "[42.20] 군 창고 스폰 테이블 수정 (Armystorage Spawn Table Fix)",
-"category": "서버·운영 도구",
-"summary": "군부대 창고(armystorage)의 선반·군용 상자에서 총과 탄약만 나오도록 스폰 테이블을 바꿉니다.",
-"features": [
-"금속 선반·군용 상자·군용 사물함: 군용 총기·탄약만 생성(기타 군용품 제거)",
-"그 외 용기: 탄약·의약품·군복·전자기기 구성",
-"카운터는 관제실 카운터 구성"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42.20 이상 전용"
-],
-"order": 256
-},
-{
-"id": "ArmorySpawnTableFix",
-"workshop": "3786236842",
-"title": "[42.20] Vanilla Spawn Table Fix",
-"name": "[42.20] 무기고 스폰 테이블 수정 (Armory Spawn Table Fix)",
-"category": "서버·운영 도구",
-"summary": "armory(무기고) 방의 아이템 스폰 테이블을 경찰서 무기고와 같게 다시 정의합니다.",
-"features": [
-"armory 방의 서류 캐비닛·사물함·금속 선반·군용 사물함 등을 경찰 무기고 구성(경찰 총기·방탄 장비·증거물·서류함)으로 설정",
-"사물함 타일 종류에 따라 총기/방탄 장비가 나오도록 지정",
-"리버사이드 경찰서 외 다른 armory 방에도 같은 구성이 적용됨"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42.20 이상 전용(versionMin=42.20)",
-"같은 작성자의 Armystorage/Vanilla Spawn Table Fix와 분리된 선택형 모드"
-],
-"order": 255
-},
-{
-"id": "VanillaSpawnTableFix",
-"workshop": "3786236842",
-"title": "[42.20] Vanilla Spawn Table Fix",
-"name": "[42.20] 바닐라 스폰 테이블 수정 (Vanilla Spawn Table Fix)",
-"category": "서버·운영 도구",
-"summary": "B42.20에서 바뀐 바닐라 루팅 테이블 일부를 정상화하거나 42.19 방식으로 되돌립니다.",
-"features": [
-"창고(warehouse): 잘못된 smallbox 항목을 other로 바로잡아 공구·목공·금속 등 상자 구성 정상화",
-"초·중등 교실 책상 스폰 정리, 교실 간 밸런스 조정",
-"거실·옷장·다락·차고 창고·창고 유닛: 스킬북 스폰을 42.19 방식으로 되돌림(거실은 종이/나무 상자에서만)",
-"복도(hall)에 생긴 스킬북 스폰 제거",
-"서점 창고·책 보관실·총포상 창고 구성 재정의"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42.20 이상 전용",
-"루팅 테이블을 통째로 덮어써서 같은 방 테이블을 바꾸는 다른 루팅 모드와 겹칠 수 있음"
-],
-"order": 257
-},
-{
-"id": "ModManager",
-"workshop": "3567084868",
-"title": "[B42] Mod Manager",
-"name": "[B42] 모드 매니저 (Mod Manager)",
-"category": "서버·운영 도구",
-"summary": "게임 내 모드 창을 정렬·필터·숨기기·프리셋 기능이 있는 관리자 화면으로 개편하는 모드입니다.",
-"features": [
-"모드 목록 정렬·필터링·검색(의존성 포함 검색)·숨기기",
-"모드 정보 패널: 카테고리, 변경 내역(ChangeLog), 비호환 모드, 지원 링크 표시",
-"모드 프리셋 저장·공유 창",
-"모드 옵션(설정) 메뉴 재디자인",
-"서버 설정 화면 개선: 빠른 편집(핵심 설정만)과 전체 편집 모드 분리"
-],
-"how": [
-"메인 메뉴의 모드 화면/모드 옵션/서버 설정 화면에서 바로 사용"
-],
-"settings": [],
-"notes": [
-"Mod Load Order Sorter 필요(정렬 규칙은 그쪽 기능 사용)",
-"변경 내역상 서버 모드 목록에 넣지 않아도 클라이언트에서 항상 동작하도록 바뀜",
-"인게임 플레이에는 영향 없음"
-],
-"order": 1
-},
-{
-"id": "deathcount",
-"workshop": "3799032902",
-"title": "deathcounts system 42",
-"name": "공용 목숨 시스템 (deathcount system)",
-"category": "서버·운영 도구",
-"summary": "서버 전체가 목숨을 공유하고, 다 쓰면 서버가 초기화(리셋)됩니다.",
-"features": [
-"어떤 플레이어든 죽으면 서버 공용 사망 수 +1 (동물 사망 제외)",
-"게임 내 매일 자정에 화면 중앙에 'Lives: 남은 목숨' 표시 + 천둥 소리",
-"남은 목숨이 0이 되면 '!!! SERVER RESET !!! (Deaths: 사망자 순서)' 공지 후 5초 뒤 리셋 신호를 쓰고 서버 종료",
-"최대 목숨 수는 서버 Lua 폴더의 DeathCount.txt로 관리 (없으면 3으로 생성)"
-],
-"how": [
-"플레이어가 따로 할 일 없음 — 자정 공지로 남은 목숨 확인"
-],
-"settings": [],
-"notes": [
-"이 서버의 DeathCount.txt 값은 5 (샌드박스 설정이 아닌 별도 파일)",
-"목숨이 바닥나면 월드가 하드리셋되므로 모두의 생존이 중요"
-],
-"order": 68
-},
-{
-"id": "ModLoadOrderSorter_b42",
-"workshop": "3423660713",
-"title": "Mod Load Order Sorter [b42]",
-"name": "모드 로드 순서 정렬기 (Mod Load Order Sorter)",
-"category": "서버·운영 도구",
-"summary": "모드 자동 정렬 로직을 정렬 규칙 기반으로 바꾸고, 수동 정렬을 돕는 도구를 추가하는 모드입니다.",
-"features": [
-"모드 목록 화면에 '정렬' 버튼 추가, 정렬 규칙(먼저/나중에 로드, 가장 먼저/가장 나중에 로드, 카테고리 내 순서, 호환되지 않음)에 따라 자동 정렬",
-"필수 모드 누락·로드 순서 오류, 호환되지 않는 모드 발견 시 경고 표시",
-"정렬 규칙 편집 모드: 모드별 규칙을 직접 지정하고 저장",
-"모드·워크숍 아이템 목록을 클립보드로 복사하거나 Lua 폴더의 파일로 저장"
-],
-"how": [
-"메인 메뉴 > 모드 화면에서 '정렬' 버튼으로 자동 정렬",
-"규칙 영역을 클릭해 편집 모드로 들어가 규칙 지정 후 '저장'"
-],
-"settings": [],
-"notes": [
-"게임 플레이에는 영향 없는 메인 메뉴용 도구",
-"[B42] Mod Manager가 이 모드를 필수로 요구함"
-],
-"order": 0
-},
-{
-"id": "errorMagnifier",
-"workshop": "2896041179",
-"title": "errorMagnifier",
-"name": "오류 확대경 (errorMagnifier)",
-"category": "서버·운영 도구",
-"summary": "Lua 오류가 나면 게임 안에 팝업으로 띄워 오류 보고를 쉽게 해 주는 디버깅용 모드입니다.",
-"features": [
-"모드 오류 발생 시 인게임 팝업으로 오류 내용 표시",
-"오류 내용을 확인·전달하기 쉽게 정리"
-],
-"how": [
-"오류 팝업이 뜨면 내용을 캡처해 서버 운영자에게 전달"
-],
-"settings": [],
-"notes": [
-"Mod Update and Alert System(ChuckleberryFinnAlertSystem) 필요",
-"게임 플레이에는 영향 없음, 순수 디버깅 용도"
-],
-"order": 3
-},
-{
-"id": "MoodleFramework",
-"workshop": "3396446795",
-"title": "Moodle Framework",
-"name": "Moodle Framework (무들 프레임워크)",
-"category": "라이브러리·의존성",
-"summary": "다른 모드가 화면 오른쪽 무들(상태 아이콘)을 새로 추가할 수 있게 해 주는 기반 모드입니다.",
-"features": [
-"모드가 만든 무들(상태 아이콘)을 바닐라 무들과 같은 방식으로 표시함",
-"이 서버에서는 영성(DWTB Spirituality) 모드의 무들 3종을 보여 주기 위해 추가함"
-],
-"how": [
-"따로 조작할 것 없음. 해당 모드의 무들이 화면 오른쪽에 자동으로 표시됨"
-],
-"settings": [],
-"notes": [
-"2026-10-18 추가"
-],
-"order": 6
-},
-{
-"id": "NeatUI_Framework",
-"workshop": "3508537032",
-"title": "NeatUI Framework [B42]",
-"name": "NeatUI 프레임워크",
-"category": "라이브러리·의존성",
-"summary": "Neat 계열 UI 모드들이 공통으로 쓰는 UI 부품·스타일 라이브러리입니다.",
-"features": [
-"재사용 가능한 UI 컴포넌트·스타일·공용 UI 에셋 제공",
-"B42.0.2 ~ B42.20.4+ 빌드 호환 처리"
-],
-"how": [],
-"settings": [],
-"notes": [
-"단독으로는 눈에 띄는 기능 없음, Neat 계열 모드(예: Neat Lockpicking 등)의 의존성"
-],
-"order": 6
-},
-{
-"id": "YAPZLib",
-"workshop": "3624971238",
-"title": "Yet Another PZ LIbrary",
-"name": "Yet Another PZ Library",
-"category": "라이브러리·의존성",
-"summary": "다른 모드가 사용하는 공용 Lua 라이브러리 모드입니다.",
-"features": [
-"다른 모드용 공용 함수 제공(자체 기능 없음)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"의존성으로 추가된 모드, 끄면 이를 요구하는 모드가 작동하지 않음"
-],
-"order": 10
-},
-{
-"id": "SWMG",
-"workshop": "3722064198",
-"title": "[42.20.4MP] Gunworks Framework",
-"name": "건웍스 프레임워크 (Gunworks Framework)",
-"category": "라이브러리·의존성",
-"summary": "Guns of Marz 등 총기 팩이 쓰는 사격 모드·탄약 장전·부착물 기능 프레임워크입니다.",
-"features": [
-"사격 모드 전환: 단발/점사/연사",
-"탄약 장전기 UI: 총기나 탄창을 드래그해 탄약 종류·수량 선택 후 장전, 재장전 우선순위 지정",
-"총검 장착/제거, 양각대 거치/접기, 개머리판 접기/펼치기, 하부 부착물 전환",
-"다양한 구경·탄종 정의(철갑탄, 할로우 포인트, +P 고압탄, 아음속탄 등)"
-],
-"how": [
-"기본 키: T = 사격 모드 변경, O = 무기 장전 UI 열기, U = 하부 부착물 전환 (옵션 > 키 설정에서 변경 가능)",
-"총 우클릭 메뉴에서 총검/양각대/개머리판 조작"
-],
-"settings": [],
-"notes": [
-"Guns of Marz(GunsOfMarz)의 필수 의존성"
-],
-"order": 5
-},
-{
-"id": "damnlib",
-"workshop": "3171167894",
-"title": "that DAMN Library",
-"name": "댐 라이브러리 (that DAMN Library)",
-"category": "라이브러리·의존성",
-"summary": "모든 KI5 차량 모드가 필요로 하는 공용 에셋·제작 라이브러리입니다.",
-"features": [
-"KI5 차량 부품 제작 레시피 공통 처리([KI5] ... 후드/문/유리/장갑/불바/루프랙 만들기)",
-"타이어 제작 재료(림, 타이어 고무), 군용 타이어(절대 펑크 안 나지만 상태가 낮으면 접지력 저하)",
-"차량 부품 제작 재료: 유리판(스칼펠과 함께 사용), 손잡이, 경첩, 고무 스트립, 좌석 천·폼·프레임",
-"타이어 수리 키트(수리 도구 + 고무 용액 + 수리 스트립), 플라스틱 용접 키트(배터리식 용접총 + 스테이플)",
-"석고 몰드 + 스티로폼 페이스트(아세톤 + 스티로폼)로 플라스틱 부품 복제",
-"고정 위치 보장 스폰(Guaranteed spawns) 기능"
-],
-"how": [
-"제작 메뉴에서 [KI5] 레시피로 차량 부품 제작"
-],
-"settings": [
-"KI5 보장 스폰(DAMN 섹션): '49 Dodge Power Wagon 프리셋 켜짐, '97 ADI Bushmaster 프리셋 켜짐, '80 MAN KAT1 프리셋 켜짐"
-],
-"notes": [
-"KI5 차량 모드 전부의 필수 의존성 — 빼면 KI5 차량이 모두 사라짐"
-],
-"order": 7
-},
-{
-"id": "ChuckleberryFinnAlertSystem",
-"workshop": "3077900375",
-"title": "Mod Update and Alert System",
-"name": "모드 업데이트·알림 시스템 (Chuckleberry Finn)",
-"category": "라이브러리·의존성",
-"summary": "Chuckleberry Finn 모드들이 사용하는 공지·업데이트 알림용 유틸리티 모드입니다.",
-"features": [
-"모드 제작자의 소식·업데이트 알림 창 표시",
-"알림 창 클릭 시 접기/열기, 우클릭 시 이번 세션 동안 완전히 숨김"
-],
-"how": [
-"알림이 거슬리면 알림 창을 우클릭해 이번 세션 동안 숨김"
-],
-"settings": [],
-"notes": [
-"errorMagnifier 등의 의존성으로 들어간 모드, 게임 플레이 변화 없음"
-],
-"order": 2
-},
-{
-"id": "ATakeABathAndShowerDepthMap",
-"workshop": "3592172476",
-"title": "[B42:SP/MP] Take A Bath And Shower",
-"name": "목욕과 샤워: 깊이맵 수정",
-"category": "라이브러리·의존성",
-"summary": "Take A Bath And Shower 모드의 욕조·샤워 깊이맵(그래픽 겹침) 리소스를 담은 보조 모드입니다.",
-"features": [
-"욕조·샤워 사용 시 캐릭터와 오브젝트가 올바르게 겹쳐 보이도록 깊이맵 제공"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Take A Bath And Shower의 필수 의존성, 로드 순서를 위쪽에 두라고 안내됨"
-],
-"order": 37
-},
-{
 "id": "P4AddictedToWeight",
 "workshop": "2604943386",
 "title": "Addicted To Weight",
@@ -892,6 +511,27 @@
 ],
 "notes": [],
 "order": 31
+},
+{
+"id": "errorMagnifier",
+"workshop": "2896041179",
+"title": "errorMagnifier",
+"name": "오류 확대경 (errorMagnifier)",
+"category": "UI·편의",
+"summary": "Lua 오류가 나면 게임 안에 팝업으로 띄워 오류 보고를 쉽게 해 주는 디버깅용 모드입니다.",
+"features": [
+"모드 오류 발생 시 인게임 팝업으로 오류 내용 표시",
+"오류 내용을 확인·전달하기 쉽게 정리"
+],
+"how": [
+"오류 팝업이 뜨면 내용을 캡처해 서버 운영자에게 전달"
+],
+"settings": [],
+"notes": [
+"Mod Update and Alert System(ChuckleberryFinnAlertSystem) 필요",
+"게임 플레이에는 영향 없음, 순수 디버깅 용도"
+],
+"order": 3
 },
 {
 "id": "WorldMapNameSymbols",
@@ -5509,6 +5149,40 @@
 "order": 259
 },
 {
+"id": "AbsWeight",
+"workshop": "3780301677",
+"title": "AbsWeight - Item Weight Control",
+"name": "AbsWeight - 아이템 무게 조절",
+"category": "좀비·이벤트·난이도",
+"summary": "샌드박스 설정으로 아이템 무게를 카테고리별·개별로 조정합니다.",
+"features": [
+"전체 배수 + 11개 카테고리(무기, 음식, 의류, 탄약, 가방, 책, 재료, 의료, 도구, 차량 부품, 기타) 배수",
+"목재·금속·대장장이 재료·콘크리트/석고·무전기 전용 배수",
+"열쇠·열쇠고리·자동차 키 무게 0 옵션",
+"동물 운반 무게, 트레일러 공간, 들어올리기 한도 조절 및 '모든 동물 들기' 옵션",
+"아이템 개별 지정(Overrides), 최소·최대 무게 제한",
+"연료 연소 시간은 바닐라 유지, 기존 세이브에도 적용"
+],
+"how": [
+"플레이어가 따로 할 일 없음 (서버 설정으로 자동 적용)"
+],
+"settings": [
+"전체 배수 1.0",
+"음식 0.5 / 탄약 0.5 / 차량 부품 0.5 / 기타(가구·생활용품 등) 0.25",
+"무기·의류·가방·책·재료·의료·도구 1.0",
+"목재·금속·대장장이·콘크리트/석고·무전기 각 0.5",
+"열쇠 무게 0: 켜짐",
+"모든 동물 들어올리기 가능: 켜짐",
+"최소 0 / 최대 100"
+],
+"notes": [
+"무게가 줄면 같은 가방에 더 많이 들어감 (용량도 무게 단위)",
+"서버에 MetalWoodHalfWeight(목재·금속 50%)도 켜져 있음. 그 모드가 OnGameBoot에서 먼저 무게를 절반으로 만든 뒤 AbsWeight가 그 값을 기준으로 다시 0.5를 곱하므로 겹치는 목재·금속 아이템은 바닐라의 약 25%가 될 수 있음",
+"ZeroWeightKeys_B42와 열쇠 무게 0 기능이 중복됨 (결과는 동일)"
+],
+"order": 47
+},
+{
 "id": "MaDZombieLootB42",
 "workshop": "3789934624",
 "title": "MaD's Awesome Zombie Loot [Build 42]",
@@ -5536,6 +5210,67 @@
 "샌드박스 설정 섹션 이름은 원작과 같은 'AirbobbelzLoot'"
 ],
 "order": 88
+},
+{
+"id": "ArmystorageSpawnTableFix",
+"workshop": "3786236842",
+"title": "[42.20] Vanilla Spawn Table Fix",
+"name": "[42.20] 군 창고 스폰 테이블 수정 (Armystorage Spawn Table Fix)",
+"category": "좀비·이벤트·난이도",
+"summary": "군부대 창고(armystorage)의 선반·군용 상자에서 총과 탄약만 나오도록 스폰 테이블을 바꿉니다.",
+"features": [
+"금속 선반·군용 상자·군용 사물함: 군용 총기·탄약만 생성(기타 군용품 제거)",
+"그 외 용기: 탄약·의약품·군복·전자기기 구성",
+"카운터는 관제실 카운터 구성"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42.20 이상 전용"
+],
+"order": 256
+},
+{
+"id": "ArmorySpawnTableFix",
+"workshop": "3786236842",
+"title": "[42.20] Vanilla Spawn Table Fix",
+"name": "[42.20] 무기고 스폰 테이블 수정 (Armory Spawn Table Fix)",
+"category": "좀비·이벤트·난이도",
+"summary": "armory(무기고) 방의 아이템 스폰 테이블을 경찰서 무기고와 같게 다시 정의합니다.",
+"features": [
+"armory 방의 서류 캐비닛·사물함·금속 선반·군용 사물함 등을 경찰 무기고 구성(경찰 총기·방탄 장비·증거물·서류함)으로 설정",
+"사물함 타일 종류에 따라 총기/방탄 장비가 나오도록 지정",
+"리버사이드 경찰서 외 다른 armory 방에도 같은 구성이 적용됨"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42.20 이상 전용(versionMin=42.20)",
+"같은 작성자의 Armystorage/Vanilla Spawn Table Fix와 분리된 선택형 모드"
+],
+"order": 255
+},
+{
+"id": "VanillaSpawnTableFix",
+"workshop": "3786236842",
+"title": "[42.20] Vanilla Spawn Table Fix",
+"name": "[42.20] 바닐라 스폰 테이블 수정 (Vanilla Spawn Table Fix)",
+"category": "좀비·이벤트·난이도",
+"summary": "B42.20에서 바뀐 바닐라 루팅 테이블 일부를 정상화하거나 42.19 방식으로 되돌립니다.",
+"features": [
+"창고(warehouse): 잘못된 smallbox 항목을 other로 바로잡아 공구·목공·금속 등 상자 구성 정상화",
+"초·중등 교실 책상 스폰 정리, 교실 간 밸런스 조정",
+"거실·옷장·다락·차고 창고·창고 유닛: 스킬북 스폰을 42.19 방식으로 되돌림(거실은 종이/나무 상자에서만)",
+"복도(hall)에 생긴 스킬북 스폰 제거",
+"서점 창고·책 보관실·총포상 창고 구성 재정의"
+],
+"how": [],
+"settings": [],
+"notes": [
+"B42.20 이상 전용",
+"루팅 테이블을 통째로 덮어써서 같은 방 테이블을 바꾸는 다른 루팅 모드와 겹칠 수 있음"
+],
+"order": 257
 },
 {
 "id": "SanboidStory",
@@ -5596,6 +5331,29 @@
 "날짜 기준으로 판단하는 요소(계절·달력)와 시간 기준 요소(부패 등)의 체감이 다를 수 있음"
 ],
 "order": 42
+},
+{
+"id": "deathcount",
+"workshop": "3799032902",
+"title": "deathcounts system 42",
+"name": "공용 목숨 시스템 (deathcount system)",
+"category": "좀비·이벤트·난이도",
+"summary": "서버 전체가 목숨을 공유하고, 다 쓰면 서버가 초기화(리셋)됩니다.",
+"features": [
+"어떤 플레이어든 죽으면 서버 공용 사망 수 +1 (동물 사망 제외)",
+"게임 내 매일 자정에 화면 중앙에 'Lives: 남은 목숨' 표시 + 천둥 소리",
+"남은 목숨이 0이 되면 '!!! SERVER RESET !!! (Deaths: 사망자 순서)' 공지 후 5초 뒤 리셋 신호를 쓰고 서버 종료",
+"최대 목숨 수는 서버 Lua 폴더의 DeathCount.txt로 관리 (없으면 3으로 생성)"
+],
+"how": [
+"플레이어가 따로 할 일 없음 — 자정 공지로 남은 목숨 확인"
+],
+"settings": [],
+"notes": [
+"이 서버의 DeathCount.txt 값은 5 (샌드박스 설정이 아닌 별도 파일)",
+"목숨이 바닥나면 월드가 하드리셋되므로 모두의 생존이 중요"
+],
+"order": 68
 },
 {
 "id": "TheyKnewContinued",
@@ -5738,6 +5496,33 @@
 "옵션 문자열은 한국어 번역이 없어 영어로 표시됨"
 ],
 "order": 124
+},
+{
+"id": "SanboidRandomSpawnB42",
+"workshop": "3805565148",
+"title": "Sanboid Random Spawn B42 - Indoor Only",
+"name": "Sanboid 랜덤 스폰 B42 (실내 전용)",
+"category": "맵",
+"summary": "켜진 지역 중 하나를 균등하게 골라 건물 1층 실내에 무작위로 스폰시키는 모드입니다.",
+"features": [
+"활성화된 지역들 중 동일 확률로 마을을 고른 뒤 그 지역의 1층 건물 실내로 스폰",
+"서버가 마을 목록·건물 선정을 직접 관리(멀티플레이 대응)",
+"선택 지역에 쓸 수 있는 실내가 없으면 멀드로 실내로 대체",
+"바닐라 지역과 모드 맵(그린리프, 클로버 레이크, 아이리스 에이트, 레이븐 크릭 등) 지역 개별 on/off"
+],
+"how": [
+"스폰 선택 화면에서 랜덤 스폰을 고르면 자동으로 실내 위치를 확인 후 스폰",
+"'서버에서 마을별 스폰 목록을 받지 못했습니다' 메시지가 나오면 모드 버전 불일치 — 운영자에게 알림"
+],
+"settings": [
+"랜덤 스폰: 켜짐",
+"켜진 지역: 리버사이드, 멀드로, 웨스트 포인트, 루이빌, 로즈우드, 로즈우드 교도소, 에코 크릭, 에크론, 폴스 레이크, 어빙턴, 마치 리지, 브랜던버그, 밸리 스테이션, 그린리프, 클로버 레이크, 아이리스 에이트, 포트 워터프런트, 레이븐 크릭, 멀드로 군사기지(포트 프레스턴), 메이플우드, 웨스트 포인트 확장, 헤이븐 폴",
+"꺼진 지역: 티키타운, 넬리스 공군기지"
+],
+"notes": [
+"설정 변경 후 서버 재시작 필요(툴팁 안내)"
+],
+"order": 21
 },
 {
 "id": "Greenleaf B42 version",
@@ -6257,230 +6042,5 @@
 "settings": [],
 "notes": [],
 "order": 245
-},
-{
-"id": "LifestyleHobbies_KR_Wigfri",
-"workshop": "3698278327",
-"title": "Lifestyle: Hobbies 한글번역",
-"name": "Lifestyle: Hobbies 한글 번역",
-"category": "번역",
-"summary": "Lifestyle: Hobbies 모드의 한국어 번역입니다.",
-"features": [
-"Lifestyle: Hobbies(취미·생활 활동 모드)의 텍스트 한국어화"
-],
-"how": [],
-"settings": [],
-"notes": [
-"원본 Lifestyle: Hobbies 필요(이 서버에 있음)"
-],
-"order": 268
-},
-{
-"id": "VOEKoreanTranslation",
-"workshop": "3789736250",
-"title": "V.O.E 한국어 번역",
-"name": "[Hagaren] V.O.E 한국어 번역",
-"category": "번역",
-"summary": "Vanilla Outfits Expanded의 한국어 번역 모드입니다.",
-"features": [
-"Vanilla Outfits Expanded(의상 확장 모드) 아이템 이름 등 한국어화"
-],
-"how": [],
-"settings": [],
-"notes": [
-"원본 Vanilla Outfits Expanded 필요(이 서버에 있음)"
-],
-"order": 269
-},
-{
-"id": "Hx_KR_VanillaOverride",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - (선택형) 바닐라 문구 변경 모드용",
-"category": "번역",
-"summary": "일부 모드가 바닐라 문구(무들·특성 설명·로딩 팁·바닐라 아이템 이름 등)를 바꿀 때 쓰는 한국어 번역입니다.",
-"features": [
-"모드가 변경한 바닐라 컨텍스트 메뉴·무선 방송·UI·아이템 이름 문구 번역"
-],
-"how": [],
-"settings": [],
-"notes": [
-"해당 모드를 쓸 때만 켜고, 통합 번역보다 아래에 배치"
-],
-"order": 267
-},
-{
-"id": "Hx_KR_GoM",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - GoM(Guns of Marz) 총기 모드 번역",
-"category": "번역",
-"summary": "Guns of Marz 총기 모드의 아이템 이름·툴팁을 한국어로 번역합니다.",
-"features": [
-"Guns of Marz 총기 관련 아이템 이름·툴팁 번역, 통합 번역과 겹치는 바닐라 아이템 이름 덮어쓰기"
-],
-"how": [],
-"settings": [],
-"notes": [
-"통합 번역보다 아래에 배치",
-"Guns of Marz 본체 필요(이 서버에 있음)"
-],
-"order": 262
-},
-{
-"id": "Hx_KR_VanillaFoodsExpanded",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - Vanilla Foods Expanded 번역",
-"category": "번역",
-"summary": "Vanilla Foods Expanded가 바꾸는 바닐라 음식 이름을 한국어로 번역합니다.",
-"features": [
-"Vanilla Foods Expanded용 아이템 이름·컨텍스트 메뉴 번역"
-],
-"how": [],
-"settings": [],
-"notes": [
-"Vanilla Foods Expanded 사용 시에만, 통합 번역보다 아래에 배치(이 서버에 본체 있음)"
-],
-"order": 266
-},
-{
-"id": "Hx_KR_Map",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - 맵 선택 번역",
-"category": "번역",
-"summary": "월드 생성 화면의 모드 맵 이름을 한국어로 번역합니다.",
-"features": [
-"모드 맵 이름 번역(월드 생성 시 맵 선택 화면용)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"서버 접속 플레이어에게는 체감이 거의 없음(월드 생성 화면용)"
-],
-"order": 263
-},
-{
-"id": "Hx_KR_Mod",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 모드 한글화 - 통합 번역",
-"category": "번역",
-"summary": "여러 인기 모드를 한꺼번에 한국어로 번역하는 통합 번역팩입니다.",
-"features": [
-"다수 모드의 아이템·레시피·UI·컨텍스트 메뉴 등을 한국어로 번역(대상 목록은 창작마당 설명 참고)",
-"바닐라 문구는 덮어쓰지 않음"
-],
-"how": [],
-"settings": [],
-"notes": [
-"모드 목록 가장 아래쪽에 배치해야 적용",
-"바닐라 문구를 바꾸는 모드용 번역은 '(선택형) 바닐라 문구 변경 모드용'을 함께 켜야 함"
-],
-"order": 264
-},
-{
-"id": "Hx_KR_Vanilla",
-"workshop": "3040632900",
-"title": "Hx's 좀보이드 통합 번역",
-"name": "[Hx] 바닐라 한글화",
-"category": "번역",
-"summary": "B42 바닐라 게임 전체를 자체 번역한 한국어 패치입니다.",
-"features": [
-"바닐라 텍스트 전체 한국어 번역, B42 미지원 폰트 수정",
-"도로명·월드맵 지역명·디버그 메뉴 번역 포함"
-],
-"how": [],
-"settings": [],
-"notes": [
-"바닐라 번역 모드는 하나만 쓰라고 권장",
-"Darker Map 모드 사용 시 도로명 번역 미적용(이 서버 목록에는 없음)"
-],
-"order": 265
-},
-{
-"id": "DynamicHordeEventsB42_KO",
-"workshop": "3809079119",
-"title": "Dynamic Horde Events B42 - 한국어 + 관리자 패치",
-"name": "다이내믹 호드 이벤트 한국어 패치 (Dynamic Horde Events B42 - 한국어 패치)",
-"category": "번역",
-"summary": "Dynamic Horde Events를 한국어로 번역하고 관리자용 호드 제어 패널을 추가하는 패치입니다.",
-"features": [
-"호드 경고 대사·알림·샌드박스 옵션 한국어화(예: '젠장... 근처에 호드가 있어. 이쪽으로 오는 것 같은데.')",
-"관리자 전용 'DHE 호드 관리자 패널': 일반/배회/대재앙 호드를 실제로 발생시키기(접속 중인 일반 생존자 1명 무작위 대상, 관리자·운영자 제외)",
-"강제 발생 시 해당 호드의 다음 대기시간 갱신",
-"디버그 메시지는 관리자에게만 표시, 일반 플레이어는 실제 경고만 봄",
-"일반·배회·대재앙 호드의 일정(무작위 간격/고정 일수·시각)을 세이브에 저장해 재시작 후에도 유지"
-],
-"how": [
-"관리자: 월드 우클릭 > 'DHE: 호드 관리자 패널 (실제 발생)' / 'DHE: 내 위치 테스트 (관리자 전용)' — 샌드박스 EnableDebugContextMenu가 켜져 있어야 보임",
-"관리자 단축키 F6(근처 스폰 테스트)·F7(UI·소리 테스트)·F8(표시 지우기)는 EnableDebugHotkey가 켜져 있어야 작동"
-],
-"settings": [
-"일반 호드: 무작위 간격 12~48시간, 좀비 5~30마리, 생존 일수에 따라 7일마다 +10%(최대 150%)",
-"배회 호드: 무작위 간격 48~120시간, 좀비 40~120마리",
-"대재앙 호드: 무작위 간격 90~120일, 좀비 200~500마리, 4시간 직접 추적, 8시간 폭풍 날씨",
-"알림·방향 표시·경고음·대사 켜짐",
-"EnableDebugContextMenu = false, EnableDebugHotkey = false → 관리자 패널·단축키 현재 비활성"
-],
-"notes": [
-"원본 Dynamic Horde Events B42 필요(원본 0.10.1, B42.20 기준)"
-],
-"order": 260
-},
-{
-"id": "Authentic Z - 42.15 FIX",
-"workshop": "3689659469",
-"title": "[42.15+FIX] Authentic Z",
-"name": "오센틱 Z 42.15+ 텍스트 수정 ([42.15+FIX] Authentic Z)",
-"category": "번역",
-"summary": "B42.15부터 바뀐 JSON 번역 형식 때문에 깨진 Authentic Z의 텍스트·번역을 고칩니다.",
-"features": [
-"Authentic Z(좀비 의상 140종 이상 추가 모드)의 아이템 이름·툴팁·레시피·UI 문자열을 JSON 형식으로 제공",
-"영어 및 중국어·독일어·스페인어·프랑스어·러시아어 등 다국어 포함(한국어 파일은 없음)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"반드시 Authentic Z 본체보다 뒤에 로드(이 서버는 본체 53번, 수정본 254번으로 순서 맞음)",
-"Authentic Z Lite나 Backpacks+와 같이 쓰면 중복",
-"한국어 표시는 별도 한글화(Hx 통합 번역 등)에 의존"
-],
-"order": 254
-},
-{
-"id": "PZGKO_KI5_B42",
-"workshop": "2900444089",
-"title": "프로젝트 좀보이드 갤러리 모드 번역 [PZGKO]",
-"name": "프로젝트 좀보이드 갤러리 모드 번역 B42 [PZGKO_KI5]",
-"category": "번역",
-"summary": "KI5 차량 모음의 차량·부품 이름 등을 한국어로 번역합니다.",
-"features": [
-"KI5 차량 약 300종의 차량명·부품·레시피·툴팁·샌드박스 문구 번역(프로젝트 좀보이드 갤러리 번역 지원)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"이 묶음의 '96 랜서 에보, 새턴, 부시마스터, 스테이지아, CVPI, 캠퍼, M540, M577, ISO 컨테이너 등 최신 KI5 차량 이름은 이 번역에 포함되지 않음(트레일러 일부만 포함)"
-],
-"order": 270
-},
-{
-"id": "PZGKO_Main_B42",
-"workshop": "2900444089",
-"title": "프로젝트 좀보이드 갤러리 모드 번역 [PZGKO]",
-"name": "프로젝트 좀보이드 갤러리 모드 번역 B42 [PZGKO_Main]",
-"category": "번역",
-"summary": "여러 모드의 한국어 번역을 묶어 제공하는 갤러리 번역팩 본편입니다.",
-"features": [
-"다양한 모드의 아이템·레시피·UI·무들·가구·맵 이름 등 번역(대상 목록은 창작마당 페이지 참고)"
-],
-"how": [],
-"settings": [],
-"notes": [
-"B42 전용"
-],
-"order": 271
 }
 ]
