@@ -1,0 +1,7 @@
+{
+  "current": "w9",
+  "versions": [
+    { "id": "w10", "name": "10번째 세계", "status": "예정" },
+    { "id": "w9", "name": "9번째 세계", "status": "운영 중" }
+  ]
+}

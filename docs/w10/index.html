@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>412's server 안내</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>412's server</h1>
+  <nav><a class="on" href="index.html">서버 안내</a><a href="changes.html">이번 버전</a><a href="mods.html">모드 가이드</a><a href="https://github.com/laybacksound96/412-server-guide/wiki">업데이트 내역</a></nav>
+  <div id="ver"></div>
+</div></header>
+<main><div class="wrap">
+<div id="banner"></div>
+
+<h2>접속</h2>
+<table>
+  <tr><th>주소</th><td><code>175.208.140.25</code></td></tr>
+  <tr><th>포트</th><td><code>16261</code></td></tr>
+  <tr><th>비밀번호</th><td>운영자에게 문의</td></tr>
+  <tr><th>버전</th><td>Build 42.21</td></tr>
+</table>
+<div class="card note">처음 접속하면 모드 190여 개를 내려받아서 오래 걸림. Steam 모음집을 미리 구독해 두면 빠름. <span class="tbd">창작마당 항목 수·모음집 링크는 업로드 후 확정</span></div>
+<div class="card">412 클라이언트 도우미(오류 수집 등)를 함께 설치하게 될 예정. <span class="tbd">설치 방법은 확정 후 안내</span></div>
+
+<h2>접속 전 준비 — 게임 메모리 늘리기</h2>
+<p>모드가 많아서 기본 메모리(3GB)로는 끊기거나 메모리 부족으로 꺼질 수 있음.</p>
+<ol>
+  <li>게임 종료 후 <code>C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid\ProjectZomboid64.json</code>을 메모장으로 엶</li>
+  <li><code>"-Xmx3072m"</code>을 찾아 RAM 16GB면 <code>"-Xmx6144m"</code>, 32GB 이상이면 <code>"-Xmx8192m"</code>으로 바꿈</li>
+  <li>저장 후 게임 실행. 게임 업데이트 뒤 원래 값으로 돌아갈 수 있으니 다시 끊기면 이 값부터 확인</li>
+</ol>
+
+<h2>서버 규칙</h2>
+<h3>공용 목숨</h3>
+<ul>
+  <li>서버 전체가 목숨 <b>7개</b>를 함께 씀. 누가 죽든 1개씩 줄어듦 (동물은 제외)</li>
+  <li>게임 시간 매일 자정에 화면 가운데 <b>Lives: 남은 목숨</b>이 표시됨</li>
+  <li>목숨이 0이 되면 <b>월드가 초기화</b>됨 (맵, 캐릭터, 시체, 차량 전부). 서버는 새 월드로 자동 재시작됨</li>
+  <li>새 캐릭터로 다시 시작해도 목숨은 돌아오지 않음</li>
+</ul>
+<h3>시간</h3>
+<ul>
+  <li>게임 하루 = 현실 30분</li>
+  <li>접속자가 아무도 없으면 시간이 멈춤 (음식 부패, 작물, 호드 일정 모두 정지)</li>
+</ul>
+<h3>좀비</h3>
+<ul>
+  <li>이동 속도 무작위: 느린 걸음·빠른 걸음이 섞이고, 일부는 뛰어다님</li>
+  <li>지능 무작위: 일부는 문을 열 수 있음. 문을 닫아 두는 것만으로는 안전하지 않음</li>
+  <li>감염: 타액(물림)으로만, 증상 발현 1~2주, 사망 후 좀비화 1~2주</li>
+</ul>
+<h3>호드 (Dynamic Horde Events)</h3>
+<table>
+  <tr><th>종류</th><th>규모</th><th>주기 (무작위)</th></tr>
+  <tr><td>일반 호드</td><td>5~30마리 (생존 일수에 따라 최대 1.5배)</td><td>게임 12~48시간마다 (현실 약 15분~1시간)</td></tr>
+  <tr><td>떠도는 호드</td><td>40~120마리</td><td>게임 48~120시간마다 (현실 약 1~2.5시간)</td></tr>
+  <tr><td>대재앙 호드</td><td>200~500마리</td><td>게임 90~120일마다 (현실 약 45~60시간)</td></tr>
+</table>
+<p>일반 호드는 대상자 주변 약 70칸 밖 지상에서 생겨 소리가 난 곳으로 몰려옴. 대재앙 호드는 4시간 동안 대상자를 쫓아옴.</p>
+<h3>캐릭터 생성</h3>
+<ul>
+  <li>직업·특성은 주사위(Destiny Dice)로만 정해짐. 이번 버전부터 특성 추가(Even More Traits)와 쌍수 공격 특성도 주사위에 나옴. 직업 목록 없이 직업도 무작위. 처음에 자동으로 한 번 굴려지고, 최대 3번 다시 굴릴 수 있음. 직접 고르거나 편집할 수 없음</li>
+  <li>스폰 지역: 무작위 실내 스폰, 바닐라 4곳(멀드로, 웨스트 포인트, 로즈우드, 리버사이드), 추가 맵 8곳(헤이븐폴, 메이플우드, 레이븐크릭, 포트 부두, 아이리스 아이엇, 클로버 레이크, 그린리프, 안루이시 타운)</li>
+</ul>
+
+<h2>알아 두면 좋은 기능</h2>
+<ul>
+  <li><b>업적</b>: 원형 메뉴(Q 꾹 누르기) → 업적. 목표를 달성하면 캐릭터 보너스</li>
+  <li><b>제작 화면</b>: 레시피 정보 창에 출처 모드가 "모드: 이름"으로 표시됨</li>
+  <li><b>KI5 차량</b>: 차마다 전용 정비 지침서를 읽어야 차체 부품 제작 가능. 장갑·범퍼·불바는 금속 용접으로 제작</li>
+  <li>배관: 싱크대·샤워기 바로 위층의 3x3 칸 안에 빗물받이통을 두고, 설비를 파이프렌치로 우클릭해 연결. 두 층 위는 연결 안 됨</li>
+  <li>빗물받이통은 비가 올 때만 참. 눈은 물을 채우지 않음</li>
+  <li>바닥에 놓아둔 물건은 자동으로 지워지지 않음. 시체만 시간이 지나면 사라짐</li>
+  <li><b>총기</b>: 탄종이 5가지(9mm, .45, 5.56, 7.62, 12게이지)로 합쳐짐. 같은 탄종 탄창은 어느 총에나 꽂힘 (탄창 우클릭 → 총에 꽂기). 큰 탄창·드럼은 희귀</li>
+  <li><b>쌍수</b>: 양손에 한손 근접 무기를 들면 오른손 공격 뒤에 왼손 공격이 이어짐</li>
+  <li>모드별 자세한 설명은 <a href="mods.html">모드 가이드</a>에서 검색</li>
+</ul>
+
+<h2>문제 해결</h2>
+<table>
+  <tr><th>증상</th><th>해결</th></tr>
+  <tr><td>접속 후 1분 안에 튕김, "File doesn't exist on the client" 또는 체크섬 오류</td><td>모드 버전이 서버와 다름. 게임을 끄고 Steam 다운로드 화면에서 업데이트 완료 대기 → 안 되면 해당 모드 구독 취소 후 재구독</td></tr>
+  <tr><td>몇 초마다 끊김, 메모리 부족으로 꺼짐</td><td>위 "게임 메모리 늘리기" 적용, 그래픽 설정에서 텍스처 품질 낮추기</td></tr>
+</table>
+
+</div></main>
+<footer><div class="wrap">412's server · 변경 기록은 <a href="https://github.com/laybacksound96/412-server-guide/wiki">위키 업데이트 내역</a> 참고</div></footer>
+<script src="../site.js"></script>
+</body>
+</html>

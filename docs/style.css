@@ -50,3 +50,14 @@ th { font-size: 14px; color: var(--muted); font-weight: 600; }
 .mod .meta { font-size: 13px; color: var(--muted); margin-top: 12px; overflow-wrap: anywhere; }
 footer { color: var(--muted); font-size: 13px; padding: 24px 0; border-top: 1px solid var(--line); }
 @media (max-width: 560px) { .mod summary { grid-template-columns: 1fr; } .mod .cat { justify-self: start; } }
+.ver { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.ver select { font: inherit; font-size: 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; }
+#ver { margin-left: auto; }
+.banner { margin-top: 0; }
+.tag { font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-left: 8px; vertical-align: 2px; }
+.tag.new { background: var(--accent); color: #fff; }
+.tag.gone { background: var(--chip); color: var(--muted); }
+.mod.gone { opacity: .65; }
+.chip.changed { border-color: var(--accent); }
+.gone-list li { color: var(--muted); }
+.tbd { font-size: 13px; color: var(--warn); background: var(--warn-soft); border-radius: 4px; padding: 1px 6px; }
