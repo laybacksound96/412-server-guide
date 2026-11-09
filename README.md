@@ -9,5 +9,6 @@ Project Zomboid Build 42 멀티플레이 서버 "412's server"의 플레이어 �
 ## 구성
 - `docs/versions.json`: 버전 목록(최신이 위)과 지금 운영 중인 버전(`current`)
 - `docs/w9/`, `docs/w10/` …: 버전마다 `index.html`(서버 안내), `changes.html`(이번 버전), `mods.html`·`mods.json`(모드 가이드)
-- `docs/index.html`, `docs/mods.html`: 운영 중인 버전 폴더로 넘겨 주는 페이지. 리셋 때 `versions.json`의 `current`와 함께 바꾼다
+- `docs/index.html`, `docs/changes.html`, `docs/mods.html`: 운영 중인 버전 폴더로 넘겨 주는 페이지. 리셋 때 `versions.json`의 `current`와 함께 바꾼다
+- `docs/game-updates.html`: 게임 자체 패치 요약 (버전과 무관한 공용 페이지)
 - `docs/site.js`: 버전 드롭다운, 지난/예정 버전 안내 띠, 모드 가이드, 이전 버전과의 모드 비교(NEW 표시)
